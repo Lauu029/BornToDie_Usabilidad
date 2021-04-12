@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour
 {
-    // Valores modificables
     [Header("VALORES MODIFICABLES")]
     [SerializeField]
     float lateralVelocity;
@@ -13,7 +12,6 @@ public class BasicMovement : MonoBehaviour
     [SerializeField]
     float gravityScale;
 
-    // Referencias
     [Header("REFERENCIAS")]
     [SerializeField]
     Transform gfx;
