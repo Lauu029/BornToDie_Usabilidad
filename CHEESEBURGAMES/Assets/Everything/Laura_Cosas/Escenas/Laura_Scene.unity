@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 393946136}
   - component: {fileID: 393946135}
   - component: {fileID: 393946134}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Pollo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d057ed87445862543b6248d0d2a325e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocidad: 1.5
 --- !u!50 &393946135
 Rigidbody2D:
   serializedVersion: 4
