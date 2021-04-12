@@ -19,14 +19,14 @@ public class PauseMenuScript : MonoBehaviour
     bool paused;
     IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
     typeOfPauseMenu thisType; // Define el comportamiento de este menu dependiendo de si esta en el gameplay o es parte de otro menu
-    Transform camera;
+    Transform cameraTransform;
     enum typeOfPauseMenu{inGame, inMainMenu }; 
 
     private void Start() // Start en vez de Awake para que al boton le de tiempo a asignar sus variables antes de que se utilizen en este metodo
     {
         // ASIGNAR VARIABLES
         obj = transform.GetChild(0);
-        camera = FindObjectOfType<Camera>().transform;
+        cameraTransform = FindObjectOfType<Camera>().transform;
 
         // VALORES INICIALES
         buttonIndex = 0;
@@ -80,7 +80,7 @@ public class PauseMenuScript : MonoBehaviour
 
         } else if (thisType == typeOfPauseMenu.inMainMenu) // Es parte de otro menu
         {
-            if (camera.position.y == -12)
+            if (cameraTransform.position.y == -12)
             {
                 // Comprobar si se ha seleccionado un nuevo boton
                 if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
@@ -172,8 +172,16 @@ public class PauseMenuScript : MonoBehaviour
 
     void Select(Transform gameObject)
     {
-        if (paused)
-            FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
+        if (thisType == typeOfPauseMenu.inGame)
+        {
+            if (paused)
+                FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
+        } else if (thisType == typeOfPauseMenu.inMainMenu)
+        {
+            if (cameraTransform.position.y == -20)
+                FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
+        }
+
 
         gameObject.gameObject.SetActive(true); // Activar el boton antes de llamarlo
         gameObject.GetComponent<Animator>().enabled = true;
@@ -253,7 +261,7 @@ public class PauseMenuScript : MonoBehaviour
         } else if (thisType == typeOfPauseMenu.inMainMenu)
         {
             Debug.Log("ResumeSelect");
-            camera.GetComponent<Animator>().SetBool("Down", false);
+            cameraTransform.GetComponent<Animator>().SetBool("Down", false);
         }
     }
     public void MainMenuSelect()
