@@ -24,12 +24,13 @@ public class Explosion_Minion : MonoBehaviour
         time = timeBeforeExploding;
         startedMoving = false;
         text = GetComponentInChildren<Text>();
-        text.text = time.ToString();
+        //text.text = time.ToString();
     }
 
     private void Update()
     {
-        Explosion();
+        //Explosion();
+        Explode();
     }
 
     void Explosion()
@@ -46,9 +47,8 @@ public class Explosion_Minion : MonoBehaviour
 
     void Explode()
     {
-        if (Physics2D.OverlapCircle(transform.position, explosionRadius, LayerMask.GetMask("DestructibleWall") ) )
-        {
+        Collider2D allCollisions = Physics2D.OverlapCircle(transform.position, explosionRadius, LayerMask.GetMask("DestructibleWall"));
 
-        }
+        Debug.Log("allCollisions = " + allCollisions);
     }
 }
