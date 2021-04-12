@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PolloVolador : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    Rigidbody2D rb;
 
     float horizontal, vertical;
 
@@ -15,7 +15,7 @@ public class PolloVolador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,11 @@ public class PolloVolador : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigidbody.velocity = movimiento * velocidad;
+        if (movimiento.magnitude != 0)
+        {
+            rb.velocity = movimiento * velocidad;
+        }
+       
     }
 
 
