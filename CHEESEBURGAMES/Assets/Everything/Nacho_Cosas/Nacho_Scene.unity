@@ -970,19 +970,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e55253590bad446a3c31a26b8ab063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ordenOfminions: 010000000000000002000000
+  ordenOfminions: 03000000000000000200000002000000
   titlesMinions:
   - CHIKITO
   - TRAMPOLIN
   - EXPLOSION
+  - VOLADOR
   contentsMinions:
   - Esta chikito
   - Rebotas sobre el
   - Te revienta la cabesa como estes cerca
+  - y volo
   distanceBetweenImages: 150
   allMinions:
   - {fileID: 7963278156455811677, guid: a24786857e135c14da64707dbd8c892d, type: 3}
   - {fileID: 4523090779196818631, guid: d4f06c2ca8b6ed84dba3f8120ab66fbe, type: 3}
+  - {fileID: 363205571383477452, guid: 30ef38bf89fca2b4b81cc2830f691275, type: 3}
   - {fileID: 363205571383477452, guid: 30ef38bf89fca2b4b81cc2830f691275, type: 3}
   minionsSprites:
   - {fileID: 1552547591092771895, guid: b95d0733968561d4b896623af3d0a761, type: 3}
