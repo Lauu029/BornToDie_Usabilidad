@@ -12,6 +12,7 @@ public class LlaveCaja : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             Destroy(caja);
+            Destroy(this.gameObject);
         }
     }
     
