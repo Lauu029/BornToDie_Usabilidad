@@ -32,9 +32,7 @@ public class BasicMovement : MonoBehaviour
     {
         LateralMovement();
 
-        CheckForTrampoline();
-
-        Jump();
+        CheckJump();
     }
 
     void LateralMovement()
@@ -48,20 +46,14 @@ public class BasicMovement : MonoBehaviour
         else if (rb.velocity.x < 0) gfx.localScale = new Vector2(-1, 1);
     }
 
-    void Jump()
+    void CheckJump()
     {
         if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")) && onG.touchingGround)
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            GoUp(jumpForce);
     }
 
-    void CheckForTrampoline() // Comprueba si se ha colisionado con un trampolin, y en tal, caso aplica la fuerza necesaria
+    public void GoUp(float force)
     {
-        Trampoline_Minion trampolineScript = null;
-
-        if (onG.objTouching != null)
-            trampolineScript = onG.objTouching.GetComponent<Trampoline_Minion>();
-
-        if (trampolineScript != null)
-            rb.velocity = new Vector2(rb.velocity.x, trampolineScript.trampolineJumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, force);
     }
 }

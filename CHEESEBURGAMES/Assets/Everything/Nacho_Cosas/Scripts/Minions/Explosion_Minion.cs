@@ -24,22 +24,27 @@ public class Explosion_Minion : MonoBehaviour
         time = timeBeforeExploding;
         startedMoving = false;
         text = GetComponentInChildren<Text>();
-        //text.text = time.ToString();
+        text.text = time.ToString("f0");
+
     }
 
     private void Update()
     {
-        //Explosion();
-        Explode();
+        Explosion();
     }
 
     void Explosion()
     {
         if (!startedMoving && (Input.GetKeyDown("space") || Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")))
+        {
             startedMoving = true;
+            text.color = Color.red;
+        }
 
         if (startedMoving)
         {
+            text.text = time.ToString("f0"); // Actualizar texto
+
             if (time - Time.deltaTime <= 0) Explode();
             else time -= Time.deltaTime;
         }
@@ -49,6 +54,9 @@ public class Explosion_Minion : MonoBehaviour
     {
         Collider2D allCollisions = Physics2D.OverlapCircle(transform.position, explosionRadius, LayerMask.GetMask("DestructibleWall"));
 
-        Debug.Log("allCollisions = " + allCollisions);
+        if (allCollisions != null)
+            Destroy(allCollisions.gameObject);
+
+        Destroy(gameObject);
     }
 }
