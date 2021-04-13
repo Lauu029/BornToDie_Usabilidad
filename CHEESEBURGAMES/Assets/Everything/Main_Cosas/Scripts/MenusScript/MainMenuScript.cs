@@ -48,6 +48,8 @@ public class MainMenuScript : MonoBehaviour
         // Comprobar si se ha elegido el boton actual
         CheckButtonPressed();
 
+
+
         // DEBUG
         //Debug.Log("buttonIndex = " + buttonIndex);
         //Debug.Log("Input.GetAxisRaw() = " + Input.GetAxisRaw("Vertical"));
@@ -128,7 +130,7 @@ public class MainMenuScript : MonoBehaviour
             switch (buttonIndexRef)
             {
                 case 0:
-                    PlaySelect();
+                    LevelSelect();
                     break;
                 case 1:
                     SettingsSelect();
@@ -146,10 +148,12 @@ public class MainMenuScript : MonoBehaviour
     }
 
     // BUTTON ACTIONS
-    public void PlaySelect()
+    public void LevelSelect()
     {
-        Debug.Log("Gameplay");
-        GameManager.GetInstance().ChangeScene("Gameplay");
+        cameraAnimator.SetBool("Up", true);
+        FindObjectOfType<LevelSelectorMenu>().SelectPauseMenu();
+
+        //GameManager.GetInstance().ChangeScene("Gameplay");
     }
     public void SettingsSelect()
     {

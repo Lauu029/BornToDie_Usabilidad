@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class PauseMenuScript : MonoBehaviour
+public class LevelSelectorMenu : MonoBehaviour
 {
     // ASIGNACION (todo lo que se tenga que referenciar con "[SerialisedField]")
     [SerializeField]
     Transform buttonGroup; // GameObject padre de todos los botones (unicamente los botones)
+
+    [SerializeField]
+    Transform locker;
 
     // CONFIGURACION (todos los componentes de otros objetos que no necesiten "[SerialisedField]")
     Transform[] allButtons;
@@ -18,9 +22,7 @@ public class PauseMenuScript : MonoBehaviour
     int buttonIndex; // Numero del boton que esta seleccionado en este momento
     bool paused;
     IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
-    typeOfPauseMenu thisType; // Define el comportamiento de este menu dependiendo de si esta en el gameplay o es parte de otro menu
     Transform cameraTransform;
-    enum typeOfPauseMenu{inGame, inMainMenu }; 
 
     private void Start() // Start en vez de Awake para que al boton le de tiempo a asignar sus variables antes de que se utilizen en este metodo
     {
@@ -44,29 +46,29 @@ public class PauseMenuScript : MonoBehaviour
                 allButtons[i].GetComponent<SliderScript>().thisButtonIndex = i;
         }
 
-        if (SceneManager.GetActiveScene().name == "Gameplay")
+        // CHANGE
+        obj.gameObject.SetActive(true);
+
+
+        // DIBUJAR CANDADOS
+
+        // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back") 
+        for (int i = GameManager.GetInstance().currentLevel + 1; i < allButtons.Length - 1; i++) 
         {
-            obj.gameObject.SetActive(false);
-            thisType = typeOfPauseMenu.inGame;
-        }
-        else if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            thisType = typeOfPauseMenu.inMainMenu;
-            obj.gameObject.SetActive(true);
-            // Asignar la camara si se esta en el menu principal
+            Transform canvas = FindObjectOfType<Canvas>().transform;
+            Vector3 instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y); // posicion del candado
+            GameObject newGameObject = Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
+
+            // Cambiar color del boton
+            allButtons[i].GetComponentInChildren<Text>().color = Color.red;
         }
     }
 
     private void Update()
     {
-        if (thisType == typeOfPauseMenu.inGame) // Es del juego
+        // CHANGE
+        if (cameraTransform.position.y == 12)
         {
-            if (Input.GetButtonDown("Pause")) // Pausar/Despausar
-            {
-                if (paused) ResumeSelect();
-                else PauseSelect();
-            }
-
             // Comprobar si se ha seleccionado un nuevo boton
             if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
             {
@@ -75,21 +77,9 @@ public class PauseMenuScript : MonoBehaviour
 
             // Comprobar si se ha elegido el boton actual
             CheckButtonPressed();
-
-        } else if (thisType == typeOfPauseMenu.inMainMenu) // Es parte de otro menu
-        {
-            if (cameraTransform.position.y == -12)
-            {
-                // Comprobar si se ha seleccionado un nuevo boton
-                if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
-                {
-                    StartCoroutine(CheckButtonAxisChange()); // Borrar si el menu solo se va a controlar con el raton
-                }
-
-                // Comprobar si se ha elegido el boton actual
-                CheckButtonPressed();
-            }
         }
+
+        //Debug.Log("buttonIndex = " + buttonIndex);
 
         // DEBUG
         //Debug.Log("buttonIndex = " + buttonIndex);
@@ -98,7 +88,8 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void SelectPauseMenu()
     {
-        Select(allButtons[0]); // Seleccionar por defecto el primer boton
+        //Deselect(allButtons[allButtons.Length - 1]); // Deseleccionar el ultimo boton // BUG RARO
+        Select(allButtons[allButtons.Length - 1]); // Seleccionar por defecto el ultimo boton
         for (int i = 0; i < allButtons.Length; i++) // Actualizar los sliders
             if (allButtons[i].GetComponent<SliderScript>()) allButtons[i].GetComponent<SliderScript>().UpdateSliderOnPause();
     }
@@ -110,17 +101,23 @@ public class PauseMenuScript : MonoBehaviour
             Deselect(allButtons[buttonIndex]); // Deseleccionar el antiguo boton
             if (Input.GetAxisRaw("Vertical") < 0) // Abajo
             {
-                // Modificar buttonIndex
-                if (buttonIndex + 1 == allButtons.Length)
-                    buttonIndex = 0;
-                else buttonIndex++;
+                int newButtonIndex = buttonIndex + 1;
+
+                if (newButtonIndex == allButtons.Length) buttonIndex = 0;
+
+                else if (newButtonIndex > GameManager.GetInstance().currentLevel) buttonIndex = allButtons.Length - 1;
+
+                else buttonIndex = newButtonIndex;
             }
             else // Arriba
             {
-                // Modificar buttonIndex
-                if (buttonIndex - 1 == -1)
-                    buttonIndex = allButtons.Length - 1;
-                else buttonIndex--;
+                int newButtonIndex = buttonIndex - 1;
+
+                if (newButtonIndex == -1) buttonIndex = allButtons.Length - 1;
+
+                else if (newButtonIndex > GameManager.GetInstance().currentLevel) buttonIndex = GameManager.GetInstance().currentLevel;
+
+                else buttonIndex = newButtonIndex;
             }
             Select(allButtons[buttonIndex]); // Seleccionar el nuevo boton
 
@@ -143,7 +140,8 @@ public class PauseMenuScript : MonoBehaviour
                     if (newValue - 1 == -1)
                         newValue = selectedSlider.slider.maxValue;
                     else newValue--;
-                } else // Arriba
+                }
+                else // Arriba
                 {
                     // Modificar newValue
                     if (newValue + 1 > selectedSlider.slider.maxValue)
@@ -158,28 +156,26 @@ public class PauseMenuScript : MonoBehaviour
             currentCoroutine = null;
         }
     }
+
     public void ButtonChange(int buttonIndexRef) // Cambia el boton activo al pasado por referencia "buttonIndex", se llama al entrar el "Pointer" en un boton
     {
-        if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
+        Debug.Log("LevelSelector");
+
+        if (buttonIndexRef == allButtons.Length - 1 || buttonIndexRef <= GameManager.GetInstance().currentLevel) // Si es un boton seleccionable
         {
-            Deselect(allButtons[buttonIndex]);// Deseleccionar el antiguo boton
-            buttonIndex = buttonIndexRef; // Asignar el nuevo boton
-            Select(allButtons[buttonIndexRef]);// Seleccionar el nuevo boton
+            if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
+            {
+                Deselect(allButtons[buttonIndex]);// Deseleccionar el antiguo boton
+                buttonIndex = buttonIndexRef; // Asignar el nuevo boton
+                Select(allButtons[buttonIndexRef]);// Seleccionar el nuevo boton
+            }
         }
     }
 
     void Select(Transform gameObject)
     {
-        if (thisType == typeOfPauseMenu.inGame)
-        {
-            if (paused)
-                FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
-        } else if (thisType == typeOfPauseMenu.inMainMenu)
-        {
-            if (cameraTransform.position.y == -20)
-                FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
-        }
-
+        if (cameraTransform.position.y == -20)
+            FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
 
         gameObject.gameObject.SetActive(true); // Activar el boton antes de llamarlo
         gameObject.GetComponent<Animator>().enabled = true;
@@ -203,35 +199,16 @@ public class PauseMenuScript : MonoBehaviour
 
     public void PressButton(int buttonIndexRef) // Presiona el boton con el index indicado
     {
-        if (thisType == typeOfPauseMenu.inGame)
+        if (buttonIndexRef == allButtons.Length - 1 || buttonIndexRef <= GameManager.GetInstance().currentLevel)
         {
-            if (paused)
-                switch (buttonIndexRef)
-                {
-                    case 0:
-                        ResumeSelect();
-                        break;
-                    case 1:
-                        MainMenuSelect();
-                        break;
-                    case 2:
-                        ControlsSelect();
-                        break;
-                    case 5:
-                        QuitSelect();
-                        break;
-                }
-
-        } else if (thisType == typeOfPauseMenu.inMainMenu)
-        {
-            switch (buttonIndexRef)
+            FindObjectOfType<AudioManager>().Play("Button", 1);
+            if (buttonIndexRef == allButtons.Length - 1) // Si es el GoBack
             {
-                case 0:
-                    ResumeSelect();
-                    break;
-                case 3:
-                    QuitSelect();
-                    break;
+                GoBackSelect();
+            }
+            else
+            {
+                GameManager.GetInstance().ChangeLevel(buttonIndexRef);
             }
         }
     }
@@ -248,38 +225,10 @@ public class PauseMenuScript : MonoBehaviour
     }
 
     // BUTTON ACTIONS
-    public void ResumeSelect()
+    public void GoBackSelect()
     {
-        if (thisType == typeOfPauseMenu.inGame)
-        {
-            Debug.Log("ResumeSelect");
-            obj.gameObject.SetActive(false);
-            paused = false;
-            Time.timeScale = 1;
-        } else if (thisType == typeOfPauseMenu.inMainMenu)
-        {
-            Debug.Log("ResumeSelect");
-            cameraTransform.GetComponent<Animator>().SetBool("Down", false);
-        }
-    }
-    public void MainMenuSelect()
-    {
-        Debug.Log("MainMenuSelect");
-        Time.timeScale = 1;
-        GameManager.GetInstance().ChangeScene("MainMenu");
-    }
-    public void ControlsSelect()
-    {
-        Debug.Log("ControlsSelect");
-    }
-    public void CreditsSelect()
-    {
-        Debug.Log("CreditsSelect");
-    }
-    public void QuitSelect()
-    {
-        Application.Quit();
-        Debug.Log("QuitSelect");
+        cameraTransform.GetComponent<Animator>().SetBool("Up", false);
+
+        Debug.Log("GoBackSelect");
     }
 }
-

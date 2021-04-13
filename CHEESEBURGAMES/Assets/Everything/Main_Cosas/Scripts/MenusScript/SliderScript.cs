@@ -69,6 +69,8 @@ public class SliderScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void Select() // Se llama cuando este botón es seleccionado, ya sea a causa del cursor (ha entrado) o con input de teclado/mando
     {
+        FindObjectOfType<AudioManager>().Play("Button", 1);
+
         buttonAnimator.SetBool("Selected", true);
         //GetComponent<Animator>().SetBool("Selected", true);
     }
