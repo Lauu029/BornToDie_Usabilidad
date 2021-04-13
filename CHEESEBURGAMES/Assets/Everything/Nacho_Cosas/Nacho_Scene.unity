@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e55253590bad446a3c31a26b8ab063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ordenOfminions: 03000000000000000200000002000000
+  ordenOfminions: 03000000010000000000000002000000
   titlesMinions:
   - CHIKITO
   - TRAMPOLIN

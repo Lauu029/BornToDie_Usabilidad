@@ -21,19 +21,20 @@ public class PolloVolador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         movimiento = new Vector2(horizontal, vertical);
+        Debug.Log("movimiento = " + movimiento);
         movimiento.Normalize();
+
     }
     private void FixedUpdate()
     {
-        if (movimiento.magnitude != 0)
-        {
-            rb.velocity = movimiento * velocidad;
-        }
-       
+        if (movimiento.x != 0)
+            rb.velocity = new Vector2(movimiento.x * velocidad, rb.velocity.y);
+        if (movimiento.y != 0)
+            rb.velocity = new Vector2(rb.velocity.x, movimiento.y * velocidad);
     }
 
 
