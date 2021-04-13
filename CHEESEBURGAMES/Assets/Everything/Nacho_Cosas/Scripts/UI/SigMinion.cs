@@ -14,7 +14,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     string[] titlesMinions;
     [SerializeField]
     string[] contentsMinions;
-
+    [SerializeField]
+    float distanceBetweenImages;
 
     enum TypeOfMinion { small, trampoline, explosion, fly }
 
@@ -25,12 +26,17 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Sprite[] minionsSprites;
     [SerializeField]
     Transform minionsImagePrefab;
-    [SerializeField]
-    Transform imagesContainer;
     Animator animator;
     Transform spawner;
     ButtonsManager buttonManager;
-    Transform nextMinionImagePoint;
+    Transform minionsLeftUI;
+    Transform nextMinionImagePoint; // A partir de este punto spawnean las imagenes
+    Vector3 currentPosMinionsLeftUI; // Posicion en la que deberia estar el "minionImagesContainer"
+    [SerializeField]
+    Transform minionImagesCanvas;
+    [SerializeField]
+    Transform minionImagesContainer;
+
 
     // VARIABLES
     bool startedMoving; // Indica si el minion se ha empezado a mover
@@ -43,7 +49,9 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         animator = GetComponent<Animator>();
         spawner = GameObject.Find("Spawner").transform;
         buttonManager = GetComponentInParent<ButtonsManager>();
-        nextMinionImagePoint = GameObject.Find("NextMinionImagePoint").transform;
+        minionsLeftUI = GameObject.Find("MinionsLeftUI").transform;
+        nextMinionImagePoint = minionsLeftUI.GetChild(0);
+        currentPosMinionsLeftUI = minionImagesContainer.position;
 
         UpdateMinionLeftUI();
 
@@ -54,6 +62,17 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         // Comprobar si se hace click sobre el boton, y en tal caso, realizar la accion
         CheckClick();
+
+        if (minionImagesContainer.position.y - Time.deltaTime < currentPosMinionsLeftUI.y) minionImagesContainer.position = new Vector3(minionImagesContainer.position.x, currentPosMinionsLeftUI.y);
+        else minionImagesContainer.position = new Vector2(minionImagesContainer.position.x, minionImagesContainer.position.y - Time.deltaTime * 350);
+
+        //if (minionsLeftUI.position == currentPosMinionsLeftUI)
+        //{
+
+        //}
+
+        Debug.Log("minionImagesContainer = " + minionImagesContainer.position);
+        Debug.Log("currentPosMinionsLeftUI = " + currentPosMinionsLeftUI);
     }
 
     public void CheckClick()
@@ -75,6 +94,9 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
                 // Decirle al ButtonManager que se controla al nuevo minion
                 buttonManager.controllingMinion = Instantiate(allMinions[minionIndex], spawner);
+
+                // Bajar imagenes de los minions
+                currentPosMinionsLeftUI = new Vector3(transform.position.x, currentPosMinionsLeftUI.y - distanceBetweenImages, 0);
 
                 ordenMinionIndex++;
             }
@@ -106,12 +128,14 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void UpdateMinionLeftUI()
     {
-        for (int i = ordenMinionIndex; i < imagesContainer.childCount; i++)
-            Destroy(nextMinionImagePoint.GetChild(i));
+        //for (int i = ordenMinionIndex; i < imagesContainer.childCount; i++)
+        //    Destroy(nextMinionImagePoint.GetChild(i));
 
         for (int i = 0; i < ordenOfminions.Length; i++) // Crear una imagen por cada minion
         {
-            Transform newMinionImage = Instantiate(minionsImagePrefab, nextMinionImagePoint.position + new Vector3(0, i* 200, 0), transform.rotation, imagesContainer);
+            Transform newMinionImage = Instantiate(minionsImagePrefab, nextMinionImagePoint.position + new Vector3(0, i* distanceBetweenImages, 0), transform.rotation, minionImagesCanvas);
+
+            newMinionImage.SetParent(minionImagesContainer); // Hacerlo hijo del contenedor de imagenes, para despues mover unicamente ese obj
 
             // Cambiar Sprite
             newMinionImage.GetChild(newMinionImage.childCount - 1).GetComponent<Image>().sprite = minionsSprites[NameToInt(ordenOfminions[i])];
