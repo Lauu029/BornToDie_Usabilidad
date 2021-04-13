@@ -991,6 +991,7 @@ MonoBehaviour:
   - {fileID: 1552547591092771895, guid: b95d0733968561d4b896623af3d0a761, type: 3}
   - {fileID: -6724795841558189236, guid: b95d0733968561d4b896623af3d0a761, type: 3}
   - {fileID: 8275653504152557808, guid: b95d0733968561d4b896623af3d0a761, type: 3}
+  - {fileID: 7465108920919212485, guid: b95d0733968561d4b896623af3d0a761, type: 3}
   minionsImagePrefab: {fileID: 866628891212069445, guid: 24b93a3ce4e5da14eb8ec3b77822bbe4, type: 3}
   minionImagesCanvas: {fileID: 1045784009}
   minionImagesContainer: {fileID: 807384572}

@@ -89,8 +89,9 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 {
                     if (buttonManager.controllingMinion.GetComponent<BasicMovement>() != null)
                         buttonManager.controllingMinion.GetComponent<BasicMovement>().enabled = false;
+                    else if (buttonManager.controllingMinion.GetComponent<PolloVolador>() != null)
+                        buttonManager.controllingMinion.GetComponent<PolloVolador>().enabled = false;
                 }
-                //else if () // Script Volador de LAURA
 
                 // Decirle al ButtonManager que se controla al nuevo minion
                 buttonManager.controllingMinion = Instantiate(allMinions[minionIndex], spawner);
