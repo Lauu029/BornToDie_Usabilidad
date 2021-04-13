@@ -982,6 +982,7 @@ MonoBehaviour:
   - Te revienta la cabesa como estes cerca
   - y volo
   distanceBetweenImages: 150
+  chicken: {fileID: 0}
   allMinions:
   - {fileID: 7963278156455811677, guid: a24786857e135c14da64707dbd8c892d, type: 3}
   - {fileID: 4523090779196818631, guid: d4f06c2ca8b6ed84dba3f8120ab66fbe, type: 3}
@@ -995,6 +996,7 @@ MonoBehaviour:
   minionsImagePrefab: {fileID: 866628891212069445, guid: 24b93a3ce4e5da14eb8ec3b77822bbe4, type: 3}
   minionImagesCanvas: {fileID: 1045784009}
   minionImagesContainer: {fileID: 807384572}
+  buttonText: {fileID: 1327511582}
 --- !u!1 &1186406940
 GameObject:
   m_ObjectHideFlags: 0

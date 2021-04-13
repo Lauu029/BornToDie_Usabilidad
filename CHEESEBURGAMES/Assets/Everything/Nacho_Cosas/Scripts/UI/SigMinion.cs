@@ -21,6 +21,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [Header("CONFIGURACION")]
     [SerializeField]
+    Transform chicken;
+    [SerializeField]
     GameObject[] allMinions;
     [SerializeField]
     Sprite[] minionsSprites;
@@ -36,6 +38,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Transform minionImagesCanvas;
     [SerializeField]
     Transform minionImagesContainer;
+    [SerializeField]
+    Text buttonText;
 
 
     // VARIABLES
@@ -52,6 +56,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         minionsLeftUI = GameObject.Find("MinionsLeftUI").transform;
         nextMinionImagePoint = minionsLeftUI.GetChild(0);
         currentPosMinionsLeftUI = minionImagesContainer.position;
+        buttonText.text = "NACER";
 
         UpdateMinionLeftUI();
 
@@ -68,7 +73,6 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         //if (minionsLeftUI.position == currentPosMinionsLeftUI)
         //{
-
         //}
 
         Debug.Log("minionImagesContainer = " + minionImagesContainer.position);
@@ -101,6 +105,17 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
                 // Bajar imagenes de los minions
                 currentPosMinionsLeftUI = new Vector3(transform.position.x, currentPosMinionsLeftUI.y - distanceBetweenImages, 0);
+
+                ordenMinionIndex++;
+
+                // Si ya no hay mas minions
+                if (ordenMinionIndex == ordenOfminions.Length) buttonText.text = "GOOO";
+
+            } else if (ordenMinionIndex == ordenOfminions.Length)
+            {
+                // Si no hay minions, soltar a la "Gallina"
+                //Instantiate(chicken, spawner);
+                Debug.Log("InstantiateChicker");
 
                 ordenMinionIndex++;
             }
@@ -151,7 +166,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (ordenMinionIndex != ordenOfminions.Length) // Si queda algun Minion por spawnear
+        if (ordenMinionIndex != ordenOfminions.Length + 1) // Si queda algun Minion por spawnear
         {
             onPointer = true;
             animator.SetBool("OnPointer", true);
