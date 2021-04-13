@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChickenMovement : MonoBehaviour
+{
+    [SerializeField]
+    float chickenSpeed;
+    Rigidbody2D rb;
+    bool movesRight;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        movesRight = true;
+    }
+    void FixedUpdate()
+    {
+
+        Vector2 dir= new Vector2(chickenSpeed, 0);
+        if (movesRight) rb.velocity = dir;
+        else rb.velocity = -dir;
+        
+        
+        
+
+    }
+    public void Switch() //Cambiar sprite y direccion
+    {
+        /*LLega a un limite mientras se mueve a la derecha, rota y se mueve hacia la izquierda 
+        hasta que se ejecute de nuevo y movesright sea false, en cuyo caso rotara, cambiara sprite y pondra movesrght true*/
+        if (movesRight)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+
+            if (transform.rotation.y > 0)
+            {
+                movesRight = false;
+                
+            }
+            
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+
+            if (transform.rotation.y <180)
+            {
+                movesRight = true;
+                
+            }
+        }
+        
+        
+    }
+}

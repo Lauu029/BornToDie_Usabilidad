@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class LlaveCaja : MonoBehaviour
 {
+    public GameObject caja;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.GetComponent<LayerMask>() == "Chicken")
+        
+        if (collision.gameObject.layer == 7)
         {
-
-        }*/
+            Destroy(caja);
+        }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
