@@ -16,14 +16,10 @@ public class ChickenMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        Vector2 dir= new Vector2(chickenSpeed, rb.velocity.y);
 
-        Vector2 dir= new Vector2(chickenSpeed, 0);
         if (movesRight) rb.velocity = dir;
         else rb.velocity = -dir;
-        
-        
-        
-
     }
     public void Switch() //Cambiar sprite y direccion
     {
@@ -36,9 +32,7 @@ public class ChickenMovement : MonoBehaviour
             if (transform.rotation.y > 0)
             {
                 movesRight = false;
-                
             }
-            
         }
         else
         {
@@ -47,7 +41,6 @@ public class ChickenMovement : MonoBehaviour
             if (transform.rotation.y <180)
             {
                 movesRight = true;
-                
             }
         }
         

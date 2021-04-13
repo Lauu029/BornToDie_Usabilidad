@@ -114,8 +114,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             } else if (ordenMinionIndex == ordenOfminions.Length)
             {
                 // Si no hay minions, soltar a la "Gallina"
-                //Instantiate(chicken, spawner);
-                Debug.Log("InstantiateChicker");
+                Instantiate(chicken.gameObject, spawner);
 
                 ordenMinionIndex++;
             }

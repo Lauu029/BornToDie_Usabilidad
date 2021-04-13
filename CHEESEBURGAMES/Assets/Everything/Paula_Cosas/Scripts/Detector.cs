@@ -9,7 +9,7 @@ public class Detector : MonoBehaviour
     {
         
         //comprueba si est chocando con una pared, si es asi avisa a la gallina de que gire
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall") || collision.collider.gameObject.layer == LayerMask.NameToLayer("DestructibleWall"))
         {
             Debug.Log("Pared tocada");
             GetComponentInParent<ChickenMovement>().Switch();

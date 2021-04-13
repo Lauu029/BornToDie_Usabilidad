@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7654317381341689873}
   - component: {fileID: 7654317381341689879}
   - component: {fileID: 7654317381341689872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cajota
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654317381341689874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.317434, y: -1.5391757, z: 3.6062746}
+  m_LocalPosition: {x: 3.8, y: -5.63, z: 3.6062746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3367140924686612645}
@@ -154,7 +154,8 @@ GameObject:
   - component: {fileID: 7654317381691491815}
   - component: {fileID: 7654317381691491808}
   - component: {fileID: 7654317381691491813}
-  m_Layer: 0
+  - component: {fileID: 1285955095}
+  m_Layer: 10
   m_Name: Llavecita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654317381691491809}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0725663, y: 1.2008243, z: 3.6062746}
+  m_LocalPosition: {x: -6.68, y: -2.92, z: 3.6062746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3367140924686612645}
@@ -266,3 +267,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caja: {fileID: 7654317381341689874}
+--- !u!50 &1285955095
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654317381691491809}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

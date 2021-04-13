@@ -6,14 +6,12 @@ public class LlaveCaja : MonoBehaviour
 {
     public GameObject caja;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.layer == 7)
         {
             Destroy(caja);
             Destroy(this.gameObject);
         }
     }
-    
 }
