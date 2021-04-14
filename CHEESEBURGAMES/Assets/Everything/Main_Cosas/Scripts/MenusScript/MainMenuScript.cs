@@ -25,9 +25,6 @@ public class MainMenuScript : MonoBehaviour
         cameraTransform = FindObjectOfType<Camera>().transform;
         cameraAnimator = cameraTransform.GetComponent<Animator>();
 
-        // VALORES INICIALES
-        buttonIndex = 0;
-
         // Meter en el array "allButtons" todos los hijos de "buttonGroup"
         allButtons = new ButtonScript[buttonGroup.childCount];
         for (int i = 0; i < allButtons.Length; i++)
@@ -36,9 +33,17 @@ public class MainMenuScript : MonoBehaviour
             allButtons[i].thisButtonIndex = i;
         }
 
+
+        // VALORES INICIALES
+        buttonIndex = 0;
         // Seleccionar por defecto el primer boton
+        Invoke("SelectFirstButton", 0.001f);
+    }
+    void SelectFirstButton()
+    {
         allButtons[0].Select();
     }
+
     private void Update()
     {
         // Comprobar si se ha seleccionado un nuevo boton

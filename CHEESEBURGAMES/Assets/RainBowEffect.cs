@@ -105,12 +105,12 @@ public class RainBowEffect : MonoBehaviour
 
     void Add(ref float value)
     {
-        value += Time.deltaTime * vel;
+        value += Time.unscaledDeltaTime * vel;
     }
 
     void Substract(ref float value)
     {
-        value -= Time.deltaTime * vel;
+        value -= Time.unscaledDeltaTime * vel;
     }
 
     private void OnDisable()

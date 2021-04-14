@@ -41,7 +41,6 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField]
     Text buttonText;
 
-
     // VARIABLES
     bool startedMoving; // Indica si el minion se ha empezado a mover
 
@@ -56,7 +55,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         minionsLeftUI = GameObject.Find("MinionsLeftUI").transform;
         nextMinionImagePoint = minionsLeftUI.GetChild(0);
         currentPosMinionsLeftUI = minionImagesContainer.position;
-        buttonText.text = "NACER";
+        buttonText.text = "BORN";
 
         UpdateMinionLeftUI();
 
