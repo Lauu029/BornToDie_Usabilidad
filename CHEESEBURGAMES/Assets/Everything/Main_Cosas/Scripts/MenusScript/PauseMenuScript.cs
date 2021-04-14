@@ -228,10 +228,7 @@ public class PauseMenuScript : MonoBehaviour
                     case 1:
                         MainMenuSelect();
                         break;
-                    case 2:
-                        ControlsSelect();
-                        break;
-                    case 5:
+                    case 4:
                         QuitSelect();
                         break;
                 }
