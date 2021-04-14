@@ -66,20 +66,24 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void Update()
     {
         // Comprobar si se hace click sobre el boton, y en tal caso, realizar la accion
-        CheckClick();
+        if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
+        {
+            StartCoroutine(CheckClick()); // Borrar si el menu solo se va a controlar con el raton
+        }
+
 
         if (minionImagesContainer.position.y - Time.deltaTime < currentPosMinionsLeftUI.y) minionImagesContainer.position = new Vector3(minionImagesContainer.position.x, currentPosMinionsLeftUI.y);
-        else minionImagesContainer.position = new Vector2(minionImagesContainer.position.x, minionImagesContainer.position.y - Time.deltaTime * 350);
+        else minionImagesContainer.position = new Vector2(minionImagesContainer.position.x, minionImagesContainer.position.y - Time.deltaTime * 550);
 
-        //if (minionsLeftUI.position == currentPosMinionsLeftUI)
-        //{
-        //}
+
 
         Debug.Log("minionImagesContainer = " + minionImagesContainer.position);
         Debug.Log("currentPosMinionsLeftUI = " + currentPosMinionsLeftUI);
     }
 
-    public void CheckClick()
+    IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
+
+    public IEnumerator CheckClick()
     {
         if (onPointer && Input.GetMouseButtonDown(0))
         {
@@ -111,7 +115,11 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 // Si ya no hay mas minions
                 if (ordenMinionIndex == ordenOfminions.Length) buttonText.text = "GO";
 
-            } else if (ordenMinionIndex == ordenOfminions.Length)
+                currentCoroutine = CheckClick();
+                yield return new WaitForSecondsRealtime(1f);
+                currentCoroutine = null;
+            }
+            else if (ordenMinionIndex == ordenOfminions.Length)
             {
                 // Eliminar el movimiento del minion activo
                 if (buttonManager.controllingMinion != null)
