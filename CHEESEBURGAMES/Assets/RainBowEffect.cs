@@ -115,7 +115,9 @@ public class RainBowEffect : MonoBehaviour
 
     private void OnDisable()
     {
-        thisImage.color = Color.white;
-        thisText.color = Color.white;
+        if (thisImage)
+            thisImage.color = Color.white;
+        if (thisText)
+            thisText.color = Color.white;
     }
 }
