@@ -1424,7 +1424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654317381691491814, guid: 4adc32ce84abe2c43934d6e863e4b863, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.77
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654317381691491814, guid: 4adc32ce84abe2c43934d6e863e4b863, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4adc32ce84abe2c43934d6e863e4b863, type: 3}
@@ -1549,6 +1553,7 @@ GameObject:
   - component: {fileID: 1327511581}
   - component: {fileID: 1327511583}
   - component: {fileID: 1327511582}
+  - component: {fileID: 1327511584}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1596,8 +1601,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 43
+    m_Font: {fileID: 12800000, guid: dc8dafd01fc744044bb5fd99ef56a469, type: 3}
+    m_FontSize: 71
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1617,6 +1622,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327511580}
   m_CullTransparentMesh: 1
+--- !u!114 &1327511584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327511580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d47643c85bff3499c306c8963164fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1350708425
 GameObject:
   m_ObjectHideFlags: 0

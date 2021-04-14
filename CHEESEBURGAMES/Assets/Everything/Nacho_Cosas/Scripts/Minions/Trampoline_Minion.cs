@@ -33,5 +33,11 @@ public class Trampoline_Minion : MonoBehaviour
             Debug.Log("TOUCH CHICKEN");
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
+        {
+            Debug.Log("TOUCH KEY");
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
+        }
     }
 }
