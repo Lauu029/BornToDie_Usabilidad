@@ -62,6 +62,9 @@ public class LevelSelectorMenu : MonoBehaviour
             // Cambiar color del boton
             allButtons[i].GetComponentInChildren<Text>().color = Color.red;
         }
+
+        buttonIndex = allButtons.Length - 1;
+        Select(allButtons[allButtons.Length - 1]);
     }
 
     private void Update()
