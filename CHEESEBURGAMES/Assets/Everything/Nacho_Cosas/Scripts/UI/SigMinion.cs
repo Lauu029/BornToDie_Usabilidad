@@ -109,7 +109,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 ordenMinionIndex++;
 
                 // Si ya no hay mas minions
-                if (ordenMinionIndex == ordenOfminions.Length) buttonText.text = "GOOO";
+                if (ordenMinionIndex == ordenOfminions.Length) buttonText.text = "GO";
 
             } else if (ordenMinionIndex == ordenOfminions.Length)
             {
@@ -129,6 +129,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 Instantiate(chicken.gameObject, spawner);
 
                 ordenMinionIndex++;
+
+                Destroy(gameObject);
             }
         }
     }
