@@ -67,14 +67,17 @@ public class PauseMenuScript : MonoBehaviour
                 else PauseSelect();
             }
 
-            // Comprobar si se ha seleccionado un nuevo boton
-            if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
+            if (paused)
             {
-                StartCoroutine(CheckButtonAxisChange()); // Borrar si el menu solo se va a controlar con el raton
-            }
+                // Comprobar si se ha seleccionado un nuevo boton
+                if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
+                {
+                    StartCoroutine(CheckButtonAxisChange()); // Borrar si el menu solo se va a controlar con el raton
+                }
 
-            // Comprobar si se ha elegido el boton actual
-            CheckButtonPressed();
+                // Comprobar si se ha elegido el boton actual
+                CheckButtonPressed();
+            }
 
         } else if (thisType == typeOfPauseMenu.inMainMenu) // Es parte de otro menu
         {
@@ -160,11 +163,22 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void ButtonChange(int buttonIndexRef) // Cambia el boton activo al pasado por referencia "buttonIndex", se llama al entrar el "Pointer" en un boton
     {
-        if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
+        if (SceneManager.GetActiveScene().name != "MainMenu" && paused)
         {
-            Deselect(allButtons[buttonIndex]);// Deseleccionar el antiguo boton
-            buttonIndex = buttonIndexRef; // Asignar el nuevo boton
-            Select(allButtons[buttonIndexRef]);// Seleccionar el nuevo boton
+            if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
+            {
+                Deselect(allButtons[buttonIndex]);// Deseleccionar el antiguo boton
+                buttonIndex = buttonIndexRef; // Asignar el nuevo boton
+                Select(allButtons[buttonIndexRef]);// Seleccionar el nuevo boton
+            }
+        } else if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
+            {
+                Deselect(allButtons[buttonIndex]);// Deseleccionar el antiguo boton
+                buttonIndex = buttonIndexRef; // Asignar el nuevo boton
+                Select(allButtons[buttonIndexRef]);// Seleccionar el nuevo boton
+            }
         }
     }
 
