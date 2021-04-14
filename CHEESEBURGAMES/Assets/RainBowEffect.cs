@@ -8,7 +8,7 @@ public class RainBowEffect : MonoBehaviour
     Image thisImage;
     Text thisText;
 
-    float vel = 3;
+    float vel = 2;
 
     float R = 0;
     float G = 1;
@@ -111,5 +111,11 @@ public class RainBowEffect : MonoBehaviour
     void Substract(ref float value)
     {
         value -= Time.deltaTime * vel;
+    }
+
+    private void OnDisable()
+    {
+        thisImage.color = Color.white;
+        thisText.color = Color.white;
     }
 }
