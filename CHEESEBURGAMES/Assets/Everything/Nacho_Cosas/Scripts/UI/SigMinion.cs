@@ -113,6 +113,18 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             } else if (ordenMinionIndex == ordenOfminions.Length)
             {
+                // Eliminar el movimiento del minion activo
+                if (buttonManager.controllingMinion != null)
+                {
+                    if (buttonManager.controllingMinion.GetComponent<BasicMovement>() != null)
+                        buttonManager.controllingMinion.GetComponent<BasicMovement>().enabled = false;
+                    else if (buttonManager.controllingMinion.GetComponent<PolloVolador>() != null)
+                    {
+                        buttonManager.controllingMinion.GetComponent<PolloVolador>().enabled = false;
+                        Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
+                    }
+                }
+
                 // Si no hay minions, soltar a la "Gallina"
                 Instantiate(chicken.gameObject, spawner);
 

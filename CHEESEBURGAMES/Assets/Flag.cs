@@ -9,7 +9,7 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
         {
-            Debug.Log("PASS LEVEL");
+            GameManager.GetInstance().NextLevel();
         }
     }
 }

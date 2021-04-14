@@ -16,34 +16,39 @@ public class ChickenMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector2 dir= new Vector2(chickenSpeed, rb.velocity.y);
+        Vector2 dir;
 
-        if (movesRight) rb.velocity = dir;
-        else rb.velocity = -dir;
+        if (movesRight) dir = new Vector2(chickenSpeed, rb.velocity.y);
+        else dir = new Vector2(-chickenSpeed, rb.velocity.y);
+
+        rb.velocity = dir;
     }
     public void Switch() //Cambiar sprite y direccion
     {
         /*LLega a un limite mientras se mueve a la derecha, rota y se mueve hacia la izquierda 
         hasta que se ejecute de nuevo y movesright sea false, en cuyo caso rotara, cambiara sprite y pondra movesrght true*/
-        if (movesRight)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
 
-            if (transform.rotation.y > 0)
-            {
-                movesRight = false;
-            }
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.localScale = new Vector3(-transform.localScale.x, 1, 0);
 
-            if (transform.rotation.y <180)
-            {
-                movesRight = true;
-            }
-        }
-        
-        
+        movesRight = !movesRight;
+
+        //if (movesRight)
+        //{
+        //    transform.eulerAngles = new Vector3(0, 180, 0);
+
+        //    if (transform.rotation.y > 0)
+        //    {
+        //        movesRight = false;
+        //    }
+        //}
+        //else
+        //{
+        //    transform.eulerAngles = new Vector3(0, 0, 0);
+
+        //    if (transform.rotation.y <180)
+        //    {
+        //        movesRight = true;
+        //    }
+        //}
     }
 }
