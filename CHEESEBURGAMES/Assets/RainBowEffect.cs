@@ -8,25 +8,96 @@ public class RainBowEffect : MonoBehaviour
     Image thisImage;
     Text thisText;
 
+    float vel = 3;
+
     float R = 0;
-    float G = 0;
-    float B = 1;
+    float G = 1;
+    float B = 0;
+
+    Ins doThis;
+
+    enum Ins { Rup, Rdown, Gup, Gdown, Bup, Bdown}
 
 
     private void Awake()
     {
         if (GetComponent<Image>() != null) thisImage = GetComponent<Image>();
         else if (GetComponent<Text>() != null) thisText = GetComponent<Text>();
+
+        doThis = Ins.Rup;
     }
 
 
     private void Update()
     {
-        Color newColor;
+        //// RED
+        //if (G == 1 && B == 0) Add(ref R);
+        //else if (G == 0 && B == 1) Substract(ref R);
 
-        Add(ref G);
+        //// GREEN
+        //else if (R == 0 && B == 1) Add(ref G);
+        //else if (R == 1 && B == 0) Substract(ref G);
 
-        newColor = new Color ( Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        //// BLUE
+        //else if (R == 1 && B == 0) Add(ref B);
+        //else if (R == 0 && B == 1) Substract(ref B);
+
+        switch (doThis)
+        {
+            case Ins.Rup:
+
+                Add(ref R);
+                if (R + Time.deltaTime > 1)
+                {
+                    R = 1; doThis = Ins.Gdown;
+                }
+                break;
+
+            case Ins.Rdown:
+                Substract(ref R);
+                if (R + Time.deltaTime < 0)
+                {
+                    R = 0; doThis = Ins.Gup;
+                }
+                break;
+
+            case Ins.Gup:
+                Add(ref G);
+                if (G + Time.deltaTime > 1)
+                {
+                    G = 1; doThis = Ins.Bdown;
+                }
+                break;
+
+            case Ins.Gdown:
+                Substract(ref G);
+                if (G - Time.deltaTime < 0)
+                {
+                    G = 0; doThis = Ins.Bup;
+                }
+                break;
+
+            case Ins.Bup:
+                Add(ref B);
+                if (B + Time.deltaTime > 1)
+                {
+                    B = 1; doThis = Ins.Rdown;
+                }
+                break;
+
+            case Ins.Bdown:
+                Substract(ref B);
+                if (B - Time.deltaTime < 0)
+                {
+                    B = 0; doThis = Ins.Rup;
+                }
+                break;
+        }
+
+        //newColor = new Color ( Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+
+        Color newColor = new Color(R, G, B);
+        Debug.Log("newColor = " + newColor);
 
         if (thisImage != null) thisImage.color = newColor;
         else if (thisText != null) thisText.color = newColor;
@@ -34,13 +105,11 @@ public class RainBowEffect : MonoBehaviour
 
     void Add(ref float value)
     {
-        if (value + Time.deltaTime >= 1) value = 1;
-        else value += Time.deltaTime;
+        value += Time.deltaTime * vel;
     }
 
     void Substract(ref float value)
     {
-        if (value - Time.deltaTime <= 0) value = 0;
-        value -= Time.deltaTime;
+        value -= Time.deltaTime * vel;
     }
 }
