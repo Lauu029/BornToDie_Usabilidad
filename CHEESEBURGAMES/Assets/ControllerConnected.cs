@@ -19,16 +19,19 @@ public class ControllerConnected : MonoBehaviour
     [SerializeField]
     Text text;
 
+    Transform mouseCursorObj;
+
     public bool usingController;
 
     private void Awake()
     {
         X_lastValue = 0;
         Y_lastValue = 0;
-        image = GetComponentInChildren<Image>().gameObject;
+        if (GetComponentInChildren<Image>() != null)
+            image = GetComponentInChildren<Image>().gameObject;
         image.gameObject.SetActive(false);
 
-        Cursor.visible = false;
+        mouseCursorObj = FindObjectOfType<MouseCursor>().transform.GetChild(0);
     }
 
     private void Update()
@@ -61,19 +64,20 @@ public class ControllerConnected : MonoBehaviour
 
 
         // Activar/Desactivar imagen
-        image.gameObject.SetActive(usingController);
+        if (image != null)
+            image.gameObject.SetActive(usingController);
 
         if (usingController)
         {
             text.text = "Using Controller";
             text.color = Color.cyan;
-            Cursor.visible = false;
+            mouseCursorObj.gameObject.SetActive(false);
         }
         else  
         {
             text.text = "Not using Controller";
             text.color = Color.red;
-            Cursor.visible = true;
+            mouseCursorObj.gameObject.SetActive(true);
         }
     }
 

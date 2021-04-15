@@ -211,7 +211,7 @@ public class LevelSelectorMenu : MonoBehaviour
             }
             else
             {
-                GameManager.GetInstance().ChangeLevel(buttonIndexRef);
+                GameManager.GetInstance().ChangeLevel(buttonIndexRef + 1);
             }
         }
     }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int currentLevel = 0; // Ultimo nivel desbloqueado
+    public int currentLevel = 1; // Ultimo nivel desbloqueado
     public int levelPlaying;
     public int numberOfLevels = 3;
 
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         levelPlaying++;
          
-        if (levelPlaying == numberOfLevels) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
+        if (levelPlaying == numberOfLevels + 1) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
 
         // Si no se ha llegado al ultimo nivel, seguir ejecutando este codigo
 
