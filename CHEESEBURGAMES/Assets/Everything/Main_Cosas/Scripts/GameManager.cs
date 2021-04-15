@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
 
         // SIMULACION PLAYERPREF
         currentLevel = 1;
+
+        // InitialTransition
+        GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
+        Destroy(newRabbitTransition, 3);
     }
 
     private void Update()
@@ -57,30 +62,53 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
+        StartCoroutine(ChangeSceneEnumerator(sceneName));
+    }
+
+    IEnumerator ChangeSceneEnumerator(string sceneName)
+    {
+        GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
+        newRabbitTransition.GetComponent<Animator>().SetTrigger("Start");
+
+        yield return new WaitForSecondsRealtime(2.2f);
+        Destroy(newRabbitTransition);
+
         AudioManager.instance.ChangeBackgroundMusic(sceneName);
         SceneManager.LoadScene(sceneName);
 
         // Transition
-        GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
-        Destroy(newRabbitTransition, 3);
+        newRabbitTransition = Instantiate(rabbitTransition, transform);
+        Destroy(newRabbitTransition, 2.3f);
     }
+
+
+
 
     public void ChangeLevel(int levelInt) // Solo se llama desde el menu
     {
-        Debug.Log("levelInt = " + levelInt);
-        Debug.Log("currentLevel = " + currentLevel);
+        StartCoroutine(ChangeLevelEnumerator(levelInt));
+    }
 
+    IEnumerator ChangeLevelEnumerator(int levelInt)
+    {
         if (levelInt <= currentLevel)
         {
+            GameObject newLevelTransition = Instantiate(levelTransition, transform);
+            newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;
+            newLevelTransition.GetComponent<Animator>().SetTrigger("Start");
+
+            yield return new WaitForSecondsRealtime(3f);
+            Destroy(newLevelTransition);
+
             levelPlaying = levelInt;
             string sceneName = "Level_" + levelInt;
-            Debug.Log("sceneName = " + sceneName);//
             AudioManager.instance.ChangeBackgroundMusic(sceneName);
             SceneManager.LoadScene(sceneName);
 
             // Transition
-            GameObject newLevelTransition = Instantiate(levelTransition, transform);
-            Destroy(newLevelTransition, 3);
+            newLevelTransition = Instantiate(levelTransition, transform);
+            newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;
+            Destroy(newLevelTransition, 3.1f);
         }
     }
 
