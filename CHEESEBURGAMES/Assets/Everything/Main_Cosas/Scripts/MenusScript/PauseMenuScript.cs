@@ -58,8 +58,6 @@ public class PauseMenuScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("thisType = " + thisType);
-
         if (thisType == typeOfPauseMenu.inGame) // Es del juego
         {
             if (Input.GetButtonDown("Pause")) // Pausar/Despausar
