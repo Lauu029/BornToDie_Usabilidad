@@ -13,14 +13,13 @@ public class ResetButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void Awake()
     {
         thisAnimator = GetComponent<Animator>();
-
-        Debug.Log("lskmcfvhbdjc");
     }
 
     private void Update()
     {
         if (onPointer && Input.GetMouseButtonDown(0))
         {
+            Debug.Log("MFOKNWO");
             GameManager.GetInstance().ChangeLevel(SceneManager.GetActiveScene().buildIndex);
         }
     }

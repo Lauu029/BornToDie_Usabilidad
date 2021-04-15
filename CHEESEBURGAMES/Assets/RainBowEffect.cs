@@ -97,7 +97,6 @@ public class RainBowEffect : MonoBehaviour
         //newColor = new Color ( Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
         Color newColor = new Color(R, G, B);
-        Debug.Log("newColor = " + newColor);
 
         if (thisImage != null) thisImage.color = newColor;
         else if (thisText != null) thisText.color = newColor;
@@ -119,5 +118,12 @@ public class RainBowEffect : MonoBehaviour
             thisImage.color = Color.white;
         if (thisText)
             thisText.color = Color.white;
+
+
+        if (GetComponentInParent<SigMinion>() != null || GetComponentInParent<ResetButton>() != null)
+        {
+            thisText.color = Color.black;
+        }
+
     }
 }

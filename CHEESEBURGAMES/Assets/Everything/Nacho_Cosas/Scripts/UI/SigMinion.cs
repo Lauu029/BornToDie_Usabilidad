@@ -73,11 +73,6 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (minionImagesContainer.position.y - Time.deltaTime < currentPosMinionsLeftUI.y) minionImagesContainer.position = new Vector3(minionImagesContainer.position.x, currentPosMinionsLeftUI.y);
         else minionImagesContainer.position = new Vector2(minionImagesContainer.position.x, minionImagesContainer.position.y - Time.deltaTime * 550);
-
-
-
-        Debug.Log("minionImagesContainer = " + minionImagesContainer.position);
-        Debug.Log("currentPosMinionsLeftUI = " + currentPosMinionsLeftUI);
     }
 
     IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
