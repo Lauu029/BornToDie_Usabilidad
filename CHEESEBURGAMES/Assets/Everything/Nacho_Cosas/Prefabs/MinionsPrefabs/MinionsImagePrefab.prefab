@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866628891212069445}
+  - component: {fileID: 2457531653614111116}
   - component: {fileID: 866628891212069444}
+  - component: {fileID: 3510476290610812736}
   m_Layer: 5
   m_Name: MinionsImagePrefab
   m_TagString: Untagged
@@ -38,6 +40,18 @@ RectTransform:
   m_AnchoredPosition: {x: 22.522705, y: 24.39972}
   m_SizeDelta: {x: -1754.9545, y: -901.2006}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2457531653614111116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866628891212069442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90c4ce72511c84468b5898bd7f3290f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &866628891212069444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +67,25 @@ MonoBehaviour:
   infoTitle: BRUUHHHH
   infoContent: xdxdxdxddxdxdxdxdxddxdxdxdxdxdxdxddxdx
   infoPanelPrefab: {fileID: 5352258186089064977, guid: d978bf7a16000c74ea60a1c1e84b8666, type: 3}
+--- !u!95 &3510476290610812736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866628891212069442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d6fd203e62dc2c46a48c18f6a4eb2ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &866628891229891389
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +188,7 @@ RectTransform:
   m_GameObject: {fileID: 866628891963266569}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.82622653, y: 0.82622653, z: 0.82622653}
+  m_LocalScale: {x: 0.82622653, y: 0.8262265, z: 0.8262265}
   m_Children: []
   m_Father: {fileID: 866628891212069445}
   m_RootOrder: 1
