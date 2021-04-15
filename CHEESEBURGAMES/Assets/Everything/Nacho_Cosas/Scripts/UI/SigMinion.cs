@@ -40,6 +40,9 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Transform minionImagesContainer;
     [SerializeField]
     Text buttonText;
+    [SerializeField]
+    Animator motherRabbitAnimator;
+
 
     // VARIABLES
     bool startedMoving; // Indica si el minion se ha empezado a mover
@@ -83,8 +86,9 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (ordenMinionIndex != ordenOfminions.Length) // Si todavia quedan minions
             {
+                motherRabbitAnimator.SetTrigger("Cagar");
+
                 int minionIndex = NameToInt(ordenOfminions[ordenMinionIndex]);
-                Debug.Log("minionIndex = " + minionIndex);
 
                 // Eliminar el movimiento del minion activo
                 if (buttonManager.controllingMinion != null)
@@ -126,6 +130,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                         Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
                     }
                 }
+
+                Destroy(motherRabbitAnimator.gameObject);
 
                 // Si no hay minions, soltar a la "Gallina"
                 Instantiate(chicken.gameObject, spawner);
