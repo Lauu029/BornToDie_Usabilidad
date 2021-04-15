@@ -58,7 +58,7 @@ public class LevelSelectorMenu : MonoBehaviour
 
         // DIBUJAR CANDADOS
 
-        // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back") 
+        // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back")
         for (int i = GameManager.GetInstance().currentLevel; i < allButtons.Length - 1; i++) 
         {
             Vector3 instantiatePosition;

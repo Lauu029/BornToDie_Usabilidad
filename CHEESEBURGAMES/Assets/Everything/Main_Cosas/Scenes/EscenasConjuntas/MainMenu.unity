@@ -3521,7 +3521,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Developers
+  m_Text: Nacho Del Castillo
 --- !u!222 &1036796740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4979,7 +4979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Developers
+  m_Text: Laura Bodego
 --- !u!222 &1392725719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10537,7 +10537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Developers
+  m_Text: Paula Morillas
 --- !u!222 &2054313492
 CanvasRenderer:
   m_ObjectHideFlags: 0
