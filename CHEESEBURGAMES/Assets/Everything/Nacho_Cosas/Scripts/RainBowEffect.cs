@@ -120,7 +120,7 @@ public class RainBowEffect : MonoBehaviour
             thisText.color = Color.white;
 
 
-        if (GetComponentInParent<SigMinion>() != null || GetComponentInParent<ResetButton>() != null)
+        if (GetComponentInParent<SigMinion>() != null || GetComponentInParent<ResetButton>() != null || GetComponentInParent<PauseButton>() != null)
         {
             thisText.color = Color.black;
         }

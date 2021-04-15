@@ -19,12 +19,17 @@ public class Trampoline_Minion : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<BasicMovement>() != null)
+        if (collision.gameObject.GetComponent<BasicMovement>() != null || collision.gameObject.layer == LayerMask.NameToLayer("Key"))
         {
             Vector2 colPos = collision.transform.position;
             if (colPos.y > transform.position.y + 0.1f) // Comprobar si el Minion con el que ha interactuado esta por encima suyo
                 if (colPos.x > transform.position.x - transform.localScale.x / 2 && colPos.x < transform.position.x + transform.localScale.x / 2) // Comprobar si no esta lejos
-                    collision.gameObject.GetComponentInParent<BasicMovement>().GoUp(trampolineJumpForce); // Aplicar fuerza de salto
+                {
+                    if (collision.gameObject.GetComponentInParent<BasicMovement>() != null)
+                        collision.gameObject.GetComponentInParent<BasicMovement>().GoUp(trampolineJumpForce); // Aplicar fuerza de salto
+                    else if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
+                        collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
+                }
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
@@ -33,10 +38,10 @@ public class Trampoline_Minion : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
-        {
-            Debug.Log("TOUCH KEY");
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
-        }
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
+        //{
+        //    Debug.Log("TOUCH KEY");
+        //    collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
+        //}
     }
 }

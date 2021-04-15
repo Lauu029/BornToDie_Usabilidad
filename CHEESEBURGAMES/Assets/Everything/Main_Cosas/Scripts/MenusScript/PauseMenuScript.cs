@@ -44,21 +44,22 @@ public class PauseMenuScript : MonoBehaviour
                 allButtons[i].GetComponent<SliderScript>().thisButtonIndex = i;
         }
 
-        if (SceneManager.GetActiveScene().name == "Gameplay")
-        {
-            obj.gameObject.SetActive(false);
-            thisType = typeOfPauseMenu.inGame;
-        }
-        else if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             thisType = typeOfPauseMenu.inMainMenu;
             obj.gameObject.SetActive(true);
             // Asignar la camara si se esta en el menu principal
+        } else
+        {
+            obj.gameObject.SetActive(false);
+            thisType = typeOfPauseMenu.inGame;
         }
     }
 
     private void Update()
     {
+        Debug.Log("thisType = " + thisType);
+
         if (thisType == typeOfPauseMenu.inGame) // Es del juego
         {
             if (Input.GetButtonDown("Pause")) // Pausar/Despausar
@@ -226,6 +227,9 @@ public class PauseMenuScript : MonoBehaviour
                         ResumeSelect();
                         break;
                     case 1:
+                        RestartSelect();
+                        break;
+                    case 2:
                         MainMenuSelect();
                         break;
                     case 4:
@@ -291,6 +295,11 @@ public class PauseMenuScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("QuitSelect");
+    }
+
+    public void RestartSelect()
+    {
+        GameManager.GetInstance().ChangeLevel(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

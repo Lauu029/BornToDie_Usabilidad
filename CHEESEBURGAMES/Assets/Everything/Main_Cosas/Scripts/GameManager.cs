@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         levelPlaying++;
          
-        if (levelPlaying == numberOfLevels) SceneManager.LoadScene("Win"); // Si se ha llegado al ultimo nivel
+        if (levelPlaying == numberOfLevels) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
 
         // Si no se ha llegado al ultimo nivel, seguir ejecutando este codigo
 
