@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [HideInInspector]
-    public int currentLevel = 1; // Ultimo nivel desbloqueado
+    public int currentLevel  = 1; // Ultimo nivel desbloqueado
     [HideInInspector]
     public int levelPlaying;
     [HideInInspector]
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // SIMULACION PLAYERPREF
-        currentLevel = 0;
+        currentLevel = 1;
     }
 
     private void Update()
@@ -58,10 +58,15 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int levelInt) // Solo se llama desde el menu
     {
+        Debug.Log("levelInt = " + levelInt);
+        Debug.Log("currentLevel = " + currentLevel);
+
+
         if (levelInt <= currentLevel)
         {
             levelPlaying = levelInt;
             string sceneName = "Level_" + levelInt;
+            Debug.Log("sceneName = " + sceneName);//
             AudioManager.instance.ChangeBackgroundMusic(sceneName);
             SceneManager.LoadScene(sceneName);
         }
