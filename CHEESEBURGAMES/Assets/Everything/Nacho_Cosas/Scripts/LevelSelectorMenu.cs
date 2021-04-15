@@ -24,6 +24,9 @@ public class LevelSelectorMenu : MonoBehaviour
     IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
     Transform cameraTransform;
 
+    [SerializeField]
+    Transform canvas;
+
     private void Start() // Start en vez de Awake para que al boton le de tiempo a asignar sus variables antes de que se utilizen en este metodo
     {
         // ASIGNAR VARIABLES
@@ -55,7 +58,6 @@ public class LevelSelectorMenu : MonoBehaviour
         // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back") 
         for (int i = GameManager.GetInstance().currentLevel + 1; i < allButtons.Length - 1; i++) 
         {
-            Transform canvas = FindObjectOfType<Canvas>().transform;
             Vector3 instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y); // posicion del candado
             GameObject newGameObject = Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
 

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/MainMenu.unity
+    guid: 9140d1fb2e250ae49b8b82f6dc7ecfa3
+  - enabled: 1
     path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Levels/Level_1.unity
     guid: 4e5db6f7da022a74aa01f0d6e0bd1a7b
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Gameplay.unity
     guid: d6cc8700221dc1f4b8e05877f8caa457
-  - enabled: 1
-    path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/MainMenu.unity
-    guid: 9140d1fb2e250ae49b8b82f6dc7ecfa3
   - enabled: 1
     path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Win.unity
     guid: aec4e25c7e8fe8047b4a789c4a167da4

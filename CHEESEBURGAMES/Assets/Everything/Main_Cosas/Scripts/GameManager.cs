@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [HideInInspector]
     public int currentLevel = 1; // Ultimo nivel desbloqueado
+    [HideInInspector]
     public int levelPlaying;
+    [HideInInspector]
     public int numberOfLevels = 3;
 
     private void Awake()

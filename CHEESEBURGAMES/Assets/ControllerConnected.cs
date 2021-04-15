@@ -28,8 +28,10 @@ public class ControllerConnected : MonoBehaviour
         X_lastValue = 0;
         Y_lastValue = 0;
         if (GetComponentInChildren<Image>() != null)
+        {
             image = GetComponentInChildren<Image>().gameObject;
-        image.gameObject.SetActive(false);
+            image.gameObject.SetActive(false);
+        }
 
         mouseCursorObj = FindObjectOfType<MouseCursor>().transform.GetChild(0);
     }
@@ -69,13 +71,13 @@ public class ControllerConnected : MonoBehaviour
 
         if (usingController)
         {
-            text.text = "Using Controller";
+            text.text = "Controller Connected";
             text.color = Color.cyan;
             mouseCursorObj.gameObject.SetActive(false);
         }
-        else  
+        else
         {
-            text.text = "Not using Controller";
+            text.text = "Controller Disconnected";
             text.color = Color.red;
             mouseCursorObj.gameObject.SetActive(true);
         }
