@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int numberOfLevels = 3;
 
+    [SerializeField]
+    GameObject rabbitTransition;
+    [SerializeField]
+    GameObject levelTransition;
+
     private void Awake()
     {
         // Singleton
@@ -54,6 +59,10 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.ChangeBackgroundMusic(sceneName);
         SceneManager.LoadScene(sceneName);
+
+        // Transition
+        GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
+        Destroy(newRabbitTransition, 3);
     }
 
     public void ChangeLevel(int levelInt) // Solo se llama desde el menu
@@ -68,6 +77,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("sceneName = " + sceneName);//
             AudioManager.instance.ChangeBackgroundMusic(sceneName);
             SceneManager.LoadScene(sceneName);
+
+            // Transition
+            GameObject newLevelTransition = Instantiate(levelTransition, transform);
+            Destroy(newLevelTransition, 3);
         }
     }
 
