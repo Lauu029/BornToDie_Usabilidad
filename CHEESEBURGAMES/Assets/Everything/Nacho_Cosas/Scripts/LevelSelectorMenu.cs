@@ -61,13 +61,15 @@ public class LevelSelectorMenu : MonoBehaviour
         // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back") 
         for (int i = GameManager.GetInstance().currentLevel; i < allButtons.Length - 1; i++) 
         {
-            Vector3 instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y); // posicion del candado
-            Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
+            Vector3 instantiatePosition;
+
             instantiatePosition = new Vector3(allButtons[i].position.x, allButtons[i].position.y); // posicion de la imagen roja
             GameObject newGameObject = Instantiate(image, instantiatePosition, Quaternion.identity, canvas);
-
             newGameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
             newGameObject.transform.localScale = new Vector3(1f, 0.05f);
+
+            instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y); // posicion del candado
+            Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
 
             // Cambiar color del boton
             allButtons[i].GetComponentInChildren<Text>().color = Color.red;
