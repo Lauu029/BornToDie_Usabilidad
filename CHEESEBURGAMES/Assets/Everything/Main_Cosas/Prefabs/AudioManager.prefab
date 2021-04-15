@@ -53,17 +53,17 @@ MonoBehaviour:
     music: 0
     source: {fileID: 0}
   - name: MainMenu
-    clip: {fileID: 8300000, guid: df4740b89a1128d41a1eea3f6c1ec230, type: 3}
-    volume: 1
-    maxVolume: 1
+    clip: {fileID: 8300000, guid: ab17354ffa3d2c94baf3342e3d9ae456, type: 3}
+    volume: 0.6
+    maxVolume: 0.6
     pitch: 1
     loop: 1
     music: 1
     source: {fileID: 0}
   - name: Gameplay
-    clip: {fileID: 8300000, guid: 4433d2ebbdcb5214bab59a85dc288fa9, type: 3}
-    volume: 1
-    maxVolume: 1
+    clip: {fileID: 8300000, guid: 8e32f3f7ce25bee45a0e35f9a2d65041, type: 3}
+    volume: 0.6
+    maxVolume: 0.6
     pitch: 1
     loop: 1
     music: 1
@@ -75,4 +75,36 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     music: 1
+    source: {fileID: 0}
+  - name: Key
+    clip: {fileID: 8300000, guid: 484da1a9536d0a64a972c0a3efa1d475, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
+  - name: Born
+    clip: {fileID: 8300000, guid: 9d39db8d5e312994fab9bbb36ad8c568, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: fbb959bd85c95f840839f9aedbd970b9, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 0283fd3292d648548bfeceaf19ce88d2, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
     source: {fileID: 0}

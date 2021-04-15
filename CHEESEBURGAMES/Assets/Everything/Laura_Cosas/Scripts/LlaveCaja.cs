@@ -10,6 +10,8 @@ public class LlaveCaja : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
+            FindObjectOfType<AudioManager>().Play("Key", 1);
+
             Destroy(caja);
             Destroy(this.gameObject);
         }

@@ -57,6 +57,8 @@ public class Explosion_Minion : MonoBehaviour
         if (allCollisions != null)
             Destroy(allCollisions.gameObject);
 
+        FindObjectOfType<AudioManager>().Play("Explosion", 1);
+
         Destroy(gameObject);
     }
 }

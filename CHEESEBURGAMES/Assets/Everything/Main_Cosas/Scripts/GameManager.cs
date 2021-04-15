@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("levelInt = " + levelInt);
         Debug.Log("currentLevel = " + currentLevel);
 
-
         if (levelInt <= currentLevel)
         {
             levelPlaying = levelInt;

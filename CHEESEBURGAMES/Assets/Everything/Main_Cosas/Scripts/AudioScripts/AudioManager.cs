@@ -41,22 +41,22 @@ public class AudioManager : MonoBehaviour
         ChangeBackgroundMusic(SceneManager.GetActiveScene().name);
     }
 
-    public void ChangeBackgroundMusic(string sceneName) // Cambia la muscia de fondo segun la escena, llamado desde 
+    public void ChangeBackgroundMusic(string sceneName) // Cambia la muscia de fondo segun la escena, llamado desde
     {
         switch (sceneName)
         {
             case "MainMenu":
-                Stop("Gameover");
+                Stop("Win");
                 Stop("Gameplay");
                 Play("MainMenu", 1);
                 break;
-            case "Gameplay":
+            case "Win":
+                Stop("Gameplay");
+                Play("Win", 1);
+                break;
+            default:
                 Stop("MainMenu");
                 Play("Gameplay", 1);
-                break;
-            case "Gameover":
-                Stop("Gameplay");
-                Play("Gameover", 1);
                 break;
         }
     }
@@ -72,7 +72,6 @@ public class AudioManager : MonoBehaviour
         s.source.pitch = pitch;
         s.source.Play();
     }
-
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);

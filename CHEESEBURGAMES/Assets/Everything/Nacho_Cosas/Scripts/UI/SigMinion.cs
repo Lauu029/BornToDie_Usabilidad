@@ -86,6 +86,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (ordenMinionIndex != ordenOfminions.Length) // Si todavia quedan minions
             {
+                FindObjectOfType<AudioManager>().Play("Born", 1);
+
                 motherRabbitAnimator.SetTrigger("Cagar");
 
                 int minionIndex = NameToInt(ordenOfminions[ordenMinionIndex]);
@@ -119,6 +121,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             }
             else if (ordenMinionIndex == ordenOfminions.Length)
             {
+                FindObjectOfType<AudioManager>().Play("Born", 1);
+
                 // Eliminar el movimiento del minion activo
                 if (buttonManager.controllingMinion != null)
                 {

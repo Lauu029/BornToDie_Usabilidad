@@ -9,6 +9,8 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
         {
+            FindObjectOfType<AudioManager>().Play("Button", 1);
+
             GameManager.GetInstance().NextLevel();
         }
     }
