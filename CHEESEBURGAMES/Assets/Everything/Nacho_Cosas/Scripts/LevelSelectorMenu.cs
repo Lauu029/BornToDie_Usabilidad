@@ -27,6 +27,9 @@ public class LevelSelectorMenu : MonoBehaviour
     [SerializeField]
     Transform canvas;
 
+    [SerializeField]
+    GameObject image;
+
     private void Start() // Start en vez de Awake para que al boton le de tiempo a asignar sus variables antes de que se utilizen en este metodo
     {
         // ASIGNAR VARIABLES
@@ -56,10 +59,15 @@ public class LevelSelectorMenu : MonoBehaviour
         // DIBUJAR CANDADOS
 
         // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back") 
-        for (int i = GameManager.GetInstance().currentLevel + 1; i < allButtons.Length - 1; i++) 
+        for (int i = GameManager.GetInstance().currentLevel; i < allButtons.Length - 1; i++) 
         {
             Vector3 instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y); // posicion del candado
-            GameObject newGameObject = Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
+            Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
+            instantiatePosition = new Vector3(allButtons[i].position.x, allButtons[i].position.y); // posicion de la imagen roja
+            GameObject newGameObject = Instantiate(image, instantiatePosition, Quaternion.identity, canvas);
+
+            newGameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+            newGameObject.transform.localScale = new Vector3(1f, 0.05f);
 
             // Cambiar color del boton
             allButtons[i].GetComponentInChildren<Text>().color = Color.red;
@@ -110,7 +118,7 @@ public class LevelSelectorMenu : MonoBehaviour
 
                 if (newButtonIndex == allButtons.Length) buttonIndex = 0;
 
-                else if (newButtonIndex > GameManager.GetInstance().currentLevel) buttonIndex = allButtons.Length - 1;
+                else if (newButtonIndex + 1 > GameManager.GetInstance().currentLevel) buttonIndex = allButtons.Length - 1;
 
                 else buttonIndex = newButtonIndex;
             }
@@ -120,7 +128,7 @@ public class LevelSelectorMenu : MonoBehaviour
 
                 if (newButtonIndex == -1) buttonIndex = allButtons.Length - 1;
 
-                else if (newButtonIndex > GameManager.GetInstance().currentLevel) buttonIndex = GameManager.GetInstance().currentLevel;
+                else if (newButtonIndex + 1 > GameManager.GetInstance().currentLevel) buttonIndex = GameManager.GetInstance().currentLevel - 1;
 
                 else buttonIndex = newButtonIndex;
             }
@@ -164,9 +172,7 @@ public class LevelSelectorMenu : MonoBehaviour
 
     public void ButtonChange(int buttonIndexRef) // Cambia el boton activo al pasado por referencia "buttonIndex", se llama al entrar el "Pointer" en un boton
     {
-        Debug.Log("LevelSelector");
-
-        if (buttonIndexRef == allButtons.Length - 1 || buttonIndexRef <= GameManager.GetInstance().currentLevel) // Si es un boton seleccionable
+        if (buttonIndexRef == allButtons.Length - 1 || buttonIndexRef + 1 <= GameManager.GetInstance().currentLevel) // Si es un boton seleccionable
         {
             if (buttonIndex != buttonIndexRef) // Ejecutar solo si se selecciona un boton diferente al seleccionado actualmente
             {
