@@ -16,7 +16,6 @@ public class Trampoline_Minion : MonoBehaviour
                 if (colPos.x > transform.position.x - transform.localScale.x/2 && colPos.x < transform.position.x + transform.localScale.x / 2) // Comprobar si no esta lejos
                     collision.GetComponentInParent<BasicMovement>().GoUp(trampolineJumpForce); // Aplicar fuerza de salto
         }
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
