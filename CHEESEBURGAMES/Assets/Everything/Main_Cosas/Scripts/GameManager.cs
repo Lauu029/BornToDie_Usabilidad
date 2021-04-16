@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
         newRabbitTransition.GetComponent<Animator>().SetTrigger("Start");
 
-        yield return new WaitForSecondsRealtime(2.2f);
+        yield return new WaitForSecondsRealtime(2.5f);
         Destroy(newRabbitTransition);
 
         AudioManager.instance.ChangeBackgroundMusic(sceneName);
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
         // Transition
         newRabbitTransition = Instantiate(rabbitTransition, transform);
-        Destroy(newRabbitTransition, 2.3f);
+        Destroy(newRabbitTransition, 3f);
     }
 
 
