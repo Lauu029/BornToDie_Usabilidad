@@ -1319,6 +1319,7 @@ MonoBehaviour:
   minionImagesCanvas: {fileID: 1045784009}
   minionImagesContainer: {fileID: 807384572}
   buttonText: {fileID: 1327511582}
+  motherRabbitAnimator: {fileID: 0}
 --- !u!1 &1186406940
 GameObject:
   m_ObjectHideFlags: 0

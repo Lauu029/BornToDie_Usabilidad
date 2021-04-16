@@ -106,8 +106,8 @@ TextureImporter:
       name: Conejo caminando_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 36
+        x: 0
+        y: 35
         width: 28
         height: 27
       alignment: 0
@@ -127,8 +127,8 @@ TextureImporter:
       name: Conejo caminando_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 35
+        x: 32
+        y: 36
         width: 28
         height: 27
       alignment: 0
@@ -148,10 +148,10 @@ TextureImporter:
       name: Conejo caminando_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 2
+        x: 0
+        y: 4
         width: 28
-        height: 28
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: Conejo caminando_3
       rect:
         serializedVersion: 2
-        x: 36
-        y: 4
+        x: 32
+        y: 2
         width: 28
-        height: 27
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
