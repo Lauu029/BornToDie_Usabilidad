@@ -138,7 +138,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 Destroy(motherRabbitAnimator.gameObject);
 
                 // Si no hay minions, soltar a la "Gallina"
-                Instantiate(chicken.gameObject, spawner);
+                Instantiate(chicken.gameObject, new Vector3(spawner.position.x, spawner.position.y + 0.4f, 0), Quaternion.identity, spawner);
 
                 ordenMinionIndex++;
 

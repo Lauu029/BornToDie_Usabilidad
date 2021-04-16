@@ -77,9 +77,16 @@ public class BasicMovement : MonoBehaviour
         gfxAnimator.SetFloat("Speed", 0);
         gfxAnimator.SetBool("IsJumping", false);
 
-        if (GetComponent<Trampoline_Minion>() == null)
+        if (GetComponent<Explosion_Minion>() == null && GetComponent<Trampoline_Minion>() == null) // Es mini
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        FindObjectOfType<AudioManager>().Play("Death", 1);
+        FindObjectOfType<ParticleManager>().PlayParticle("Death", transform.position);
+        Destroy(gameObject);
     }
 }

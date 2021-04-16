@@ -45,5 +45,10 @@ public class PolloVolador : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, movimiento.y * velocidad);
     }
 
-
+    public void Die()
+    {
+        FindObjectOfType<AudioManager>().Play("Death", 0.8f);
+        FindObjectOfType<ParticleManager>().PlayParticle("Death", transform.position);
+        Destroy(gameObject);
+    }
 }

@@ -11,6 +11,14 @@ public class Flag : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Button", 1);
 
+            BasicMovement[] allBasicMovement = FindObjectsOfType<BasicMovement>();
+            for (int i = 0; i < allBasicMovement.Length; i++)
+                allBasicMovement[i].Die();
+
+            PolloVolador[] allPolloVolador = FindObjectsOfType<PolloVolador>();
+            for (int i = 0; i < allPolloVolador.Length; i++)
+                allPolloVolador[i].Die();
+
             GameManager.GetInstance().NextLevel();
         }
     }

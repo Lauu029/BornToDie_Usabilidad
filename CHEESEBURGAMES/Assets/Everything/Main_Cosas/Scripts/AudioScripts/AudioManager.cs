@@ -41,22 +41,34 @@ public class AudioManager : MonoBehaviour
         ChangeBackgroundMusic(SceneManager.GetActiveScene().name);
     }
 
+
+    enum typeOfMusic { mainMenu, gameplay, win };
+
+    typeOfMusic currentTypeOfMusic;
+
     public void ChangeBackgroundMusic(string sceneName) // Cambia la muscia de fondo segun la escena, llamado desde
     {
         switch (sceneName)
         {
             case "MainMenu":
+                currentTypeOfMusic = typeOfMusic.mainMenu;
                 Stop("Win");
                 Stop("Gameplay");
                 Play("MainMenu", 1);
                 break;
             case "Win":
+                currentTypeOfMusic = typeOfMusic.win;
                 Stop("Gameplay");
                 Play("Win", 1);
                 break;
             default:
-                Stop("MainMenu");
-                Play("Gameplay", 1);
+                if (currentTypeOfMusic != typeOfMusic.gameplay)
+                {
+                    currentTypeOfMusic = typeOfMusic.gameplay;
+
+                    Stop("MainMenu");
+                    Play("Gameplay", 1);
+                }
                 break;
         }
     }
@@ -69,6 +81,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
         s.source.pitch = pitch;
         s.source.Play();
     }

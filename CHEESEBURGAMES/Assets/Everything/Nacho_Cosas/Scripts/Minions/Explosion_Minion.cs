@@ -25,7 +25,6 @@ public class Explosion_Minion : MonoBehaviour
         startedMoving = false;
         text = GetComponentInChildren<Text>();
         text.text = time.ToString("f0");
-
     }
 
     private void Update()
@@ -58,7 +57,8 @@ public class Explosion_Minion : MonoBehaviour
             Destroy(allCollisions.gameObject);
 
         FindObjectOfType<AudioManager>().Play("Explosion", 1);
+        FindObjectOfType<ParticleManager>().PlayParticle("Explosion", transform.position);
 
-        Destroy(gameObject);
+        GetComponent<BasicMovement>().Die();
     }
 }

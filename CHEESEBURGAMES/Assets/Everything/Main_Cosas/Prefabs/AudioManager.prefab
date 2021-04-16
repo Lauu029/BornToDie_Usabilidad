@@ -44,14 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Button
-    clip: {fileID: 8300000, guid: 7565ee1792a4838409412fbd335303c9, type: 3}
-    volume: 1
-    maxVolume: 1
-    pitch: 1
-    loop: 0
-    music: 0
-    source: {fileID: 0}
   - name: MainMenu
     clip: {fileID: 8300000, guid: ab17354ffa3d2c94baf3342e3d9ae456, type: 3}
     volume: 0.6
@@ -76,10 +68,18 @@ MonoBehaviour:
     loop: 1
     music: 1
     source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: 7565ee1792a4838409412fbd335303c9, type: 3}
+    volume: 1
+    maxVolume: 0.8
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
   - name: Key
     clip: {fileID: 8300000, guid: 484da1a9536d0a64a972c0a3efa1d475, type: 3}
     volume: 1
-    maxVolume: 1
+    maxVolume: 0.8
     pitch: 1
     loop: 0
     music: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   - name: Born
     clip: {fileID: 8300000, guid: 9d39db8d5e312994fab9bbb36ad8c568, type: 3}
     volume: 1
-    maxVolume: 1
+    maxVolume: 0.8
     pitch: 1
     loop: 0
     music: 0
@@ -95,13 +95,29 @@ MonoBehaviour:
   - name: Explosion
     clip: {fileID: 8300000, guid: fbb959bd85c95f840839f9aedbd970b9, type: 3}
     volume: 1
-    maxVolume: 1
+    maxVolume: 0.8
     pitch: 1
     loop: 0
     music: 0
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 0283fd3292d648548bfeceaf19ce88d2, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 317f3ad911cf1824aa80d8daac7306b7, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    loop: 0
+    music: 0
+    source: {fileID: 0}
+  - name: Pause
+    clip: {fileID: 8300000, guid: 6482e7772613dac49a2ea0683374af33, type: 3}
     volume: 1
     maxVolume: 1
     pitch: 1

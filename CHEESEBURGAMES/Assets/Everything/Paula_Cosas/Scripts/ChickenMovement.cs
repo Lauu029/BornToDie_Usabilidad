@@ -17,6 +17,13 @@ public class ChickenMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         movesRight = true;
     }
+
+    private void Update()
+    {
+        gfx.GetComponent<Animator>().SetFloat("Yvelocity", rb.velocity.y);
+        gfx.GetComponent<Animator>().SetFloat("Xvelocity", rb.velocity.x);
+    }
+
     void FixedUpdate()
     {
         Vector2 dir;

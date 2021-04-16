@@ -25,6 +25,8 @@ public class Trampoline_Minion : MonoBehaviour
             if (colPos.y > transform.position.y + 0.1f) // Comprobar si el Minion con el que ha interactuado esta por encima suyo
                 if (colPos.x > transform.position.x - transform.localScale.x / 2 && colPos.x < transform.position.x + transform.localScale.x / 2) // Comprobar si no esta lejos
                 {
+                    FindObjectOfType<AudioManager>().Play("Jump", 0.5f);
+
                     if (collision.gameObject.GetComponentInParent<BasicMovement>() != null)
                         collision.gameObject.GetComponentInParent<BasicMovement>().GoUp(trampolineJumpForce); // Aplicar fuerza de salto
                     else if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
@@ -34,7 +36,9 @@ public class Trampoline_Minion : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
         {
+            FindObjectOfType<AudioManager>().Play("Jump", 0.5f);
             Debug.Log("TOUCH CHICKEN");
+            GetComponent<BasicMovement>().Die();
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
         }
 

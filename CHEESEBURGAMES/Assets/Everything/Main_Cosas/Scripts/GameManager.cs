@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject levelTransition;
 
+    bool usingCoroutine;
+
     private void Awake()
     {
         // Singleton
@@ -62,11 +64,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        StartCoroutine(ChangeSceneEnumerator(sceneName));
+        if (!usingCoroutine)
+            StartCoroutine(ChangeSceneEnumerator(sceneName));
     }
 
     IEnumerator ChangeSceneEnumerator(string sceneName)
     {
+        usingCoroutine = true;
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
         newRabbitTransition.GetComponent<Animator>().SetTrigger("Start");
 
@@ -74,11 +78,13 @@ public class GameManager : MonoBehaviour
         Destroy(newRabbitTransition);
 
         AudioManager.instance.ChangeBackgroundMusic(sceneName);
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
 
         // Transition
         newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3f);
+        usingCoroutine = false;
     }
 
 
@@ -86,11 +92,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int levelInt) // Solo se llama desde el menu
     {
-        StartCoroutine(ChangeLevelEnumerator(levelInt));
+        if (!usingCoroutine)
+            StartCoroutine(ChangeLevelEnumerator(levelInt));
     }
 
     IEnumerator ChangeLevelEnumerator(int levelInt)
     {
+        usingCoroutine = true;
+
         if (levelInt <= currentLevel)
         {
             GameObject newLevelTransition = Instantiate(levelTransition, transform);
@@ -103,6 +112,7 @@ public class GameManager : MonoBehaviour
             levelPlaying = levelInt;
             string sceneName = "Level_" + levelInt;
             AudioManager.instance.ChangeBackgroundMusic(sceneName);
+            Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
 
             // Transition
@@ -110,21 +120,25 @@ public class GameManager : MonoBehaviour
             newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;
             Destroy(newLevelTransition, 3.1f);
         }
+        usingCoroutine = false;
     }
 
     public void NextLevel()
     {
-        levelPlaying++;
-         
-        if (levelPlaying == numberOfLevels + 1) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
+        if (!usingCoroutine)
+        {
+            levelPlaying++;
 
-        // Si no se ha llegado al ultimo nivel, seguir ejecutando este codigo
+            if (levelPlaying == numberOfLevels + 1) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
 
-        // Si se ha completado el nivel por primera vez, sumarle 1 al "current level"
-        if (levelPlaying > currentLevel)
-            currentLevel = levelPlaying;
+            // Si no se ha llegado al ultimo nivel, seguir ejecutando este codigo
 
-        // Cargar siguiente nivel
-        ChangeLevel(levelPlaying);
+            // Si se ha completado el nivel por primera vez, sumarle 1 al "current level"
+            if (levelPlaying > currentLevel)
+                currentLevel = levelPlaying;
+
+            // Cargar siguiente nivel
+            ChangeLevel(levelPlaying);
+        }
     }
 }
