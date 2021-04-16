@@ -16,14 +16,17 @@ public class BasicMovement : MonoBehaviour
     [SerializeField]
     Transform gfx;
 
+    Animator gfxAnimator;
+
     // Configuracion
     Rigidbody2D rb;
-    OnGround onG;
+    bool onGround;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        onG = GetComponentInChildren<OnGround>();
+
+        gfxAnimator = gfx.GetComponent<Animator>();
 
         rb.gravityScale = gravityScale;
     }
@@ -33,6 +36,9 @@ public class BasicMovement : MonoBehaviour
         LateralMovement();
 
         CheckJump();
+
+        // ActualizarAnimator
+        gfxAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
     void LateralMovement()
@@ -48,7 +54,7 @@ public class BasicMovement : MonoBehaviour
 
     void CheckJump()
     {
-        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")) && onG.touchingGround)
+        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")) && onGround)
         {
             GoUp(jumpForce);
             FindObjectOfType<AudioManager>().Play("Jump", 1);
@@ -58,5 +64,22 @@ public class BasicMovement : MonoBehaviour
     public void GoUp(float force)
     {
         rb.velocity = new Vector2(rb.velocity.x, force);
+    }
+
+    public void ChangeOnGround(bool isOnGround)
+    {
+        onGround = isOnGround;
+        gfxAnimator.SetBool("IsJumping", !onGround);
+    }
+
+    public void OnDisable()
+    {
+        gfxAnimator.SetFloat("Speed", 0);
+        gfxAnimator.SetBool("IsJumping", false);
+
+        if (GetComponent<Trampoline_Minion>() == null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

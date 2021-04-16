@@ -12,10 +12,14 @@ public class PolloVolador : MonoBehaviour
 
     public float velocidad;
 
+    Animator thisAnimator;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        thisAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,10 @@ public class PolloVolador : MonoBehaviour
         Debug.Log("movimiento = " + movimiento);
         movimiento.Normalize();
 
+        thisAnimator.SetFloat("Speed", movimiento.magnitude);
+
+        if (movimiento.x > 0) thisAnimator.transform.localScale = new Vector3(1, 1, 0);
+        else if (movimiento.x < 0) thisAnimator.transform.localScale = new Vector3(-1, 1, 0);
     }
     private void FixedUpdate()
     {

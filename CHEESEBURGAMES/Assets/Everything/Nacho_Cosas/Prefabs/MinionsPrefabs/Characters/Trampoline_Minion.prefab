@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523090778434445444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.011, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4523090777542072252}
@@ -102,7 +102,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.20000005}
+  m_Size: {x: 0.25672457, y: 0.20000005}
   m_EdgeRadius: 0
 --- !u!1 &4523090779196818631
 GameObject:
@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 4523090779196818628}
   - component: {fileID: 4523090779196818629}
   - component: {fileID: 4523090779196818630}
+  - component: {fileID: 6922702571016293533}
   m_Layer: 6
   m_Name: Trampoline_Minion
   m_TagString: Untagged
@@ -133,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 4523090779196818631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4523090777542072252}
   m_Father: {fileID: 0}
@@ -202,7 +203,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.017017767, y: -0.109282166}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -213,7 +214,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.34398422, y: 0.78143567}
+  m_EdgeRadius: 0
+--- !u!61 &6922702571016293533
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523090779196818631}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00036101043, y: 0.046206713}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5634649, y: 0.47464776}
   m_EdgeRadius: 0
 --- !u!1 &4523090779372015965
 GameObject:
@@ -225,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523090779372015964}
   - component: {fileID: 4523090779372015939}
-  - component: {fileID: 5898873699745864621}
+  - component: {fileID: 4382385727291187796}
   m_Layer: 6
   m_Name: Gfx
   m_TagString: Untagged
@@ -288,7 +315,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1931046129389830085, guid: 44f709ff14a2ab54881c31f9f2912f79, type: 3}
+  m_Sprite: {fileID: 3129192482730084000, guid: 44f709ff14a2ab54881c31f9f2912f79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -299,7 +326,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5898873699745864621
+--- !u!95 &4382385727291187796
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -309,7 +336,7 @@ Animator:
   m_GameObject: {fileID: 4523090779372015965}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea83aab6b2c3ef94daf41b5ada13d409, type: 2}
+  m_Controller: {fileID: 22100000, guid: bd68fd319da26bc4f9ebf4ff1c87c8ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

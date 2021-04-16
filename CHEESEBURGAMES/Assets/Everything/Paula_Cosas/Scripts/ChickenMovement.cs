@@ -9,6 +9,9 @@ public class ChickenMovement : MonoBehaviour
     Rigidbody2D rb;
     bool movesRight;
 
+    [SerializeField]
+    Transform gfx;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,7 +31,7 @@ public class ChickenMovement : MonoBehaviour
         /*LLega a un limite mientras se mueve a la derecha, rota y se mueve hacia la izquierda 
         hasta que se ejecute de nuevo y movesright sea false, en cuyo caso rotara, cambiara sprite y pondra movesrght true*/
 
-        transform.localScale = new Vector3(-transform.localScale.x, 1, 0);
+        gfx.transform.localScale = new Vector3(-gfx.transform.localScale.x, gfx.transform.localScale.y, 0);
 
         movesRight = !movesRight;
 

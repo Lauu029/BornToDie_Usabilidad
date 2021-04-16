@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363205570575891895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 363205570943786855}
@@ -180,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.20000005}
+  m_Size: {x: 0.29765713, y: 0.20000005}
   m_EdgeRadius: 0
 --- !u!1 &363205570718973725
 GameObject:
@@ -292,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 363205570789566836}
   - component: {fileID: 363205570789566839}
-  - component: {fileID: 3859281070558254279}
+  - component: {fileID: 5481404018576816130}
   m_Layer: 6
   m_Name: Gfx
   m_TagString: Untagged
@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8197990984586149108, guid: 44f709ff14a2ab54881c31f9f2912f79, type: 3}
+  m_Sprite: {fileID: -1041012841831139475, guid: 44f709ff14a2ab54881c31f9f2912f79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -366,7 +366,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3859281070558254279
+--- !u!95 &5481404018576816130
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ Animator:
   m_GameObject: {fileID: 363205570789566837}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c51fee2427bfd6e438eb322a845e2bab, type: 2}
+  m_Controller: {fileID: 22100000, guid: 5cc6cde102b1c3f4db90da3a46e986b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -530,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 363205571383477452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 363205570943786855}
   - {fileID: 363205571115279691}
@@ -601,7 +601,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016937613, y: -0.0750718}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -612,5 +612,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.33943367, y: 0.8498564}
   m_EdgeRadius: 0
