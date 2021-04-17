@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public bool usingController;
 
-    bool usingCoroutine;
+    public bool usingCoroutine;
 
     private void Awake()
     {
@@ -118,7 +118,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
 
-            FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
+            if (FindObjectOfType<ControllerConnected>() != null)
+                FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
             // Transition
             newLevelTransition = Instantiate(levelTransition, transform);
             newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;

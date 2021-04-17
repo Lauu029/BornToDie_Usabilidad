@@ -204,7 +204,7 @@ public class LevelSelectorMenu : MonoBehaviour
 
     void CheckButtonPressed()
     {
-        if (Input.GetButtonDown("Action"))
+        if (Input.GetButtonDown("Action") || Input.GetKeyDown(KeyCode.Space))
         {
             PressButton(buttonIndex);
         }

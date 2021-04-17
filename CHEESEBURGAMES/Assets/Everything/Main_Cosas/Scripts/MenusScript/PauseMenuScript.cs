@@ -66,7 +66,7 @@ public class PauseMenuScript : MonoBehaviour
                 else PauseSelect();
             }
 
-            if (paused)
+            if (paused && !GameManager.GetInstance().usingCoroutine)
             {
                 // Comprobar si se ha seleccionado un nuevo boton
                 if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
@@ -208,7 +208,8 @@ public class PauseMenuScript : MonoBehaviour
 
     void CheckButtonPressed()
     {
-        if (Input.GetButtonDown("Action"))
+        if (!GameManager.GetInstance().usingCoroutine)
+        if (Input.GetButtonDown("Action") || Input.GetKeyDown(KeyCode.Space))
         {
             PressButton(buttonIndex);
         }

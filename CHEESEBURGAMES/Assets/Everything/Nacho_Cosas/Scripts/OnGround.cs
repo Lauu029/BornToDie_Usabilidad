@@ -34,4 +34,9 @@ public class OnGround : MonoBehaviour
         touchingGround = false;
         objTouching = null;
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        basicMov.ChangeOnGround(true);
+    }
 }
