@@ -43,6 +43,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField]
     Animator motherRabbitAnimator;
 
+    [SerializeField]
+    Transform sniperPoint;
 
     // VARIABLES
     bool startedMoving; // Indica si el minion se ha empezado a mover
@@ -76,13 +78,20 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (minionImagesContainer.position.y - Time.deltaTime < currentPosMinionsLeftUI.y) minionImagesContainer.position = new Vector3(minionImagesContainer.position.x, currentPosMinionsLeftUI.y);
         else minionImagesContainer.position = new Vector2(minionImagesContainer.position.x, minionImagesContainer.position.y - Time.deltaTime * 550);
+
+        if (buttonManager.controllingMinion == null) sniperPoint.gameObject.SetActive(false);
+        else
+        {
+            sniperPoint.gameObject.SetActive(true);
+            sniperPoint.position = buttonManager.controllingMinion.transform.position;
+        }
     }
 
     IEnumerator currentCoroutine; // Contiene la corrutina que se esta ejecutando en este momento
 
     public IEnumerator CheckClick()
     {
-        if (onPointer && Input.GetMouseButtonDown(0))
+        if ((onPointer && Input.GetMouseButtonDown(0)) || Input.GetButtonDown("Born"))
         {
             if (ordenMinionIndex != ordenOfminions.Length) // Si todavia quedan minions
             {
@@ -103,6 +112,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                         Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
                     }
                 }
+
+                FindObjectOfType<ParticleManager>().PlayParticle("RainBow", spawner.transform.position);
 
                 // Decirle al ButtonManager que se controla al nuevo minion
                 buttonManager.controllingMinion = Instantiate(allMinions[minionIndex], spawner);

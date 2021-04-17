@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject levelTransition;
 
+    public bool usingController;
+
     bool usingCoroutine;
 
     private void Awake()
@@ -47,14 +49,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("k"))
-        {
-            Debug.Log("k");
-            NextLevel();
-        } else if (Input.GetKeyDown("l"))
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
+        //if (Input.GetKeyDown("k"))
+        //{
+        //    Debug.Log("k");
+        //    NextLevel();
+        //} else if (Input.GetKeyDown("l"))
+        //{
+        //    SceneManager.LoadScene("MainMenu");
+        //}
     }
 
     public static GameManager GetInstance()
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
 
+        FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
         // Transition
         newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3f);
@@ -115,6 +118,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
 
+            FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
             // Transition
             newLevelTransition = Instantiate(levelTransition, transform);
             newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;

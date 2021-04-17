@@ -54,7 +54,7 @@ public class BasicMovement : MonoBehaviour
 
     void CheckJump()
     {
-        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")) && onGround)
+        if ((Input.GetKeyDown("w") || Input.GetButtonDown("Jump")) && onGround)
         {
             GoUp(jumpForce);
             FindObjectOfType<AudioManager>().Play("Jump", 1);

@@ -34,10 +34,20 @@ public class ControllerConnected : MonoBehaviour
         }
 
         mouseCursorObj = FindObjectOfType<MouseCursor>().transform.GetChild(0);
+
+        currentMousePos = Input.mousePosition;
+        lastMousePos = Input.mousePosition;
+    }
+
+    private void Start()
+    {
+        usingController = GameManager.GetInstance().usingController;
     }
 
     private void Update()
     {
+        Debug.Log("usingController = " + usingController);
+
         // BUTTON INPUT
 
         // Actualizar valores
@@ -51,7 +61,6 @@ public class ControllerConnected : MonoBehaviour
         // Actualizar valores
         X_lastValue = Input.GetAxisRaw("Horizontal");
         Y_lastValue = Input.GetAxisRaw("Vertical");
-
 
 
         // MOUSE
@@ -83,12 +92,24 @@ public class ControllerConnected : MonoBehaviour
         }
     }
 
-
     void CheckAxis(ref float lastValue, ref float currentValue)
     {
         if (lastValue == 0 && (currentValue == 1 || currentValue == -1)) // Si se ha realizad un cambio muy brusco (solo posible en "Keyboard")
+        {
+            GameManager.GetInstance().usingController = usingController;
+
             usingController = false;
+        }
         else if (currentValue != 0 && currentValue != 1 && currentValue != -1)
+        {
+            GameManager.GetInstance().usingController = usingController;
+
             usingController = true;
+        }
+    }
+
+   public void SetUpUsingController(bool usingControllerBool)
+    {
+        usingController = usingControllerBool;
     }
 }
