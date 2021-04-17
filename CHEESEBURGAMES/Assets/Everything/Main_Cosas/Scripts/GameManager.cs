@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int levelPlaying;
     [HideInInspector]
-    public int numberOfLevels = 3;
+    public int numberOfLevels = 7;
 
     [SerializeField]
     GameObject rabbitTransition;
@@ -95,9 +95,6 @@ public class GameManager : MonoBehaviour
     {
         usingCoroutine = false;
     }
-
-
-
 
     public void ChangeLevel(int levelInt) // Solo se llama desde el menu
     {
