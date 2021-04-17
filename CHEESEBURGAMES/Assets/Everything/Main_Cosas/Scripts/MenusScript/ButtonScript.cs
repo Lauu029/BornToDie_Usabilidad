@@ -36,8 +36,6 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void Update()
     {
-        Debug.Log("GameManager.GetInstance().usingCoroutine = " + GameManager.GetInstance().usingCoroutine);
-
         // Presionar un boton si se hace click sobre el
         if (onPointer && Input.GetMouseButtonDown(0))
         {

@@ -29,7 +29,6 @@ public class PolloVolador : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         movimiento = new Vector2(horizontal, vertical);
-        Debug.Log("movimiento = " + movimiento);
         movimiento.Normalize();
 
         thisAnimator.SetFloat("Speed", movimiento.magnitude);
