@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -132,28 +133,56 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             }
             else if (ordenMinionIndex == ordenOfminions.Length)
             {
-                FindObjectOfType<AudioManager>().Play("Born", 1);
-
-                // Eliminar el movimiento del minion activo
-                if (buttonManager.controllingMinion != null)
+                if (SceneManager.GetActiveScene().name != "Level_1")
                 {
-                    if (buttonManager.controllingMinion.GetComponent<BasicMovement>() != null)
-                        buttonManager.controllingMinion.GetComponent<BasicMovement>().enabled = false;
-                    else if (buttonManager.controllingMinion.GetComponent<PolloVolador>() != null)
+                    FindObjectOfType<AudioManager>().Play("Born", 1);
+
+                    // Eliminar el movimiento del minion activo
+                    if (buttonManager.controllingMinion != null)
                     {
-                        buttonManager.controllingMinion.GetComponent<PolloVolador>().enabled = false;
-                        Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
+                        if (buttonManager.controllingMinion.GetComponent<BasicMovement>() != null)
+                            buttonManager.controllingMinion.GetComponent<BasicMovement>().enabled = false;
+                        else if (buttonManager.controllingMinion.GetComponent<PolloVolador>() != null)
+                        {
+                            buttonManager.controllingMinion.GetComponent<PolloVolador>().enabled = false;
+                            Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
+                        }
                     }
+
+                    Destroy(motherRabbitAnimator.gameObject);
+
+                    // Si no hay minions, soltar a la "Gallina"
+                    Instantiate(chicken.gameObject, new Vector3(spawner.position.x, spawner.position.y + 0.4f, 0), Quaternion.identity, spawner);
+
+                    ordenMinionIndex++;
+
+                    Destroy(gameObject);
+
+                } else if (FindObjectOfType<Tutorial>().parte == Tutorial.parteDelTutorial.go)
+                {
+                    FindObjectOfType<AudioManager>().Play("Born", 1);
+
+                    // Eliminar el movimiento del minion activo
+                    if (buttonManager.controllingMinion != null)
+                    {
+                        if (buttonManager.controllingMinion.GetComponent<BasicMovement>() != null)
+                            buttonManager.controllingMinion.GetComponent<BasicMovement>().enabled = false;
+                        else if (buttonManager.controllingMinion.GetComponent<PolloVolador>() != null)
+                        {
+                            buttonManager.controllingMinion.GetComponent<PolloVolador>().enabled = false;
+                            Destroy(buttonManager.controllingMinion.GetComponent<Rigidbody2D>());
+                        }
+                    }
+
+                    Destroy(motherRabbitAnimator.gameObject);
+
+                    // Si no hay minions, soltar a la "Gallina"
+                    Instantiate(chicken.gameObject, new Vector3(spawner.position.x, spawner.position.y + 0.4f, 0), Quaternion.identity, spawner);
+
+                    ordenMinionIndex++;
+
+                    Destroy(gameObject);
                 }
-
-                Destroy(motherRabbitAnimator.gameObject);
-
-                // Si no hay minions, soltar a la "Gallina"
-                Instantiate(chicken.gameObject, new Vector3(spawner.position.x, spawner.position.y + 0.4f, 0), Quaternion.identity, spawner);
-
-                ordenMinionIndex++;
-
-                Destroy(gameObject);
             }
         }
     }
