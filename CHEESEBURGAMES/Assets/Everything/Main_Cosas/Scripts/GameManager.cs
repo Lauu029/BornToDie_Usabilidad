@@ -83,10 +83,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
 
-        FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
+        if (FindObjectOfType<ControllerConnected>() != null)
+            FindObjectOfType<ControllerConnected>().SetUpUsingController(usingController);
         // Transition
         newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3f);
+        Invoke("NoCoroutine", 2);
+    }
+
+    void NoCoroutine()
+    {
         usingCoroutine = false;
     }
 
@@ -125,7 +131,7 @@ public class GameManager : MonoBehaviour
             newLevelTransition.GetComponentInChildren<Text>().text = "LEVEL " + levelInt;
             Destroy(newLevelTransition, 3.1f);
         }
-        usingCoroutine = false;
+        Invoke("NoCoroutine", 2);
     }
 
     public void NextLevel()

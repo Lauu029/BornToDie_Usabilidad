@@ -42,4 +42,13 @@ public class ParticleManager : MonoBehaviour
         p.SetActive(false);
         Destroy(newParticle, 5);
     }
+
+    public void InstantiateConstantParticleInThis(string particleName, Vector3 particlePosition, Transform inThisTransform)
+    {
+        GameObject p = Array.Find(allParticles, gameObject => gameObject.name == particleName);
+
+        p.SetActive(true);
+        GameObject newParticle = Instantiate(p, particlePosition, Quaternion.identity, inThisTransform);
+        p.SetActive(false);
+    }
 }

@@ -36,6 +36,8 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void Update()
     {
+        Debug.Log("GameManager.GetInstance().usingCoroutine = " + GameManager.GetInstance().usingCoroutine);
+
         // Presionar un boton si se hace click sobre el
         if (onPointer && Input.GetMouseButtonDown(0))
         {
@@ -67,17 +69,20 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         //Debug.Log("pauseMenuScript = " + pauseMenuScript);
         //Debug.Log("levelSelectorMenu = " + levelSelectorMenu);
 
-        if (MainMenuScript != null)
+        if (!GameManager.GetInstance().usingCoroutine)
         {
-            if (MainMenuScript.cameraTransform.position == new Vector3(0, 0, -10))
-                MainMenuScript.ButtonChange(thisButtonIndex);
+            if (MainMenuScript != null)
+            {
+                if (MainMenuScript.cameraTransform.position == new Vector3(0, 0, -10))
+                    MainMenuScript.ButtonChange(thisButtonIndex);
+            }
+
+            else if (pauseMenuScript != null) pauseMenuScript.ButtonChange(thisButtonIndex);
+
+            else if (levelSelectorMenu != null) levelSelectorMenu.ButtonChange(thisButtonIndex);
+
+            onPointer = true;
         }
-
-        else if (pauseMenuScript != null) pauseMenuScript.ButtonChange(thisButtonIndex);
-
-        else if (levelSelectorMenu != null) levelSelectorMenu.ButtonChange(thisButtonIndex);
-
-        onPointer = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)

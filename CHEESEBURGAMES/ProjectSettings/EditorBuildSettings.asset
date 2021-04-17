@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Levels/Level_2.unity
     guid: 725218e8253bfea40a39cee9e63f9faf
   - enabled: 1
+    path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Levels/Level_3.unity
+    guid: db2949df528fae64483996a8eef9b37e
+  - enabled: 1
     path: Assets/Everything/Main_Cosas/Scenes/EscenasConjuntas/Gameplay.unity
     guid: d6cc8700221dc1f4b8e05877f8caa457
   - enabled: 1

@@ -10,7 +10,7 @@ public class WInMenu : MonoBehaviour
     private void Awake()
     {
         canSkip = false;
-        Invoke("CanSkip", 1);
+        Invoke("CanSkip", 4);
     }
 
     void CanSkip()

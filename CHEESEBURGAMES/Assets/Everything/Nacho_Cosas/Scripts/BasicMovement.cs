@@ -77,10 +77,10 @@ public class BasicMovement : MonoBehaviour
         gfxAnimator.SetFloat("Speed", 0);
         gfxAnimator.SetBool("IsJumping", false);
 
-        if (GetComponent<Explosion_Minion>() == null && GetComponent<Trampoline_Minion>() == null) // Es mini
-        {
-            Die();
-        }
+        //if (GetComponent<Explosion_Minion>() == null && GetComponent<Trampoline_Minion>() == null) // Es mini
+        //{
+        //    Die();
+        //}
     }
 
     public void Die()
@@ -88,5 +88,10 @@ public class BasicMovement : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Death", 1);
         FindObjectOfType<ParticleManager>().PlayParticle("Death", transform.position);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<ChickenMovement>() != null) Die();
     }
 }

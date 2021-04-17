@@ -83,8 +83,11 @@ public class SliderScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     //POINTER ENTER/EXIT
     public void OnPointerEnter(PointerEventData eventData)
     {
-        pauseMenu.ButtonChange(thisButtonIndex);
-        onPointer = true;
+        if (!GameManager.GetInstance().usingCoroutine)
+        {
+            pauseMenu.ButtonChange(thisButtonIndex);
+            onPointer = true;
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {

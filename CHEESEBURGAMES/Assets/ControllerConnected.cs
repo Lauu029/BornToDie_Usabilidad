@@ -46,7 +46,6 @@ public class ControllerConnected : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("usingController = " + usingController);
 
         // BUTTON INPUT
 

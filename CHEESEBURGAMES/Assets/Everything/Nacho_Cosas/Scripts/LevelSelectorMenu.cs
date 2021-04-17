@@ -87,11 +87,13 @@ public class LevelSelectorMenu : MonoBehaviour
             // Comprobar si se ha seleccionado un nuevo boton
             if (currentCoroutine == null) // Si no se esta ejecutando ninguna corrutina, empezar una nueva
             {
-                StartCoroutine(CheckButtonAxisChange()); // Borrar si el menu solo se va a controlar con el raton
+                if (!GameManager.GetInstance().usingCoroutine)
+                    StartCoroutine(CheckButtonAxisChange()); // Borrar si el menu solo se va a controlar con el raton
             }
 
             // Comprobar si se ha elegido el boton actual
-            CheckButtonPressed();
+            if (!GameManager.GetInstance().usingCoroutine)
+                CheckButtonPressed();
         }
 
         //Debug.Log("buttonIndex = " + buttonIndex);
