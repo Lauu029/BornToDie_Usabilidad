@@ -92,6 +92,7 @@ public class BasicMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<ChickenMovement>() != null) Die();
+        if (GetComponent<Trampoline_Minion>() == null && GetComponent<Explosion_Minion>() == null)
+            if (collision.gameObject.GetComponent<ChickenMovement>() != null) Die();
     }
 }
