@@ -34,7 +34,7 @@ public class Explosion_Minion : MonoBehaviour
 
     void Explosion()
     {
-        if (!startedMoving && (Input.GetKeyDown("space") || Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")))
+        if (!startedMoving && (Input.GetButtonDown("Jump") || Input.GetKeyDown("w") || Input.GetAxisRaw("Horizontal") != 0))
         {
             startedMoving = true;
             text.color = Color.red;
