@@ -91,7 +91,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public IEnumerator CheckClick()
     {
-        if ((onPointer && Input.GetMouseButtonDown(0)) || Input.GetButtonDown("Born"))
+        if ((onPointer && Input.GetMouseButtonDown(0)) || Input.GetButtonDown("Born") || Input.GetKeyDown("e"))
         {
             if (ordenMinionIndex != ordenOfminions.Length) // Si todavia quedan minions
             {

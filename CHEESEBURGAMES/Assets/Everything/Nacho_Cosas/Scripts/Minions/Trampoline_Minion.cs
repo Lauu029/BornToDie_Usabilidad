@@ -19,7 +19,7 @@ public class Trampoline_Minion : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<BasicMovement>() != null || collision.gameObject.layer == LayerMask.NameToLayer("Key"))
+        if (collision.gameObject.GetComponent<BasicMovement>() != null)
         {
             Vector2 colPos = collision.transform.position;
             if (colPos.y > transform.position.y + 0.1f) // Comprobar si el Minion con el que ha interactuado esta por encima suyo
@@ -34,12 +34,16 @@ public class Trampoline_Minion : MonoBehaviour
                 }
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken") || collision.gameObject.layer == LayerMask.NameToLayer("Key"))
         {
-            FindObjectOfType<AudioManager>().Play("Jump", 0.5f);
-            Debug.Log("TOUCH CHICKEN");
-            GetComponent<BasicMovement>().Die();
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
+            if (collision.transform.position.y > transform.position.y + 0.2f)
+            {
+                FindObjectOfType<AudioManager>().Play("Jump", 0.5f);
+                Debug.Log("TOUCH CHICKEN/KEY");
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
+                    GetComponent<BasicMovement>().Die();
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
+            }
         }
 
         //if (collision.gameObject.layer == LayerMask.NameToLayer("Key"))
