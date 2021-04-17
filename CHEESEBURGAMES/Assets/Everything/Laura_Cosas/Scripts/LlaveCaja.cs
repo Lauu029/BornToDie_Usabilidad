@@ -24,4 +24,17 @@ public class LlaveCaja : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<BasicMovement>() != null && collision.gameObject.GetComponent<BasicMovement>().enabled == true)
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 8;
+            GetComponent<Rigidbody2D>().drag = 8;
+        } else
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().drag = 4;
+        }
+    }
 }

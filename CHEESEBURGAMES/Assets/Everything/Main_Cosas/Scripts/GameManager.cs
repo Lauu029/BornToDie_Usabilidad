@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int levelPlaying;
     [HideInInspector]
-    public int numberOfLevels = 7;
+    int numberOfLevels = 7;
 
     [SerializeField]
     GameObject rabbitTransition;
@@ -47,8 +47,16 @@ public class GameManager : MonoBehaviour
         Destroy(newRabbitTransition, 3);
     }
 
+    //void setNumberOfLevels()
+    //{
+
+    //}
+
     private void Update()
     {
+        Debug.Log("numberOfLevels = " + numberOfLevels);
+        Debug.Log("levelPlaying = " + levelPlaying);
+        Debug.Log("currentLevel = " + currentLevel);
         //if (Input.GetKeyDown("k"))
         //{
         //    Debug.Log("k");
