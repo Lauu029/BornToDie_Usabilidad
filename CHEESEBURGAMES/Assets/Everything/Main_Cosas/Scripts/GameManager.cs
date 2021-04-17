@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [HideInInspector]
-    public int currentLevel  = 1; // Ultimo nivel desbloqueado
+    public int currentLevel  = 10; // Ultimo nivel desbloqueado
     [HideInInspector]
     public int levelPlaying;
     [HideInInspector]
-    int numberOfLevels = 7;
+    int numberOfLevels = 10;
 
     [SerializeField]
     GameObject rabbitTransition;

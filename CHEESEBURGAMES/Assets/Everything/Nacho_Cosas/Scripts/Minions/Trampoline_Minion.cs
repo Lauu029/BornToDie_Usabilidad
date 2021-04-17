@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trampoline_Minion : MonoBehaviour
 {
     [HideInInspector]
-    public float trampolineJumpForce = 20;
+    float trampolineJumpForce = 18;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,5 +51,10 @@ public class Trampoline_Minion : MonoBehaviour
         //    Debug.Log("TOUCH KEY");
         //    collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, trampolineJumpForce);
         //}
+    }
+
+    private void Update()
+    {
+        Debug.Log("trampolineJumpForce = " + trampolineJumpForce);
     }
 }
