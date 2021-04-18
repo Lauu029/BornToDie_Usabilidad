@@ -8,6 +8,12 @@ public class LlaveCaja : MonoBehaviour
 
     private void Awake()
     {
+        //FindObjectOfType<ParticleManager>().InstantiateConstantParticleInThis("Shiny", transform.position, transform);
+        //FindObjectOfType<ParticleManager>().InstantiateConstantParticleInThis("Shiny", caja.transform.position, caja.transform);
+    }
+
+    private void Start()
+    {
         FindObjectOfType<ParticleManager>().InstantiateConstantParticleInThis("Shiny", transform.position, transform);
         FindObjectOfType<ParticleManager>().InstantiateConstantParticleInThis("Shiny", caja.transform.position, caja.transform);
     }

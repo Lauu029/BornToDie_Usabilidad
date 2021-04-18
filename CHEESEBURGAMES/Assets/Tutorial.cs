@@ -12,6 +12,9 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     GameObject flecha;
 
+    [SerializeField]
+    GameObject secondFlecha;
+
     private void Awake()
     {
         firstText = transform.GetChild(0).gameObject;
@@ -35,6 +38,8 @@ public class Tutorial : MonoBehaviour
             secondText.GetComponentInChildren<Animator>().SetBool("Selected", false);
             firstText.GetComponentInChildren<Text>().text = "<- Spawn babyRabbit";
 
+            secondFlecha.SetActive(false);
+
             if (FindObjectOfType<Trampoline_Minion>() != null)
             {
                 trampolineBoy = FindObjectOfType<Trampoline_Minion>();
@@ -45,7 +50,9 @@ public class Tutorial : MonoBehaviour
         {
             firstText.GetComponentInChildren<Animator>().SetBool("Selected", false);
             secondText.GetComponentInChildren<Animator>().SetBool("Selected", true);
-            secondText.GetComponentInChildren<Text>().text = "Move babyRabbit                                                 <- WASD/LeftJoystick";
+            secondText.GetComponentInChildren<Text>().text = "Move babyRabbit                                                    WASD/LeftJoystick";
+
+            secondFlecha.SetActive(true);
 
             if (trampolineBoy != null && trampolineBoy.transform.position.y < -2.5f)
             {
@@ -58,6 +65,8 @@ public class Tutorial : MonoBehaviour
             secondText.GetComponentInChildren<Animator>().SetBool("Selected", false);
             firstText.GetComponentInChildren<Text>().text = "<- Make mamaRabbit walk";
             flecha.SetActive(false);
+
+            secondFlecha.SetActive(false);
 
             if (trampolineBoy != null && trampolineBoy.transform.position.y > -2.5f) parte = parteDelTutorial.move;
 
