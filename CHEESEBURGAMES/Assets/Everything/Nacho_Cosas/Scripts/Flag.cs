@@ -9,6 +9,8 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Chicken"))
         {
+            FindObjectOfType<ParticleManager>().PlayParticle("Carrot_Particle", transform.position);
+
             FindObjectOfType<AudioManager>().Play("Button", 1);
 
             BasicMovement[] allBasicMovement = FindObjectsOfType<BasicMovement>();

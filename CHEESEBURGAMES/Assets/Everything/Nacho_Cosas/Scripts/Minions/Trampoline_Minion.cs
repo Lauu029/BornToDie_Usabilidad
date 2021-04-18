@@ -53,8 +53,4 @@ public class Trampoline_Minion : MonoBehaviour
         //}
     }
 
-    private void Update()
-    {
-        Debug.Log("trampolineJumpForce = " + trampolineJumpForce);
-    }
 }

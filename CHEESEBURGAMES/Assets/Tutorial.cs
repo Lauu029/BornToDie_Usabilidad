@@ -25,7 +25,6 @@ public class Tutorial : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("parte = " + parte);
 
         if (parte == parteDelTutorial.spawnRabbit)
         {

@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427322781125501051, guid: 67b852a548e365541b1b95e26b17ee88, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4427322781125501051, guid: 67b852a548e365541b1b95e26b17ee88, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,8 +703,9 @@ GameObject:
   - component: {fileID: 946426373}
   - component: {fileID: 946426372}
   - component: {fileID: 946426371}
+  - component: {fileID: 946426375}
   - component: {fileID: 946426374}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -788,11 +789,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 0ed70e3d8f2aa074fba8c7cd114d4dde, type: 2}
-  isGlobal: 0
+  sharedProfile: {fileID: 11400000, guid: 2857c01a6e737514c91ae3367efe0bbc, type: 2}
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &946426375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946426370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 946426373}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!95 &1028330804 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6426362822833694010, guid: 05d8741262c242f40ae9d6eb765277de, type: 3}
@@ -3286,7 +3347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699765197466652260, guid: 538a9c6aa0e9f1a41b09f79a4ec1043f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2699765197466652260, guid: 538a9c6aa0e9f1a41b09f79a4ec1043f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3419,15 +3480,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392591531630660758, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392591532210998525, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392591532281958722, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392591532489547332, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_Pivot.x
@@ -3523,11 +3584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392591532601725115, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392591533189200581, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544520448018027964, guid: d78997f3e5513cb4b87c204110878ec5, type: 3}
       propertyPath: m_Text
@@ -5419,310 +5480,116 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1714004523}
     m_ColliderPaths:
-    - - X: -52440435
-        Y: 15059624
-      - X: -59940376
-        Y: 15059624
-      - X: -59940376
-        Y: 60059565
-      - X: -59940435
-        Y: 60059624
-      - X: -75059561
-        Y: 60059624
-      - X: -75059620
-        Y: 60059565
-      - X: -75059620
+    - - X: 82440472
+        Y: 22559524
+      - X: 82440472
+        Y: -7440476
+      - X: 59940476
+        Y: -7440476
+      - X: 59940476
+        Y: -14107143
+      - X: 60892860
+        Y: -15059524
+      - X: 67440480
+        Y: -15059524
+      - X: 67440480
+        Y: -21607144
+      - X: 68392856
+        Y: -22559524
+      - X: 82440472
+        Y: -22559524
+      - X: 82440472
+        Y: -37440476
+      - X: 30059524
+        Y: -37440476
+      - X: 30059524
+        Y: 7440476
+      - X: 36607144
+        Y: 7440476
+      - X: 37559524
+        Y: 8392857
+      - X: 37559524
+        Y: 14940476
+      - X: 44107140
+        Y: 14940476
+      - X: 45059524
+        Y: 15892857
+      - X: 45059524
+        Y: 22559524
+      - X: 14940476
+        Y: 22559524
+      - X: 14940476
+        Y: 7559523
+      - X: 7440476
+        Y: 7559523
+      - X: 7440476
+        Y: -37440476
+      - X: -14940476
+        Y: -37440476
+      - X: -14940476
+        Y: -22440476
+      - X: -52440476
+        Y: -22440476
+      - X: -52440476
+        Y: 15059524
+      - X: -59940476
+        Y: 15059524
+      - X: -59940476
         Y: 60059524
       - X: -90059528
         Y: 60059524
-      - X: -90059528
-        Y: 30059624
-      - X: -90059569
-        Y: 30059624
-      - X: -90059628
-        Y: 30059565
-      - X: -90059628
-        Y: 22440435
-      - X: -90059569
-        Y: 22440376
-      - X: -90059528
-        Y: 22440376
       - X: -90059528
         Y: -51607140
       - X: -89107144
         Y: -52559524
-      - X: -60059624
+      - X: 89107144
         Y: -52559524
-      - X: -60059624
-        Y: -52559565
-      - X: -60059565
-        Y: -52559624
-      - X: -29940435
-        Y: -52559624
-      - X: -29940376
-        Y: -52559565
-      - X: -29940376
-        Y: -52559524
-      - X: -22559624
-        Y: -52559524
-      - X: -22559624
-        Y: -52559565
-      - X: -22559565
-        Y: -52559624
-      - X: -7440435
-        Y: -52559624
-      - X: -7440376
-        Y: -52559565
-      - X: -7440376
-        Y: -52559524
-      - X: 14940376
-        Y: -52559524
-      - X: 14940376
-        Y: -52559565
-      - X: 14940435
-        Y: -52559624
-      - X: 30059565
-        Y: -52559624
-      - X: 30059624
-        Y: -52559565
-      - X: 30059624
-        Y: -52559524
-      - X: 37440376
-        Y: -52559524
-      - X: 37440376
-        Y: -52559565
-      - X: 37440435
-        Y: -52559624
-      - X: 45059565
-        Y: -52559624
-      - X: 45059624
-        Y: -52559565
-      - X: 45059624
-        Y: -52559524
-      - X: 74940380
-        Y: -52559524
-      - X: 74940380
-        Y: -52559565
-      - X: 74940439
-        Y: -52559624
-      - X: 89107164
-        Y: -52559624
-      - X: 89107201
-        Y: -52559609
-      - X: 90059613
-        Y: -51607197
-      - X: 90059628
-        Y: -51607160
-      - X: 90059628
-        Y: -45059624
-      - X: 96607164
-        Y: -45059624
-      - X: 96607201
-        Y: -45059609
-      - X: 97559613
-        Y: -44107197
-      - X: 97559628
-        Y: -44107160
-      - X: 97559628
-        Y: -37440435
-      - X: 97559569
-        Y: -37440376
+      - X: 90059528
+        Y: -51607140
+      - X: 90059528
+        Y: -45059524
+      - X: 96607144
+        Y: -45059524
       - X: 97559528
-        Y: -37440376
-      - X: 97559528
-        Y: -30059624
-      - X: 97559569
-        Y: -30059624
-      - X: 97559628
-        Y: -30059565
-      - X: 97559628
-        Y: -22440435
-      - X: 97559569
-        Y: -22440376
-      - X: 97559528
-        Y: -22440376
-      - X: 97559528
-        Y: -15059624
-      - X: 97559569
-        Y: -15059624
-      - X: 97559628
-        Y: -15059565
-      - X: 97559628
-        Y: -7440435
-      - X: 97559569
-        Y: -7440376
-      - X: 97559528
-        Y: -7440376
+        Y: -44107140
       - X: 97559528
         Y: 22559524
-      - X: 82440472
-        Y: 22559524
-      - X: 82440472
-        Y: 59623
-      - X: 82440431
-        Y: 59623
-      - X: 82440372
-        Y: 59564
-      - X: 82440372
-        Y: -7440376
-      - X: 59940435
-        Y: -7440376
-      - X: 59940376
-        Y: -7440435
-      - X: 59940376
-        Y: -14107163
-      - X: 59940391
-        Y: -14107200
-      - X: 60892803
-        Y: -15059609
-      - X: 60892840
-        Y: -15059624
-      - X: 67440380
-        Y: -15059624
-      - X: 67440380
-        Y: -21607164
-      - X: 67440395
-        Y: -21607201
-      - X: 68392799
-        Y: -22559609
-      - X: 68392836
-        Y: -22559624
-      - X: 82440372
-        Y: -22559624
-      - X: 82440372
-        Y: -37440376
-      - X: 52440435
-        Y: -37440376
-      - X: 52440376
-        Y: -37440435
-      - X: 52440376
-        Y: -37440376
-      - X: 44940435
-        Y: -37440376
-      - X: 44940376
-        Y: -37440435
-      - X: 44940376
-        Y: -37440376
-      - X: 30059624
-        Y: -37440376
-      - X: 30059624
-        Y: 7440376
-      - X: 36607164
-        Y: 7440376
-      - X: 36607201
-        Y: 7440391
-      - X: 37559609
-        Y: 8392800
-      - X: 37559624
-        Y: 8392837
-      - X: 37559624
-        Y: 14940376
-      - X: 44107160
-        Y: 14940376
-      - X: 44107197
-        Y: 14940391
-      - X: 45059609
-        Y: 15892800
-      - X: 45059624
-        Y: 15892837
-      - X: 45059624
-        Y: 22559565
-      - X: 45059565
-        Y: 22559624
-      - X: 14940435
-        Y: 22559624
-      - X: 14940376
-        Y: 22559565
-      - X: 14940376
-        Y: 15059624
-      - X: 14940435
-        Y: 15059624
-      - X: 14940376
-        Y: 15059565
-      - X: 14940376
-        Y: 7559623
-      - X: 7440435
-        Y: 7559623
-      - X: 7440376
-        Y: 7559564
-      - X: 7440376
-        Y: -29940376
-      - X: 7440435
-        Y: -29940376
-      - X: 7440376
-        Y: -29940435
-      - X: 7440376
-        Y: -37440376
-      - X: -59564
-        Y: -37440376
-      - X: -59623
-        Y: -37440435
-      - X: -59623
-        Y: -37440376
-      - X: -7559564
-        Y: -37440376
-      - X: -7559623
-        Y: -37440435
-      - X: -7559623
-        Y: -37440476
-      - X: -14940376
-        Y: -37440476
-      - X: -14940376
-        Y: -22440435
-      - X: -14940435
-        Y: -22440376
-      - X: -30059565
-        Y: -22440376
-      - X: -30059624
-        Y: -22440435
-      - X: -30059624
-        Y: -22440476
-      - X: -44940376
-        Y: -22440476
-      - X: -44940376
-        Y: -22440435
-      - X: -44940435
-        Y: -22440376
-      - X: -52440376
-        Y: -22440376
-      - X: -52440376
-        Y: 15059565
   m_CompositePaths:
     m_Paths:
-    - - {x: 8.910709, y: -5.255961}
-      - {x: 9.005963, y: -5.160705}
-      - {x: 9.005992, y: -4.5059624}
-      - {x: 9.660728, y: -4.5059533}
-      - {x: 9.755963, y: -4.410705}
+    - - {x: 8.910704, y: -5.2559524}
+      - {x: 9.005953, y: -5.160703}
+      - {x: 9.005982, y: -4.5059524}
+      - {x: 9.660722, y: -4.5059447}
+      - {x: 9.755953, y: -4.410703}
       - {x: 9.755923, y: 2.2559524}
       - {x: 8.244047, y: 2.2559233}
-      - {x: 8.244008, y: -0.7440376}
-      - {x: 5.9940376, y: -0.7440728}
-      - {x: 5.9940467, y: -1.4107276}
-      - {x: 6.089295, y: -1.5059624}
-      - {x: 6.7440386, y: -1.5059918}
-      - {x: 6.744047, y: -2.1607277}
-      - {x: 6.8392944, y: -2.2559624}
-      - {x: 8.244037, y: -2.255992}
-      - {x: 8.244008, y: -3.7440376}
-      - {x: 3.0059624, y: -3.744008}
-      - {x: 3.005992, y: 0.7440376}
-      - {x: 3.6607277, y: 0.7440467}
-      - {x: 3.7559624, y: 0.8392945}
-      - {x: 3.755992, y: 1.4940376}
-      - {x: 4.410727, y: 1.4940467}
-      - {x: 4.5059624, y: 1.5892946}
-      - {x: 4.505927, y: 2.2559624}
-      - {x: 1.4940376, y: 2.2559273}
-      - {x: 1.4940082, y: 0.7559623}
-      - {x: 0.7440376, y: 0.7559271}
-      - {x: 0.7440082, y: -3.7440376}
-      - {x: -1.4940376, y: -3.7440186}
-      - {x: -1.4940728, y: -2.2440376}
-      - {x: -5.2440376, y: -2.2440083}
-      - {x: -5.244073, y: 1.5059624}
-      - {x: -5.9940376, y: 1.5059918}
-      - {x: -5.994073, y: 6.0059624}
+      - {x: 8.244018, y: -0.7440476}
+      - {x: 5.9940476, y: -0.7440769}
+      - {x: 5.9940553, y: -1.4107219}
+      - {x: 6.089297, y: -1.5059524}
+      - {x: 6.744048, y: -1.5059818}
+      - {x: 6.744056, y: -2.160722}
+      - {x: 6.839296, y: -2.2559524}
+      - {x: 8.244047, y: -2.255982}
+      - {x: 8.244018, y: -3.7440476}
+      - {x: 3.0059524, y: -3.7440186}
+      - {x: 3.005982, y: 0.7440476}
+      - {x: 3.660722, y: 0.7440552}
+      - {x: 3.7559524, y: 0.8392965}
+      - {x: 3.7559817, y: 1.4940476}
+      - {x: 4.410722, y: 1.4940553}
+      - {x: 4.5059524, y: 1.5892965}
+      - {x: 4.5059233, y: 2.2559524}
+      - {x: 1.4940476, y: 2.2559233}
+      - {x: 1.4940182, y: 0.7559523}
+      - {x: 0.7440476, y: 0.75592303}
+      - {x: 0.7440182, y: -3.7440476}
+      - {x: -1.4940476, y: -3.7440186}
+      - {x: -1.494077, y: -2.2440476}
+      - {x: -5.2440476, y: -2.2440183}
+      - {x: -5.2440767, y: 1.5059524}
+      - {x: -5.9940476, y: 1.5059818}
+      - {x: -5.9940767, y: 6.0059524}
       - {x: -9.005953, y: 6.0059233}
       - {x: -9.005946, y: -5.160722}
       - {x: -8.910704, y: -5.2559524}
@@ -5779,7 +5646,7 @@ Transform:
   - {fileID: 1298513337}
   - {fileID: 2101397456}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787231955
 GameObject:
@@ -5949,7 +5816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4374645947259724133, guid: 47cc908c04d586248b83b3c26ad0f478, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4374645947259724133, guid: 47cc908c04d586248b83b3c26ad0f478, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6121,7 +5988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8496936228911995596, guid: 025a19d3515f28f4cbf32c0536274e43, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8496936228911995596, guid: 025a19d3515f28f4cbf32c0536274e43, type: 3}
       propertyPath: m_LocalPosition.x

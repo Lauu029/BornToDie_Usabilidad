@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("numberOfLevels = " + numberOfLevels);
-        Debug.Log("levelPlaying = " + levelPlaying);
-        Debug.Log("currentLevel = " + currentLevel);
+        //Debug.Log("numberOfLevels = " + numberOfLevels);
+        //Debug.Log("levelPlaying = " + levelPlaying);
+        //Debug.Log("currentLevel = " + currentLevel);
         //if (Input.GetKeyDown("k"))
         //{
         //    Debug.Log("k");

@@ -51,4 +51,15 @@ public class ParticleManager : MonoBehaviour
         GameObject newParticle = Instantiate(p, particlePosition, Quaternion.identity, inThisTransform);
         p.SetActive(false);
     }
+
+    public void PlayParticleWithThisDirectionAndScale(string particleName, Vector3 particlePosition, float direction, float scale)
+    {
+        GameObject p = Array.Find(allParticles, gameObject => gameObject.name == particleName);
+
+        p.SetActive(true);
+        GameObject newParticle = Instantiate(p, particlePosition, Quaternion.identity);
+        p.SetActive(false);
+        newParticle.transform.GetChild(0).localScale = new Vector3(scale * direction, scale, 0);
+        Destroy(newParticle, 5);
+    }
 }

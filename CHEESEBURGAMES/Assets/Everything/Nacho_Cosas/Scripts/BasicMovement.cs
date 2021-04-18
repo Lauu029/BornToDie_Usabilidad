@@ -22,11 +22,16 @@ public class BasicMovement : MonoBehaviour
     Rigidbody2D rb;
     bool onGround;
 
+    
+    DustParticles dustParticles;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         gfxAnimator = gfx.GetComponent<Animator>();
+
+        dustParticles = GetComponentInChildren<DustParticles>();
 
         rb.gravityScale = gravityScale;
     }
@@ -56,6 +61,7 @@ public class BasicMovement : MonoBehaviour
     {
         if ((Input.GetKeyDown("w") || Input.GetButtonDown("Jump")) && onGround)
         {
+            dustParticles.particleJump();
             GoUp(jumpForce);
             FindObjectOfType<AudioManager>().Play("Jump", 1);
         }
