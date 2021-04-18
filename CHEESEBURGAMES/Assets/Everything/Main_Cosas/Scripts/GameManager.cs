@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [HideInInspector]
-    public int currentLevel  = 20; // Ultimo nivel desbloqueado
+    public int currentLevel  = 1; // Ultimo nivel desbloqueado
     [HideInInspector]
-    public int levelPlaying = 5;
+    public int levelPlaying = 1;
     [HideInInspector]
-    int numberOfLevels = 20;
+    int numberOfLevels = 10;
 
     [SerializeField]
     GameObject rabbitTransition;
@@ -46,11 +46,6 @@ public class GameManager : MonoBehaviour
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3);
     }
-
-    //void setNumberOfLevels()
-    //{
-
-    //}
 
     private void Update()
     {
@@ -96,7 +91,7 @@ public class GameManager : MonoBehaviour
         // Transition
         newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3f);
-        Invoke("NoCoroutine", 2);
+        Invoke("NoCoroutine", 1.5f);
     }
 
     void NoCoroutine()

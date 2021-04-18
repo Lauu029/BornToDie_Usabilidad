@@ -9,6 +9,9 @@ public class Tutorial : MonoBehaviour
     GameObject firstText;
     GameObject secondText;
 
+    [SerializeField]
+    GameObject flecha;
+
     private void Awake()
     {
         firstText = transform.GetChild(0).gameObject;
@@ -54,6 +57,7 @@ public class Tutorial : MonoBehaviour
             firstText.GetComponentInChildren<Animator>().SetBool("Selected", true);
             secondText.GetComponentInChildren<Animator>().SetBool("Selected", false);
             firstText.GetComponentInChildren<Text>().text = "<- Make mamaRabbit walk";
+            flecha.SetActive(false);
 
             if (trampolineBoy != null && trampolineBoy.transform.position.y > -2.5f) parte = parteDelTutorial.move;
 
@@ -63,7 +67,8 @@ public class Tutorial : MonoBehaviour
         {
             firstText.GetComponentInChildren<Animator>().SetBool("Selected", false);
             secondText.GetComponentInChildren<Animator>().SetBool("Selected", true);
-            secondText.GetComponentInChildren<Text>().color = new Color(1, 0.1949536f, 0);
+            //secondText.GetComponentInChildren<Text>().color = new Color(1, 0.1949536f, 0);
+            secondText.GetComponentInChildren<Text>().color = Color.white;
             secondText.GetComponentInChildren<Text>().text = "Get to the carrot                              at any price >:) ->";
         }
 

@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8968651311710393952}
   - component: {fileID: 7611782614971013554}
+  - component: {fileID: 7931576261105937512}
   m_Layer: 6
   m_Name: voxCollider
   m_TagString: Untagged
@@ -68,13 +69,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512153602232056648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 40d1150c633c0314986322ae6811772b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.31315452, y: 0.04430008}
+  m_Offset: {x: 0.24374056, y: 0.19006944}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -85,8 +86,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07164121, y: 1.1201465}
+  m_Size: {x: 0.08552396, y: 0.8286078}
   m_EdgeRadius: 0
+--- !u!70 &7931576261105937512
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512153602232056648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 40d1150c633c0314986322ae6811772b, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1001575, y: 0.052711546}
+  m_Size: {x: 0.7695489, y: 1.1680905}
+  m_Direction: 0
 --- !u!1 &4523090777542072253
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +221,7 @@ GameObject:
   - component: {fileID: 4523090779196818628}
   - component: {fileID: 4523090779196818629}
   - component: {fileID: 4523090779196818630}
+  - component: {fileID: 8261233829816955167}
   m_Layer: 6
   m_Name: Trampoline_Minion
   m_TagString: Untagged
@@ -288,7 +306,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09024705}
+  m_Offset: {x: 0.0011610389, y: 0.041639507}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -299,8 +317,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53118324, y: 0.81950593}
+  m_Size: {x: 0.47516763, y: 0.55573285}
   m_EdgeRadius: 0
+--- !u!70 &8261233829816955167
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523090779196818631}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.15754494}
+  m_Size: {x: 0.48085174, y: 0.6849103}
+  m_Direction: 0
 --- !u!1 &4523090779372015965
 GameObject:
   m_ObjectHideFlags: 0

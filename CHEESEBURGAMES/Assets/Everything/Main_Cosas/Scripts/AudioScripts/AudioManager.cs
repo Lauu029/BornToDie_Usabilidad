@@ -52,14 +52,16 @@ public class AudioManager : MonoBehaviour
         {
             case "MainMenu":
                 currentTypeOfMusic = typeOfMusic.mainMenu;
-                Stop("Win");
+                Stop("CajaMusica");
+                Stop("CreepyAmbient");
                 Stop("Gameplay");
                 Play("MainMenu", 1);
                 break;
             case "Win":
                 currentTypeOfMusic = typeOfMusic.win;
                 Stop("Gameplay");
-                Play("Win", 1);
+                Play("CajaMusica", 1);
+                Play("CreepyAmbient", 1);
                 break;
             default:
                 if (currentTypeOfMusic != typeOfMusic.gameplay)

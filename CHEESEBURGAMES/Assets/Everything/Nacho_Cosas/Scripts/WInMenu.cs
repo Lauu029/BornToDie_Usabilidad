@@ -21,6 +21,8 @@ public class WInMenu : MonoBehaviour
     private void Update()
     {
         if (canSkip && Input.anyKeyDown)
-            SceneManager.LoadScene("MainMenu");
+        {
+            GameManager.GetInstance().ChangeScene("MainMenu");
+        }
     }
 }

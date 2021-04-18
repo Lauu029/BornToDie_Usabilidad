@@ -59,7 +59,7 @@ public class BasicMovement : MonoBehaviour
 
     void CheckJump()
     {
-        if ((Input.GetKeyDown("w") || Input.GetButtonDown("Jump")) && onGround)
+        if ((Input.GetKeyDown("w") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && onGround)
         {
             dustParticles.particleJump();
             GoUp(jumpForce);

@@ -60,7 +60,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (thisType == typeOfPauseMenu.inGame) // Es del juego
         {
-            if (Input.GetButtonDown("Pause")) // Pausar/Despausar
+            if (Input.GetButtonDown("Pause") && !GameManager.GetInstance().usingCoroutine) // Pausar/Despausar
             {
                 if (paused) ResumeSelect();
                 else PauseSelect();
@@ -231,7 +231,7 @@ public class PauseMenuScript : MonoBehaviour
                     case 2:
                         MainMenuSelect();
                         break;
-                    case 4:
+                    case 5:
                         QuitSelect();
                         break;
                 }
@@ -293,7 +293,6 @@ public class PauseMenuScript : MonoBehaviour
     public void QuitSelect()
     {
         Application.Quit();
-        Debug.Log("QuitSelect");
     }
 
     public void RestartSelect()
