@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        
-        currentLevel = PlayerPrefs.GetInt("KurrentLevel", 1);
+        // SIMULACION PLAYERPREF
+        currentLevel = 1;
 
         // InitialTransition
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
@@ -146,10 +146,7 @@ public class GameManager : MonoBehaviour
 
             // Si se ha completado el nivel por primera vez, sumarle 1 al "current level"
             if (levelPlaying > currentLevel)
-            {
                 currentLevel = levelPlaying;
-                PlayerPrefs.SetInt("KurrentLevel", currentLevel);
-            }
 
             // Cargar siguiente nivel
             ChangeLevel(levelPlaying);

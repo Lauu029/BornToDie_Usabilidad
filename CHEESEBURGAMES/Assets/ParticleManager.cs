@@ -45,20 +45,6 @@ public class ParticleManager : MonoBehaviour
 
     public void InstantiateConstantParticleInThis(string particleName, Vector3 particlePosition, Transform inThisTransform)
     {
-        Debug.Log("particleName = " + particleName);
-
-        //for (int i = 0; i < allParticles.Length; i++)
-        //{
-        //    Debug.Log("allParticles = " + allParticles[i]);
-        //}
-
-        allParticles = new GameObject[transform.childCount];
-        for (int i = 0; i < allParticles.Length; i++)
-        {
-            allParticles[i] = transform.GetChild(i).gameObject;
-            allParticles[i].SetActive(false);
-        }
-
         GameObject p = Array.Find(allParticles, gameObject => gameObject.name == particleName);
 
         p.SetActive(true);

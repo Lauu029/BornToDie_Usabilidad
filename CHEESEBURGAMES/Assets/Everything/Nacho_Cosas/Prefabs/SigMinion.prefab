@@ -313,8 +313,8 @@ MonoBehaviour:
   - FLY
   contentsMinions:
   - Can go throught little places
-  - Other rabbits can bounce really high on it
-  - Explode after 5 seconds, destroying gray brick walls
+  - Other rabbits can bounce really high on him
+  - Explodes after 5 seconds, destroying gray brick walls
   - Can fly, other rabbits can use him as a platform
   distanceBetweenImages: 167
   chicken: {fileID: 5079192680038932387, guid: c45888d0f1165764fa9f0f53c7c90ee6, type: 3}
