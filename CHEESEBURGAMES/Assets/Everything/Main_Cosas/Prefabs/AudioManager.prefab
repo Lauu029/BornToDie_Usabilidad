@@ -118,19 +118,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pause
     clip: {fileID: 8300000, guid: 6482e7772613dac49a2ea0683374af33, type: 3}
-    volume: 0.5
-    maxVolume: 0.5
+    volume: 0.2
+    maxVolume: 0.2
     pitch: 1
     loop: 0
     music: 0
     source: {fileID: 0}
   - name: CajaMusica
-    clip: {fileID: 8300000, guid: 32f40fd367b6a374fb3794a78bbf2ded, type: 3}
-    volume: 1
-    maxVolume: 1
+    clip: {fileID: 8300000, guid: 7c20e920695def44f8b87e2b75681854, type: 3}
+    volume: 0.025
+    maxVolume: 0.025
     pitch: 1
     loop: 1
-    music: 1
+    music: 0
     source: {fileID: 0}
   - name: CreepyAmbient
     clip: {fileID: 8300000, guid: 80f83605aa5705b44900ebab4f237dc5, type: 3}

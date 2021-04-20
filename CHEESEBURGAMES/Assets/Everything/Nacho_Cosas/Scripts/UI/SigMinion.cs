@@ -235,6 +235,8 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Debug.LogWarning("ONPOINTER ENTER MINION BUTTON");
+
         if (ordenMinionIndex != ordenOfminions.Length + 1) // Si queda algun Minion por spawnear
         {
             onPointer = true;

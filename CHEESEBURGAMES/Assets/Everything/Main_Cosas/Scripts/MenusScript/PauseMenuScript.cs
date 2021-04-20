@@ -62,6 +62,8 @@ public class PauseMenuScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Pause") && !GameManager.GetInstance().usingCoroutine) // Pausar/Despausar
             {
+                FindObjectOfType<AudioManager>().Play("Pause", 1); // Sonido
+
                 if (paused) ResumeSelect();
                 else PauseSelect();
             }
@@ -186,7 +188,7 @@ public class PauseMenuScript : MonoBehaviour
         if (thisType == typeOfPauseMenu.inGame)
         {
             if (paused)
-                FindObjectOfType<AudioManager>().Play("Pause", 1); // Sonido
+                FindObjectOfType<AudioManager>().Play("Button", 1); // Sonido
         } else if (thisType == typeOfPauseMenu.inMainMenu)
         {
             if (cameraTransform.position.y == -20)
