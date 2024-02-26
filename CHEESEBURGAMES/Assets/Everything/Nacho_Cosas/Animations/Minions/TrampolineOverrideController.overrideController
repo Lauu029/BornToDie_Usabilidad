@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TrampolineOverrideController
+  m_Controller: {fileID: 9100000, guid: 82f410b0d1d3ee742b8212a8ed1d9fd4, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9687dbedb49788145ade3444ec25f77d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5b2e4a975e6ed5d4e9e531aa0fe4b210, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 641022afd77a38546a97ddb583f8ed8e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3b32243235cdeec4487f6a17d9324adc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b96f80c83f3901d4a8d1ce3133f92ae1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9813ca96c2c66cc4e816ab04055c2474, type: 2}
