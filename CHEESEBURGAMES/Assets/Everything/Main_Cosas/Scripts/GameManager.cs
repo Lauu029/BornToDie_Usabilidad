@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [HideInInspector]
-    public int currentLevel  = 1; // Ultimo nivel desbloqueado
+    public int currentLevel  = 6; // Ultimo nivel desbloqueado
     [HideInInspector]
     public int levelPlaying = 1;
     [HideInInspector]
-    int numberOfLevels = 10;
+    int numberOfLevels = 6;
 
     [SerializeField]
     GameObject rabbitTransition;
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        
-        currentLevel = PlayerPrefs.GetInt("KurrentLevel", 1);
+        PlayerPrefs.SetInt("KurrentLevel", 6);
+        //currentLevel = PlayerPrefs.GetInt("KurrentLevel", 6);
 
         // InitialTransition
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);

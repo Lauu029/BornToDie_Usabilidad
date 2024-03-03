@@ -46,8 +46,10 @@ public class LevelSelectorMenu : MonoBehaviour
             allButtons[i] = buttonGroup.GetChild(i);
 
             // Comprobar si es un "Boton" o un "Slider"
-            if (allButtons[i].GetComponent<ButtonScript>() != null) // Es un boton
+            if (allButtons[i].GetComponent<ButtonScript>() != null)
+            { // Es un boton
                 allButtons[i].GetComponent<ButtonScript>().thisButtonIndex = i;
+            }
             else // Es un slider
                 allButtons[i].GetComponent<SliderScript>().thisButtonIndex = i;
         }
@@ -59,21 +61,21 @@ public class LevelSelectorMenu : MonoBehaviour
         // DIBUJAR CANDADOS
 
         // Recorre desde el ultimo nivel desbloqueado + 1 hasta el penultimo boton (no incluye el boton "Go Back")
-        for (int i = GameManager.GetInstance().currentLevel; i < allButtons.Length - 1; i++)
-        {
-            Vector3 instantiatePosition;
+        //for (int i = GameManager.GetInstance().currentLevel; i < allButtons.Length - 1; i++)
+        //{
+        //    Vector3 instantiatePosition;
 
-            instantiatePosition = new Vector3(allButtons[i].position.x, allButtons[i].position.y); // posicion de la imagen roja
-            GameObject newGameObject = Instantiate(image, instantiatePosition, Quaternion.identity, canvas);
-            newGameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
-            newGameObject.transform.localScale = new Vector3(1f, 0.06f);
+        //    instantiatePosition = new Vector3(allButtons[i].position.x, allButtons[i].position.y); // posicion de la imagen roja
+        //    GameObject newGameObject = Instantiate(image, instantiatePosition, Quaternion.identity, canvas);
+        //    newGameObject.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+        //    newGameObject.transform.localScale = new Vector3(1f, 0.06f);
 
-            instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y + 0.01f); // posicion del candado
-            Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
+        //    instantiatePosition = new Vector3(allButtons[i].position.x + 2, allButtons[i].position.y + 0.01f); // posicion del candado
+        //    Instantiate(locker.gameObject, instantiatePosition, Quaternion.identity, canvas);
 
-            // Cambiar color del boton
-            allButtons[i].GetComponentInChildren<Text>().color = Color.red;
-        }
+        //    // Cambiar color del boton
+        //    allButtons[i].GetComponentInChildren<Text>().color = Color.red;
+        //}
 
         buttonIndex = allButtons.Length - 1;
         Select(allButtons[allButtons.Length - 1]);

@@ -24,14 +24,10 @@ public class MouseCursor : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             cursor.color = Color.black;
-            timer = 0;
-        }
-        if (cursor.color == Color.black)
-            timer += Time.deltaTime;
-        if(timer>=0.15 && cursor.color == Color.black)
-        {
-            cursor.color = cursorColor;
             
+        }
+        else if(Input.GetMouseButtonUp(0)) {
+            cursor.color = cursorColor;
         }
     }
 }
