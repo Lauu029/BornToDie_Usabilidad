@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,7 +74,10 @@ public class Tracker : MonoBehaviour
     public void TrackEvent(TrackerEvent tEvent)
     {
         //Rellenar timestamp, event_ID, session_ID... del evento antes de enviarlo a la cola
-    
+        //timestamp posix desde 1 de Enero de 1970:
+        DateTimeOffset now = DateTimeOffset.Now;
+        tEvent.Timestamp = now.ToUnixTimeSeconds();
+
         persistenceStrategy.Send(tEvent);
     }
 }

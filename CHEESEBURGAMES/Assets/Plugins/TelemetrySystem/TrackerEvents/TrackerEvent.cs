@@ -14,10 +14,16 @@ public abstract class TrackerEvent
 
     //Atributos comunes que tienen todos los eventos, el tracker debe rellenarlos en TrackEvent()
     #region Common_Events_Attributes
-    protected float timestamp;
+    protected long timestamp;
     protected string event_ID;
     protected string session_ID;
-    #endregion 
+    #region Getters&Setters
+    public long Timestamp { set { timestamp = value; } }
+    public string Event_ID { set { event_ID = value;  } }
+    public string Session_ID { set { session_ID = value; } }
+    #endregion
+    #endregion
+
 
     public virtual string ToJson() {
         return "NOT_IMPLEMENTED_YET";
