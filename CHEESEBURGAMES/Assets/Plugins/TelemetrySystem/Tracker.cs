@@ -70,5 +70,10 @@ public class Tracker : MonoBehaviour
         }
     }
 
-
+    public void TrackEvent(TrackerEvent tEvent)
+    {
+        //Rellenar timestamp, event_ID, session_ID... del evento antes de enviarlo a la cola
+    
+        persistenceStrategy.Send(tEvent);
+    }
 }

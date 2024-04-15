@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IPersistence
 {
-    public void Send();
+    public void Send(TrackerEvent tEvent);
 
     public void Flush();
 }
