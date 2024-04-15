@@ -34,11 +34,13 @@ public class Tracker : MonoBehaviour
         }
     }
 
-    public static bool Init() //Eventos de inicio de sesión, plataforma, SO...
+    public static bool Init(PersistenceType persistenceType) //Eventos de inicio de sesión, plataforma, SO...
     {
         Assert.IsTrue(!initialized);
         //Al ser monobehaviour no hay que crear nueva instancia
         //Creación de una posible hebra que volcará los datos
+        instance.ChoosePersistenceStrategy(persistenceType);
+
         initialized= true;
         return true;
     }
@@ -53,14 +55,20 @@ public class Tracker : MonoBehaviour
     }
     #endregion
 
-    public static IPersistence CreatePersistenceObj(PersistenceType pType)
+    IPersistence persistenceStrategy;
+
+    // Puede ser público si queremos habilitar que se cambie el tipo de persistencia a mitad del tracker
+    private void ChoosePersistenceStrategy(PersistenceType pType)
     {
         switch (pType) 
         { 
         case PersistenceType.FILE_PERSISTENCE:
-                //return new FilePersistence();
+                persistenceStrategy = new FilePersistence();
+                break;
         default:
-            return null;
+                break;
         }
     }
+
+
 }
