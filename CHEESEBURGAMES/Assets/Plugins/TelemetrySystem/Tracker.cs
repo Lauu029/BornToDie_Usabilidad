@@ -1,57 +1,53 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
+using System.Diagnostics;
 
 public enum PersistenceType
 {
-    FILE_PERSISTENCE = 0
+    FILE = 0,
+    SERVER
 }
 
-public class Tracker : MonoBehaviour
+public enum SerializationType
+{
+    JSON = 0,
+    CSV
+}
+
+public class Tracker
 {
     #region ExplicitInit_Singleton
     private static Tracker instance = null;
-    private static bool initialized = false;
+
     public static Tracker Instance
     {
         get { 
-            Assert.IsTrue(initialized);
+            Debug.Assert(instance != null);
             return instance; 
         }
     }
 
-    private void Awake()
+    public static bool Init(PersistenceType persistenceType, SerializationType serializationType) //Eventos de inicio de sesión, plataforma, SO...
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+        Debug.Assert(instance== null);
 
-    public static bool Init(PersistenceType persistenceType) //Eventos de inicio de sesión, plataforma, SO...
-    {
-        Assert.IsTrue(!initialized);
+        instance= new Tracker();
         //Al ser monobehaviour no hay que crear nueva instancia
         //Creación de una posible hebra que volcará los datos
         instance.ChoosePersistenceStrategy(persistenceType);
+      
 
-        initialized= true;
         return true;
     }
 
     public static bool End()
     {
-        Assert.IsTrue(initialized);
+        Debug.Assert(instance!= null);
         //Volcado de los datos restantes
         //Cierre de la posible hebra 
-        initialized= false;
+
+        instance=null;
         return true;
     }
     #endregion
@@ -63,13 +59,19 @@ public class Tracker : MonoBehaviour
     {
         switch (pType) 
         { 
-        case PersistenceType.FILE_PERSISTENCE:
-                persistenceStrategy = new FilePersistence();
-                break;
+        case PersistenceType.FILE:
+            persistenceStrategy = new FilePersistence();
+            break;
+        case PersistenceType.SERVER:
+            //TODO server persistence
+            // persistenceStrategy = new ServerPeristence()
+            persistenceStrategy = new FilePersistence();
+            break;
         default:
-                break;
+            break;
         }
     }
+
 
     public void TrackEvent(TrackerEvent tEvent)
     {
