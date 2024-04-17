@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 public class FilePersistence : IPersistence
@@ -21,7 +20,7 @@ public class FilePersistence : IPersistence
         while (eventQueue.Count > 0)
         {
             TrackerEvent tEvent = eventQueue.Dequeue();
-            //TODO: Save into file
+            // TODO: Save into file
             throw new NotImplementedException();
         }
     }
