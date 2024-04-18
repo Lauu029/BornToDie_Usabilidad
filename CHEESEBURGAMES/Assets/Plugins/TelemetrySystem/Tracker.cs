@@ -37,8 +37,8 @@ public class Tracker
 
         instance = new Tracker();
         //Creación de una posible hebra que volcará los datos
-        instance.ChoosePersistenceStrategy(persistenceType);
         instance.ChooseSerializationStrategy(serializationType);
+        instance.ChoosePersistenceStrategy(persistenceType);
 
         // Decidir el ID de sesión único 
         instance.GenerateUniqueID();
@@ -89,12 +89,12 @@ public class Tracker
         switch (pType) 
         { 
         case PersistenceType.FILE:
-            this.persistenceStrategy = new FilePersistence();
+            this.persistenceStrategy = new FilePersistence(this.serializationStrategy);
             break;
         case PersistenceType.SERVER:
             //TODO server persistence
             // persistenceStrategy = new ServerPeristence()
-            this.persistenceStrategy = new FilePersistence();
+            this.persistenceStrategy = new FilePersistence(this.serializationStrategy);
             break;
         default:
             break;
@@ -126,7 +126,7 @@ public class Tracker
     // TODO : preguntar por el nombre de este método
     public void TrackEvent(TrackerEvent tEvent)
     {
-        //Rellenar timestamp, event_ID, session_ID... del evento antes de enviarlo a la cola
+        // Rellenar timestamp, event_ID, session_ID... del evento antes de enviarlo a la cola
 
         tEvent.Session_ID = sessionID;
 
