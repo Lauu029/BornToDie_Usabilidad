@@ -37,8 +37,8 @@ public class Tracker
 
         instance = new Tracker();
         //Creación de una posible hebra que volcará los datos
-        instance.ChoosePersistenceStrategy(persistenceType);
         instance.ChooseSerializationStrategy(serializationType);
+        instance.ChoosePersistenceStrategy(persistenceType);
 
         // Decidir el ID de sesión único 
         instance.GenerateUniqueID();
