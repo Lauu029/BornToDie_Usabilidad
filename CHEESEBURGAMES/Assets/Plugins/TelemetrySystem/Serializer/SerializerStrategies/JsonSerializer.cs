@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class JsonSerializer : ISerializer
 {
-    public string serialize()
+    public string serialize(TrackerEvent trackerEvent)
     {
         return "Por implementar";
     }

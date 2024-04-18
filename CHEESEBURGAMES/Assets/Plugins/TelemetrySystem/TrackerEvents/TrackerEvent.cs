@@ -26,5 +26,6 @@ public abstract class TrackerEvent
 
     public virtual string ToJson() {
         return "NOT_IMPLEMENTED_YET";
+        // aqui deberia usar el serializer que esté activo
     }
 }
