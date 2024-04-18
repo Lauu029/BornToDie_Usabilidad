@@ -6,7 +6,13 @@ public abstract class TrackerEvent
     public enum eventType
     {
         ProgressionEvent,
-        ResourceEvent
+        ResourceEvent,
+        InitLevelEvent,
+        EndLevelEvent,
+        ClickUIRabbitEvent,
+        ClickSpawnedRabbitEvent,
+        ClickGoEvent,
+        ClickBornEvent
     }
 
     protected eventType type;
