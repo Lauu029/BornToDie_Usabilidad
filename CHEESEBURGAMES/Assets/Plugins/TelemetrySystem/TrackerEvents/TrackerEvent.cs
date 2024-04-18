@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization.Json;
 public abstract class TrackerEvent
 {
     public enum eventType
@@ -17,9 +17,19 @@ public abstract class TrackerEvent
     protected string event_ID;
     protected string session_ID;
     #region Getters&Setters
-    public long Timestamp { set { timestamp = value; } }
-    public string Event_ID { set { event_ID = value;  } }
-    public string Session_ID { set { session_ID = value; } }
+
+    public long Timestamp {
+        get { return timestamp; }
+        set { timestamp = value; } 
+    }
+    public string Event_ID
+    {
+        get { return event_ID; }
+        set { event_ID = value;  } }
+    public string Session_ID {
+        get { return session_ID; }
+        set { session_ID = value; }
+    }
     #endregion
     #endregion
 

@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 public interface ISerializer
 {
-    public string serialize();
+    public string serialize(TrackerEvent trackerEvent);
 }

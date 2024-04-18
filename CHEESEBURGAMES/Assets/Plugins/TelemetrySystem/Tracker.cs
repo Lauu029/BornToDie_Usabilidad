@@ -106,12 +106,12 @@ public class Tracker
         switch (sType)
         {
             case SerializationType.JSON:
-                this.serializationStrategy = new JsonSerializer();
+                this.serializationStrategy = new Json_Serializer();
                 break;
             case SerializationType.CSV:
                 // TODO csv serialization
                 // serializationStrategy = new CsvSerializer();
-                this.serializationStrategy = new JsonSerializer();
+                this.serializationStrategy = new Json_Serializer();
                 break;
             default:
                 break;
