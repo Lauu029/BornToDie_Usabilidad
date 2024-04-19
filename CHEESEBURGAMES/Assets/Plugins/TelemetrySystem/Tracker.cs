@@ -36,7 +36,8 @@ public class Tracker
         Debug.Assert(instance == null);
 
         instance = new Tracker();
-        //Creación de una posible hebra que volcará los datos
+
+        instance.eventFactory= new EventFactory();
         instance.ChooseSerializationStrategy(serializationType);
         instance.ChoosePersistenceStrategy(persistenceType);
 
@@ -45,7 +46,7 @@ public class Tracker
 
         // TODO : Evento de inicio de sesión
 
-        // Programar cada cuanto tiempo se hace flush
+        // TODO: Sustituir timer por hebra
         instance.SetUpTimer(1);
 
         return true;
@@ -67,6 +68,8 @@ public class Tracker
 
     IPersistence persistenceStrategy;
     ISerializer serializationStrategy;
+
+    EventFactory eventFactory;
 
     String sessionID;
     Timer timer;
@@ -149,4 +152,6 @@ public class Tracker
     {
         this.FlushEvents();
     }
+
+    public EventFactory GetEventFactory() { return this.eventFactory; }
 }
