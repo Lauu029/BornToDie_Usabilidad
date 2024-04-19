@@ -9,7 +9,6 @@ public class ProgressionEvent : TrackerEvent
     
     int dinero = 10;
     
-    public int CurrentLevel { get; set; }
     public int CurrentDinero
 {
         get { return dinero; }
