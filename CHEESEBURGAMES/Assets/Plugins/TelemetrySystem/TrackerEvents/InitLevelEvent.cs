@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Json;
 using System.IO;
-public class InitLevel : TrackerEvent
+public class InitLevelEvent : TrackerEvent
 {
     public int CurrentLevel
     {
@@ -10,7 +10,7 @@ public class InitLevel : TrackerEvent
         set { CurrentLevel = value; }
     }
 
-    public InitLevel()
+    public InitLevelEvent()
     {
         type = eventType.InitLevelEvent;
     }

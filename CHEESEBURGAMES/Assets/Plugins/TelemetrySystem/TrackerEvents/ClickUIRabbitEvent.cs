@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Json;
 using System.IO;
-public class ClickGo : TrackerEvent
+public class ClickUIRabbitEvent : TrackerEvent
 {
     public int CurrentLevel
     {
         get { return CurrentLevel; }
         set { CurrentLevel = value; }
     }
-    public ClickGo()
+    public ClickUIRabbitEvent()
     {
-        type = eventType.ClickGoEvent;
+        type = eventType.ClickUIRabbitEvent;
     }
-
 }
