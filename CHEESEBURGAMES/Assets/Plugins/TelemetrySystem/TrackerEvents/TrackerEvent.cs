@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Serialization.Json;
-using UnityEngine;
+using System.Text;
 
 public abstract class TrackerEvent
 {
@@ -23,8 +24,8 @@ public abstract class TrackerEvent
     //Atributos comunes que tienen todos los eventos, el tracker debe rellenarlos en TrackEvent()
     #region Common_Events_Attributes
     protected long timestamp;
-    protected string event_ID;
-    protected string session_ID;
+    protected string event_ID="EVENT_ID";
+    protected string session_ID="SESSION_ID";
     #region Getters&Setters
 
     public long Timestamp {
@@ -54,10 +55,54 @@ public abstract class TrackerEvent
             serializer.WriteObject(stream, this);
 
             // Convertir el MemoryStream a una cadena JSON
-            json = System.Text.Encoding.UTF8.GetString(stream.ToArray());
-            Debug.Log(json);
+            json = Encoding.UTF8.GetString(stream.ToArray());
         }
         return json;
-        //return "NOT_IMPLEMENTED_YET";
+    }
+    public string ToCSV(ref List<string> eventVariables)
+    {
+        StringBuilder csvBuilder = new StringBuilder();
+
+        // Obtener todas las propiedades públicas del objeto
+        PropertyInfo[] properties = this.GetType().GetProperties();
+        
+        Dictionary<string,string> propertiesMap = new Dictionary<string, string>();
+        string finalString = "";
+
+        // Iterar sobre las propiedades
+        foreach (PropertyInfo property in properties)
+        {
+            string propertyName = property.Name;
+
+            // Obtener el valor de la propiedad
+            object value = property.GetValue(this, null);
+            string strValue = "";
+            // Si el valor es nulo, agregar una cadena vacía al CSV
+            if (value != null)
+            {
+                strValue = value.ToString();
+            }
+            propertiesMap[propertyName] = strValue;
+        }
+        //Meter el contador si nos da un error al dejar el ; al final de la linea
+        foreach(string eventVariable in eventVariables)
+        {
+            if (propertiesMap.ContainsKey(eventVariable))
+            {
+                finalString += propertiesMap[eventVariable]+";";
+                propertiesMap.Remove(eventVariable);
+            }
+            else finalString += ";";
+          
+        }
+
+        foreach(KeyValuePair<string, string> mapValue in propertiesMap)
+        {
+            eventVariables.Add(mapValue.Key);
+            finalString +=  mapValue.Value+ ";";
+        }
+        finalString += "\n";
+        return finalString;
+       
     }
 }

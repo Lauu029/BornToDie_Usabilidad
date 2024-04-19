@@ -4,10 +4,11 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 public class ClickSpawnedRabbitEvent : TrackerEvent
 {
+    int currentLevel;
     public int CurrentLevel
     {
-        get { return CurrentLevel; }
-        set { CurrentLevel = value; }
+        get { return currentLevel; }
+        set { currentLevel = value; }
     }
     public ClickSpawnedRabbitEvent()
     {
