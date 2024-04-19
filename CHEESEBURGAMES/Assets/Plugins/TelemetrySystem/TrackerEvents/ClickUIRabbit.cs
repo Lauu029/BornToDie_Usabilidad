@@ -9,8 +9,4 @@ public class ClickUIRabbit : TrackerEvent
     {
         type = eventType.ClickUIRabbitEvent;
     }
-    public override string ToJson()      
-    {
-        return base.ToJson();
-    }
 }

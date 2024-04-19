@@ -9,8 +9,4 @@ public class ClickSpawnedRabbit : TrackerEvent
     {
         type = eventType.ClickSpawnedRabbitEvent;
     }
-    public override string ToJson()      
-    {
-        return base.ToJson();
-    }
 }

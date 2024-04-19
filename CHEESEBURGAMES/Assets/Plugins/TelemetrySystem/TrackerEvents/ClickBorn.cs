@@ -9,8 +9,4 @@ public class ClickBorn : TrackerEvent
     {
         type = eventType.ClickBornEvent;
     }
-    public override string ToJson()      
-    {
-        return base.ToJson();
-    }
 }

@@ -11,8 +11,4 @@ public class InitLevel : TrackerEvent
         type = eventType.InitLevelEvent;
     }
 
-    public override string ToJson()      
-    {
-        return base.ToJson();
-    }
 }

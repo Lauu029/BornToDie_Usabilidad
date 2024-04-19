@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization.Json;
+using UnityEngine;
+
 public abstract class TrackerEvent
 {
     public enum eventType
@@ -40,8 +43,21 @@ public abstract class TrackerEvent
     #endregion
 
 
-    public virtual string ToJson() {
-        return "NOT_IMPLEMENTED_YET";
+    public string ToJson() {
         // aqui deberia usar el serializer que esté activo
+        DataContractJsonSerializer serializer = new DataContractJsonSerializer(this.GetType());
+        string json = "";
+        // Crear un MemoryStream para escribir el JSON serializado
+        using (MemoryStream stream = new MemoryStream())
+        {
+            // Serializar el objeto y escribirlo en el MemoryStream
+            serializer.WriteObject(stream, this);
+
+            // Convertir el MemoryStream a una cadena JSON
+            json = System.Text.Encoding.UTF8.GetString(stream.ToArray());
+            Debug.Log(json);
+        }
+        return json;
+        //return "NOT_IMPLEMENTED_YET";
     }
 }

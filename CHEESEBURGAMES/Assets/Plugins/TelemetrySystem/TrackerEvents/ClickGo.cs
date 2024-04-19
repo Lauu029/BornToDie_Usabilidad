@@ -9,8 +9,5 @@ public class ClickGo : TrackerEvent
     {
         type = eventType.ClickGoEvent;
     }
-    public override string ToJson()      
-    {
-       return base.ToJson();
-    }
+
 }

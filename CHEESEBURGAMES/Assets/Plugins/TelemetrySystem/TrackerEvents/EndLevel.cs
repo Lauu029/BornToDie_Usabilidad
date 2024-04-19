@@ -9,8 +9,4 @@ public class EndLevel : TrackerEvent
     {
         type = eventType.EndLevelEvent;
     }
-    public override string ToJson()      
-    {
-        return base.ToJson();
-    }
 }
