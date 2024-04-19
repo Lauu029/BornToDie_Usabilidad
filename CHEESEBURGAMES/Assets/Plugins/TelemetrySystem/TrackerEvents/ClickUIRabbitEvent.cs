@@ -4,10 +4,11 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 public class ClickUIRabbitEvent : TrackerEvent
 {
+    private int currentLevel = 0;
     public int CurrentLevel
     {
-        get { return CurrentLevel; }
-        set { CurrentLevel = value; }
+        get { return currentLevel; }
+        set { currentLevel = value; }
     }
     public ClickUIRabbitEvent()
     {
