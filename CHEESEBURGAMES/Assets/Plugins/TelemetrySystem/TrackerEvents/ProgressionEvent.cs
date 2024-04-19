@@ -17,7 +17,7 @@ public class ProgressionEvent : TrackerEvent
     public ProgressionEvent()
     {
         type = eventType.ProgressionEvent;
-        CurrentDinero = 20;
+        //CurrentDinero = 20;
     }
 
 }
