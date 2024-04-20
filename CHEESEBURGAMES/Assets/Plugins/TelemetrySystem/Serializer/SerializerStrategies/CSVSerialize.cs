@@ -23,6 +23,7 @@ public class CSVSerialize : ISerializer
             finalString += eventVariables[i] + ";";
         }
         finalString += eventVariables[eventVariables.Count-1];
+        eventVariables.Clear();
         return finalString;
     }
 
