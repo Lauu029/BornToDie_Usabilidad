@@ -1,36 +1,37 @@
 using System;
-using System.Collections.Generic;
+using System.IO;
 
-public class FilePersistence : IPersistence
+public class FilePersistence : APersistance
 {
-    private Queue<TrackerEvent> eventQueue;
-    private ISerializer serializer;
+    const string path = "./";
 
-    public FilePersistence(ISerializer serializer)
+    private StreamWriter file;
+
+    public FilePersistence(ISerializer serializer) : base(serializer)
     {
-        eventQueue = new Queue<TrackerEvent>();
-        this.serializer = serializer;
+        // nombre con el timestamp
+        string fileName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + serializer.GetFileExtension();
 
         // crear el fichero
-        // nombre con el timestamp
-
         // open el fichero y guardar el manejador
+        file = new StreamWriter(path + fileName);
+        
+        // inicio con el formato del serializador
+        file.Write(serializer.InitFileFormat());
     }
 
-    public void Send(TrackerEvent tEvent)
-    {
-        eventQueue.Enqueue(tEvent);
-    }
-
-    public void Flush()
+    public override void Flush()
     {
         while (eventQueue.Count > 0)
         {
             TrackerEvent tEvent = eventQueue.Dequeue();
-            string serializedEvent = this.serializer.serialize(tEvent);
-            // TODO: Save into file (no abrir y cerrar el archivo todo el rato)
-            throw new NotImplementedException();
-        }
+            file.Write(serializer.serialize(tEvent));
+        }     
     }
 
+    public override void Close()
+    {
+        file.Write(serializer.EndFileFormat());
+        file.Close();
+    }
 }
