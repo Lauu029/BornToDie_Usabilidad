@@ -5,7 +5,7 @@ public class Json_Serializer : ISerializer
 {
     public string EndFileFormat()
     {
-        return "]}";
+        return "{}]}";
     }
 
     public string GetFileExtension()
@@ -20,7 +20,7 @@ public class Json_Serializer : ISerializer
 
     public string serialize(TrackerEvent trackerEvent)
     {
-        return trackerEvent.ToJson();
+        return trackerEvent.ToJson()+",";
     }
 
 }
