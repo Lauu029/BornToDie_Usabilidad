@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8496936228911995596}
   - component: {fileID: 8479172499741002664}
+  - component: {fileID: 1955354757626119102}
+  - component: {fileID: 764156570932041623}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +47,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelPlaying: 1
-  numberOfLevels: 3
   rabbitTransition: {fileID: 1995918962714918775, guid: 840940bc12613f94db786736dbc3ccd0, type: 3}
   levelTransition: {fileID: 6761432175807240387, guid: 31a610aaab3a4ee41b86075dc9eb6dd8, type: 3}
+  usingController: 0
+  usingCoroutine: 0
+--- !u!114 &1955354757626119102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201597080657465443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1d824d78763a94da05e0d3d08333b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &764156570932041623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201597080657465443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a84134ac8af07408c27676ca153044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

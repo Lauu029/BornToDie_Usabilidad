@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         if (!usingCoroutine)
             StartCoroutine(ChangeLevelEnumerator(levelInt));
+        GetComponent<TrackerCallerInitLevel>().sendEvent();
     }
 
     IEnumerator ChangeLevelEnumerator(int levelInt)
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour
     {
         if (!usingCoroutine)
         {
+            GetComponent<TrackerCallerLevelEnd>().sendEvent();
             levelPlaying++;
 
             if (levelPlaying == numberOfLevels + 1) ChangeScene("Win"); // Si se ha llegado al ultimo nivel
