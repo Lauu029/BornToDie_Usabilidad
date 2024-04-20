@@ -12,6 +12,6 @@ public class ClickBornEvent : TrackerEvent
     }
     public ClickBornEvent()
     {
-        type = eventType.ClickBornEvent;
+        Type = eventType.ClickBornEvent;
     }
 }

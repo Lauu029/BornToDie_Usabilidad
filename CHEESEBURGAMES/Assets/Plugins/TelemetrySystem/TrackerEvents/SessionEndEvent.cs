@@ -5,6 +5,6 @@ public class SessionEndEvent : TrackerEvent
 {
     public SessionEndEvent() 
     {
-        type = eventType.SessionEndEvent;
+        Type = eventType.SessionEndEvent;
     }
 }

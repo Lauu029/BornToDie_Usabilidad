@@ -12,6 +12,6 @@ public class EndLevelEvent : TrackerEvent
     }
     public EndLevelEvent()
     {
-        type = eventType.EndLevelEvent;
+        Type = eventType.EndLevelEvent;
     }
 }

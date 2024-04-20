@@ -21,13 +21,19 @@ public abstract class TrackerEvent
         ClickBornEvent
     }
 
-    protected eventType type;
+    private eventType type;
+    protected eventType Type
+    {
+        get { return type; }
+        set { type = value; Event_Type = type.ToString(); }
+    }
 
     //Atributos comunes que tienen todos los eventos, el tracker debe rellenarlos en TrackEvent()
     #region Common_Events_Attributes
     protected long timestamp;
     protected string event_ID="EVENT_ID";
     protected string session_ID="SESSION_ID";
+    protected string event_type;
     #region Getters&Setters
 
     public long Timestamp {
@@ -41,6 +47,11 @@ public abstract class TrackerEvent
     public string Session_ID {
         get { return session_ID; }
         set { session_ID = value; }
+    }
+    public string Event_Type
+    {
+        get { return event_type; }
+        set { event_type = value; }
     }
     #endregion
     #endregion

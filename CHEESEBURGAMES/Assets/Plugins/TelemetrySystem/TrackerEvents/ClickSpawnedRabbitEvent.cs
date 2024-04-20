@@ -12,6 +12,6 @@ public class ClickSpawnedRabbitEvent : TrackerEvent
     }
     public ClickSpawnedRabbitEvent()
     {
-        type = eventType.ClickSpawnedRabbitEvent;
+        Type = eventType.ClickSpawnedRabbitEvent;
     }
 }

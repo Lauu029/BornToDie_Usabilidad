@@ -13,7 +13,7 @@ public class InitLevelEvent : TrackerEvent
 
     public InitLevelEvent()
     {
-        type = eventType.InitLevelEvent;
+        Type = eventType.InitLevelEvent;
     }
 
 }

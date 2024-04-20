@@ -12,6 +12,6 @@ public class ClickUIRabbitEvent : TrackerEvent
     }
     public ClickUIRabbitEvent()
     {
-        type = eventType.ClickUIRabbitEvent;
+        Type = eventType.ClickUIRabbitEvent;
     }
 }

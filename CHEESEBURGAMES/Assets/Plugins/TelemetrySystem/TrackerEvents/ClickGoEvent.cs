@@ -12,7 +12,7 @@ public class ClickGoEvent : TrackerEvent
     }
     public ClickGoEvent()
     {
-        type = eventType.ClickGoEvent;
+        Type = eventType.ClickGoEvent;
     }
 
 }

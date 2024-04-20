@@ -5,6 +5,6 @@ public class SessionStartEvent : TrackerEvent
 {
     public SessionStartEvent()
     {
-        type = eventType.SessionStartEvent;
+        Type = eventType.SessionStartEvent;
     }
 }
