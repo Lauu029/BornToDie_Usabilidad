@@ -64,6 +64,7 @@ public class Tracker
         instance.SendSessionEndEvent();
 
         //TODO : Cierre de la posible hebra 
+        instance.persistenceStrategy.Close();
 
         instance = null;
         return true;
@@ -132,11 +133,11 @@ public class Tracker
 
     private void SendSessionStartEvent()
     {
-        TrackEvent(eventFactory.GetSessionStart());
+        TrackEvent(new SessionStartEvent());
     }
     private void SendSessionEndEvent()
     {
-        TrackEvent(eventFactory.GetSessionEnd());
+        TrackEvent(new SessionEndEvent());
     }
 
     // TODO : preguntar por el nombre de este método
