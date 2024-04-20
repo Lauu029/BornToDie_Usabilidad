@@ -15,12 +15,12 @@ public class Json_Serializer : ISerializer
 
     public string InitFileFormat()
     {
-        return "{ \"Events\": [";
+        return "{\n \"Events\": [\n";
     }
 
     public string serialize(TrackerEvent trackerEvent)
     {
-        return trackerEvent.ToJson()+",";
+        return trackerEvent.ToJson()+","+"\n";
     }
 
 }
