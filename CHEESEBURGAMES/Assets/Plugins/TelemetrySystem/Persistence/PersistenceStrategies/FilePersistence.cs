@@ -9,12 +9,17 @@ public class FilePersistence : APersistance
 
     public FilePersistence(ISerializer serializer) : base(serializer)
     {
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
         // nombre con el timestamp
         string fileName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + serializer.GetFileExtension();
 
         // crear el fichero
         // open el fichero y guardar el manejador
-        file = new StreamWriter(path + fileName);
+        file = new StreamWriter(Path.Combine(path, fileName));
         
         // inicio con el formato del serializador
         file.Write(serializer.InitFileFormat());
