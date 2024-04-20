@@ -3,7 +3,7 @@ using System.IO;
 
 public class FilePersistence : APersistance
 {
-    const string path = "./";
+    const string path = "./TrackerOutputs/";
 
     private StreamWriter file;
 
