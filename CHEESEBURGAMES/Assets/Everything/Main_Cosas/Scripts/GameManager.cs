@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public bool usingCoroutine;
 
+    [SerializeField] private bool useTracker = true;
+
     private void Awake()
     {
         // Singleton
@@ -45,6 +47,10 @@ public class GameManager : MonoBehaviour
         // InitialTransition
         GameObject newRabbitTransition = Instantiate(rabbitTransition, transform);
         Destroy(newRabbitTransition, 3);
+
+        // Inicializa el tracker, se indica en los parámetros el comportamiento
+        if (useTracker)
+            Tracker.Init(PersistenceType.FILE, SerializationType.JSON);
     }
 
     private void Update()
@@ -154,5 +160,11 @@ public class GameManager : MonoBehaviour
             // Cargar siguiente nivel
             ChangeLevel(levelPlaying);
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        if (useTracker)
+            Tracker.End();
     }
 }

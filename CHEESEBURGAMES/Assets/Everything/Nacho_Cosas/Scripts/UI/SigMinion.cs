@@ -93,6 +93,11 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if ((onPointer && Input.GetMouseButtonDown(0)) || Input.GetButtonDown("Born") || Input.GetKeyDown("e"))
         {
+            if (buttonText.text == "GO")
+                GetComponent<TrackerCallerGoClick>().sendEvent();
+            else
+                GetComponent<TrackerCallerBornClick>().sendEvent();
+
             if (!GameManager.GetInstance().usingCoroutine)
             {
                 if (ordenMinionIndex != ordenOfminions.Length) // Si todavia quedan minions
@@ -221,7 +226,7 @@ public class SigMinion : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         for (int i = 0; i < ordenOfminions.Length; i++) // Crear una imagen por cada minion
         {
-            Transform newMinionImage = Instantiate(minionsImagePrefab, nextMinionImagePoint.position + new Vector3(0, i* distanceBetweenImages, 0), transform.rotation, minionImagesCanvas);
+            Transform newMinionImage = Instantiate(minionsImagePrefab, nextMinionImagePoint.position + new Vector3(0, i * distanceBetweenImages, 0), transform.rotation, minionImagesCanvas);
 
             newMinionImage.SetParent(minionImagesContainer); // Hacerlo hijo del contenedor de imagenes, para despues mover unicamente ese obj
 

@@ -44,7 +44,7 @@ public class Tracker
         // Decidir el ID de sesión único 
         instance.GenerateUniqueID();
 
-        // TODO : Evento de inicio de sesión
+        // Evento de inicio de sesión
         instance.SendSessionStartEvent();
 
         // TODO: Sustituir timer por hebra
@@ -57,13 +57,13 @@ public class Tracker
     {
         Debug.Assert(instance!= null);
 
-        // Volcado de los datos restantes
-        instance.FlushEvents();
-
         // Evento de fin de sesión
         instance.SendSessionEndEvent();
 
-        //TODO : Cierre de la posible hebra 
+        // Volcado de los datos restantes
+        instance.FlushEvents();
+
+        // Cierre de la posible hebra 
         instance.persistenceStrategy.Close();
 
         instance = null;

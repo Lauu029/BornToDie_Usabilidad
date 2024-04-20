@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 7963278156455811665}
   - component: {fileID: 7963278156455811664}
   - component: {fileID: 8723599501338673498}
+  - component: {fileID: -4897516775472967005}
   m_Layer: 6
   m_Name: SmallMinion
   m_TagString: Untagged
@@ -356,6 +357,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4897516775472967005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963278156455811677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57103ca352f724b40a6e944577976556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7963278156831632532
 GameObject:
   m_ObjectHideFlags: 0
