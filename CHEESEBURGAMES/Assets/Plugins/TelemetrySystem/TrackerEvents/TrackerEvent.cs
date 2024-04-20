@@ -11,6 +11,8 @@ public abstract class TrackerEvent
     {
         ProgressionEvent,
         ResourceEvent,
+        SessionStartEvent,
+        SessionEndEvent,
         InitLevelEvent,
         EndLevelEvent,
         ClickUIRabbitEvent,

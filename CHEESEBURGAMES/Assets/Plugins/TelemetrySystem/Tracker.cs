@@ -45,6 +45,7 @@ public class Tracker
         instance.GenerateUniqueID();
 
         // TODO : Evento de inicio de sesión
+        instance.SendSessionStartEvent();
 
         // TODO: Sustituir timer por hebra
         instance.SetUpTimer(1);
@@ -56,12 +57,15 @@ public class Tracker
     {
         Debug.Assert(instance!= null);
 
-        // TODO : Evento de fin de sesión
+        // Volcado de los datos restantes
+        instance.FlushEvents();
 
-        //Volcado de los datos restantes
-        //Cierre de la posible hebra 
+        // Evento de fin de sesión
+        instance.SendSessionEndEvent();
 
-        instance=null;
+        //TODO : Cierre de la posible hebra 
+
+        instance = null;
         return true;
     }
     #endregion
@@ -124,6 +128,15 @@ public class Tracker
     private void GenerateUniqueID()
     {
         sessionID = Guid.NewGuid().ToString();
+    }
+
+    private void SendSessionStartEvent()
+    {
+        TrackEvent(eventFactory.GetSessionStart());
+    }
+    private void SendSessionEndEvent()
+    {
+        TrackEvent(eventFactory.GetSessionEnd());
     }
 
     // TODO : preguntar por el nombre de este método

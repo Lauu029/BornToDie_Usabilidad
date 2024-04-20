@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class SessionStartEvent : TrackerEvent
 {
-    public SessionStartEvent() { }
-
+    public SessionStartEvent()
+    {
+        type = eventType.SessionStartEvent;
+    }
 }
