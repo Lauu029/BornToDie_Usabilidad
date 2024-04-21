@@ -14,7 +14,4 @@ public class EventFactory
     public InitLevelEvent GetInitLevel() { return new InitLevelEvent();}
 
     public EndLevelEvent GetEndLevel() { return new EndLevelEvent();}
-
-    public SessionStartEvent GetSessionStart() {  return new SessionStartEvent(); }
-    public SessionEndEvent GetSessionEnd() {  return new SessionEndEvent(); }
 }
