@@ -8,7 +8,7 @@ public class ServerPersistence : APersistance
         // TO DO
     }
 
-    public override void Flush()
+    public override void SendFlush()
     {
         // TO DO
     }

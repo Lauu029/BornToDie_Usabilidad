@@ -15,12 +15,12 @@ public abstract class APersistance : IPersistence
         eventQueue = new Queue<TrackerEvent>();
     }
 
-    public void Send(TrackerEvent tEvent)
+    public virtual void Send(TrackerEvent tEvent)
     {
         eventQueue.Enqueue(tEvent);
     }
 
-    public abstract void Flush();
+    public abstract void SendFlush();
 
     public abstract void Open();
 
