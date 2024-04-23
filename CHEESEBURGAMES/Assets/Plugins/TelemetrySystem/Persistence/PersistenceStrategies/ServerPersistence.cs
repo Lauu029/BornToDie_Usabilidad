@@ -17,4 +17,9 @@ public class ServerPersistence : APersistance
     {
         // TO DO
     }
+
+    public override void Open()
+    {
+        // TO DO
+    }
 }

@@ -7,6 +7,8 @@ public interface IPersistence
 
     public void Flush();
 
+    public void Open();
+
     public void Close();
 }
 
