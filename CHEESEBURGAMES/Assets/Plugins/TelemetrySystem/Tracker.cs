@@ -59,14 +59,8 @@ public class Tracker
     {
         Debug.Assert(instance!= null);
 
-        // Evento de fin de sesión
+        // Finalizar la sesión
         instance.SendSessionEndEvent();
-
-        // Volcado de los datos restantes
-        instance.FlushEvents();
-
-        // Cierre de la posible hebra 
-        instance.persistenceStrategy.Close();
 
         instance = null;
         return true;
@@ -140,6 +134,12 @@ public class Tracker
     private void SendSessionEndEvent()
     {
         TrackEvent(new SessionEndEvent());
+
+        // Volcado de los datos restantes
+        FlushEvents();
+
+        // Cierre de la posible hebra 
+        persistenceStrategy.Close();
     }
 
     // TODO : preguntar por el nombre de este método
