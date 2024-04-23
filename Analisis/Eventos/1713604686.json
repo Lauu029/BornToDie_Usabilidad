@@ -1,8 +1,0 @@
-{
-    "Events" : [ 
-
-        {"Event_ID":"823dedea-123c-4f72-b614-18b67359e715","Session_ID":"d2f23c8b-72bc-43a9-8f01-cc0466f77c27","Timestamp":1713604686}, 
-    
-        {"Event_ID":"2e7c2c79-e23b-4b9f-a909-3a3fbe44cba0","Session_ID":"d2f23c8b-72bc-43a9-8f01-cc0466f77c27","Timestamp":1713604692}
-    ]
-}

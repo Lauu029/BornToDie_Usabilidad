@@ -1,5 +1,0 @@
-{
- "Events": [
-{"Event_ID":"73d103b0-ba39-4279-b503-6e356da82e8e","Event_Type":"SessionStartEvent","Session_ID":"559bf2e4-f5eb-4ab7-8717-b623568c3fb5","Timestamp":1713608003},
-{"Event_ID":"a8a9c401-ff75-4d69-ae6f-226f763ecfb3","Event_Type":"SessionEndEvent","Session_ID":"559bf2e4-f5eb-4ab7-8717-b623568c3fb5","Timestamp":1713608064},
-{}]}
