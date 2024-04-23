@@ -56,7 +56,7 @@ public abstract class TrackerEvent
     #endregion
     #endregion
 
-
+    private const string separator = ";";
     public string ToJson() {
         // aqui deberia usar el serializer que esté activo
         DataContractJsonSerializer serializer = new DataContractJsonSerializer(this.GetType());
@@ -74,12 +74,11 @@ public abstract class TrackerEvent
     }
     public string ToCSV(ref List<string> eventVariables)
     {
-        StringBuilder csvBuilder = new StringBuilder();
 
         // Obtener todas las propiedades públicas del objeto
         PropertyInfo[] properties = this.GetType().GetProperties();
-        
-        Dictionary<string,string> propertiesMap = new Dictionary<string, string>();
+
+        Dictionary<string, string> propertiesMap = new Dictionary<string, string>();
         string finalString = "";
 
         // Iterar sobre las propiedades
@@ -97,25 +96,36 @@ public abstract class TrackerEvent
             }
             propertiesMap[propertyName] = strValue;
         }
-        //Meter el contador si nos da un error al dejar el ; al final de la linea
-        foreach(string eventVariable in eventVariables)
+
+        foreach (string listItem in eventVariables)
         {
-            if (propertiesMap.ContainsKey(eventVariable))
+            if (propertiesMap.ContainsKey(listItem))
             {
-                finalString += propertiesMap[eventVariable]+";";
-                propertiesMap.Remove(eventVariable);
+                finalString += propertiesMap[listItem] + separator;
+
+                propertiesMap.Remove(listItem);
             }
-            else finalString += ";";
-          
+            else finalString += separator;
         }
 
-        foreach(KeyValuePair<string, string> mapValue in propertiesMap)
+        /* Sin el separador al final de la linea
+        foreach (string listItem in eventVariables)
         {
-            eventVariables.Add(mapValue.Key);
-            finalString +=  mapValue.Value+ ";";
-        }
+            if (propertiesMap.ContainsKey(listItem))
+            {
+                if (listItem != eventVariables[eventVariables.Count - 1])
+                    finalString += propertiesMap[listItem] + separator;
+                else
+                    finalString += propertiesMap[listItem];
+                propertiesMap.Remove(listItem);
+            }
+            else {
+                if (listItem != eventVariables[eventVariables.Count - 1])
+                    finalString += separator;
+            }
+        }*/
+
         finalString += "\n";
         return finalString;
-       
     }
 }

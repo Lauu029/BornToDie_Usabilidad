@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class CSVSerialize : ISerializer
 {
-    List<string> eventVariables= new List<string>();
-
+    private List<string> variablesList = new List<string> { "Event_ID", "Event_Type", "Session_ID", "Timestamp", "CurrentLevel" };
+    private const string separator = ";";
     public string EndFileFormat()
     {
         return "";
@@ -17,18 +17,19 @@ public class CSVSerialize : ISerializer
 
     public string InitFileFormat()
     {
-        string finalString = "";
-        for(int i=0; i<eventVariables.Count-1; i++)
+
+        string initialString = "";
+        for (int i = 0; i < variablesList.Count-1; i++)
         {
-            finalString += eventVariables[i] + ";";
+            initialString += variablesList[i] + separator;
         }
-        finalString += eventVariables[eventVariables.Count-1];
-        eventVariables.Clear();
-        return finalString;
+        initialString += variablesList[variablesList.Count-1];
+
+        return initialString;
     }
 
     public string serialize(TrackerEvent trackerEvent)
     {
-        return trackerEvent.ToCSV(ref eventVariables);
+        return trackerEvent.ToCSV(ref variablesList);
     }
 }
