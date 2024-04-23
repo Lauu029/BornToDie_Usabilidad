@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class CSVSerialize : ISerializer
 {
     List<string> eventVariables= new List<string>();
-
+    const char separator = ';';
     public string EndFileFormat()
     {
         return "";
@@ -20,7 +20,7 @@ public class CSVSerialize : ISerializer
         string finalString = "";
         for(int i=0; i<eventVariables.Count-1; i++)
         {
-            finalString += eventVariables[i] + ";";
+            finalString += eventVariables[i] + separator;
         }
         finalString += eventVariables[eventVariables.Count-1];
         eventVariables.Clear();
