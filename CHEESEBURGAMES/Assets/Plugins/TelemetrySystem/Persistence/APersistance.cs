@@ -22,5 +22,7 @@ public abstract class APersistance : IPersistence
 
     public abstract void Flush();
 
+    public abstract void Open();
+
     public abstract void Close();
 }

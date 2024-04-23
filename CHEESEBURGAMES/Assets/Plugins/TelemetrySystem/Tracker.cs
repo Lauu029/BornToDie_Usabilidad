@@ -41,6 +41,8 @@ public class Tracker
         instance.ChooseSerializationStrategy(serializationType);
         instance.ChoosePersistenceStrategy(persistenceType);
 
+        instance.persistenceStrategy.Open();
+
         // Decidir el ID de sesión único 
         instance.GenerateUniqueID();
 
