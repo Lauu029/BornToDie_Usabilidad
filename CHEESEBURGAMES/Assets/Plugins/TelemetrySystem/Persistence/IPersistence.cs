@@ -5,7 +5,7 @@ public interface IPersistence
 {
     public void Send(TrackerEvent tEvent);
 
-    public void Flush();
+    public void SendFlush();
 
     public void Open();
 

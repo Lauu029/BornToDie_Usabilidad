@@ -161,7 +161,7 @@ public class Tracker
     // Envia todos los eventos almacenados en la cola
     public void FlushEvents()
     {
-        persistenceStrategy.Flush();
+        persistenceStrategy.SendFlush();
     }
 
     private void PeriodicFlushEvents(object state)
