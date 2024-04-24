@@ -1,0 +1,14 @@
+{
+ "Events": [
+{"Event_ID":"28730d74-e8cb-4dd2-b400-8389c6a7c551","Event_Type":"SessionStartEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973098},
+{"Event_ID":"4e872b9c-8bc1-4202-96cb-a2d6c215db45","Event_Type":"InitLevelEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973104,"CurrentLevel":1},
+{"Event_ID":"19b93974-ca2f-4d05-993e-a933b80a4b31","Event_Type":"ClickBornEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973110,"CurrentLevel":1},
+{"Event_ID":"f6f15e2f-d3d3-414a-85b1-34b1d28a1e98","Event_Type":"ClickGoEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973112,"CurrentLevel":1},
+{"Event_ID":"94c7f227-0e96-4463-adcf-2a40535343ea","Event_Type":"EndLevelEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973118,"CurrentLevel":1},
+{"Event_ID":"c996e622-a1a5-4b48-b84c-16dcdde60a49","Event_Type":"InitLevelEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973118,"CurrentLevel":2},
+{"Event_ID":"87a565ac-7136-4404-91bf-e10e6f1ae54f","Event_Type":"ClickBornEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973124,"CurrentLevel":2},
+{"Event_ID":"7959cf4a-733e-43c3-b755-0d07c327255c","Event_Type":"ClickGoEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973127,"CurrentLevel":2},
+{"Event_ID":"7fe8c61e-b727-43d2-b804-6d95b93e3fd3","Event_Type":"EndLevelEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973131,"CurrentLevel":2},
+{"Event_ID":"27b07be9-cd46-4737-b34a-4d35e25b4d33","Event_Type":"InitLevelEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973131,"CurrentLevel":3},
+{"Event_ID":"7e36219d-7cfd-48e8-bf32-be805e73050b","Event_Type":"SessionEndEvent","Session_ID":"3e0c5904-fb14-401e-9bc0-8fa815ad229d","Timestamp":1713973137},
+{}]}
