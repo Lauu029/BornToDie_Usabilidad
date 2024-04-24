@@ -24,7 +24,10 @@ public class GameManager : MonoBehaviour
 
     public bool usingCoroutine;
 
+    [Header("TRACKER")]
     [SerializeField] private bool useTracker = true;
+    [SerializeField] private SerializationType serializationType = SerializationType.JSON;
+    [SerializeField] private PersistenceType persistenceType = PersistenceType.FILE;
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         // Inicializa el tracker, se indica en los parámetros el comportamiento
         if (useTracker)
-            Tracker.Init(PersistenceType.FILE, SerializationType.JSON);
+            Tracker.Init(persistenceType, serializationType);
     }
 
     private void Update()

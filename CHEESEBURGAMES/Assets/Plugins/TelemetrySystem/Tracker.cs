@@ -31,7 +31,7 @@ public class Tracker
 
     private Tracker() { } // Ocultar el constructor
 
-    public static bool Init(PersistenceType persistenceType, SerializationType serializationType) //Eventos de inicio de sesión, plataforma, SO...
+    public static bool Init(PersistenceType persistenceType, SerializationType serializationType)
     {
         Debug.Assert(instance == null);
 
@@ -48,9 +48,6 @@ public class Tracker
 
         // Evento de inicio de sesión
         instance.SendSessionStartEvent();
-
-        // TODO: Sustituir timer por hebra
-        instance.SetUpTimer(1);
 
         return true;
     }
@@ -73,19 +70,6 @@ public class Tracker
     EventFactory eventFactory;
 
     String sessionID;
-    Timer timer;
-
-    // Prepara el timer para que se haga flush cada X minutos
-    private void SetUpTimer(int minutes)
-    {
-        if (this.timer != null)
-        {
-            this.timer.Dispose();
-            this.timer = null;
-        }
-
-        this.timer = new Timer(this.PeriodicFlushEvents, null, 0, minutes);
-    }
 
     // Puede ser público si queremos habilitar que se cambie el tipo de persistencia a mitad del tracker
     private void ChoosePersistenceStrategy(PersistenceType pType)
@@ -96,9 +80,8 @@ public class Tracker
             this.persistenceStrategy = new FilePersistence(this.serializationStrategy);
             break;
         case PersistenceType.SERVER:
-            //TODO server persistence
-            // persistenceStrategy = new ServerPeristence()
-            this.persistenceStrategy = new FilePersistence(this.serializationStrategy);
+                // TODO server persistence
+                this.persistenceStrategy = new ServerPersistence(this.serializationStrategy);
             break;
         default:
             break;
@@ -113,9 +96,7 @@ public class Tracker
                 this.serializationStrategy = new Json_Serializer();
                 break;
             case SerializationType.CSV:
-                // TODO csv serialization
-                // serializationStrategy = new CsvSerializer();
-                this.serializationStrategy = new Json_Serializer();
+                this.serializationStrategy = new CSVSerialize();
                 break;
             default:
                 break;
@@ -142,7 +123,6 @@ public class Tracker
         persistenceStrategy.Close();
     }
 
-    // TODO : preguntar por el nombre de este método
     public void TrackEvent(TrackerEvent tEvent)
     {
         // Rellenar timestamp, event_ID, session_ID... del evento antes de enviarlo a la cola
@@ -162,11 +142,6 @@ public class Tracker
     public void FlushEvents()
     {
         persistenceStrategy.SendFlush();
-    }
-
-    private void PeriodicFlushEvents(object state)
-    {
-        this.FlushEvents();
     }
 
     public EventFactory GetEventFactory() { return this.eventFactory; }
