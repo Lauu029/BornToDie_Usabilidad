@@ -7,7 +7,7 @@ public interface IPersistence
 
     public void SendFlush();
 
-    public void Open();
+    public void Open(int updateMilliseconds);
 
     public void Close();
 }

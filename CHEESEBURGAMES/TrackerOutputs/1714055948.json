@@ -1,0 +1,8 @@
+{
+ "Events": [
+{"Event_ID":"6f0ca397-78e0-45d6-a768-57b7c86400d1","Event_Type":"SessionStartEvent","Session_ID":"a9169519-04d5-4ae0-a27c-d2f8e54a30b0","Timestamp":1714055948},
+{"Event_ID":"77c993cc-0cfe-4fd9-b4f2-2d71fe529e8c","Event_Type":"InitLevelEvent","Session_ID":"a9169519-04d5-4ae0-a27c-d2f8e54a30b0","Timestamp":1714055954,"CurrentLevel":1},
+{"Event_ID":"6ba80692-4c95-4191-ae49-19d1ac1a5e56","Event_Type":"ClickBornEvent","Session_ID":"a9169519-04d5-4ae0-a27c-d2f8e54a30b0","Timestamp":1714055961,"CurrentLevel":1},
+{"Event_ID":"efd65ec9-df6d-41a3-bb8c-0b7df0fb551d","Event_Type":"ClickGoEvent","Session_ID":"a9169519-04d5-4ae0-a27c-d2f8e54a30b0","Timestamp":1714055964,"CurrentLevel":1},
+{"Event_ID":"3c25efd2-b600-4a92-83f4-69ba7c18f23e","Event_Type":"SessionEndEvent","Session_ID":"a9169519-04d5-4ae0-a27c-d2f8e54a30b0","Timestamp":1714055967},
+{}]}

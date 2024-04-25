@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool useTracker = true;
     [SerializeField] private SerializationType serializationType = SerializationType.JSON;
     [SerializeField] private PersistenceType persistenceType = PersistenceType.FILE;
+    [SerializeField] private int flushEventsFrequency = 3000;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         // Inicializa el tracker, se indica en los parámetros el comportamiento
         if (useTracker)
-            Tracker.Init(persistenceType, serializationType);
+            Tracker.Init(persistenceType, serializationType, flushEventsFrequency);
     }
 
     private void Update()
