@@ -4,7 +4,7 @@ Todos los documentos necesarios para la entrega de la práctica se pueden encont
 - Documento donde se detallan las partes opcionales desarrolladas:
 - [Implementación del sistema de telemetría](https://github.com/Lauu029/BornToDie_Usabilidad/tree/main/CHEESEBURGAMES/Assets/Plugins/TelemetrySystem)
 - [Juego instrumentalizado](https://github.com/Lauu029/BornToDie_Usabilidad/tree/main/CHEESEBURGAMES)
-- Documento en el que se especifica cómo se ha añadido código de instrumentalización:
+- [Documento en el que se especifica cómo se ha añadido código de instrumentalización](https://github.com/Lauu029/BornToDie_Usabilidad/blob/main/CHEESEBURGAMES/Instrumentalizacion.md)
 - [Archivos de datos generados por el sistema de telemetría](https://github.com/Lauu029/BornToDie_Usabilidad/tree/main/Analisis/Eventos)
 - [Cálculo y análisis de las métricas](https://github.com/Lauu029/BornToDie_Usabilidad/tree/main/Analisis)
 
