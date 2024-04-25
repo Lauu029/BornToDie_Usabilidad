@@ -22,7 +22,7 @@ public abstract class APersistance : IPersistence
 
     public abstract void SendFlush();
 
-    public abstract void Open();
+    public abstract void Open(int updateMilliseconds);
 
     public abstract void Close();
 }

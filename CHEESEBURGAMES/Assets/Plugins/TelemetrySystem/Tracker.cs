@@ -31,7 +31,7 @@ public class Tracker
 
     private Tracker() { } // Ocultar el constructor
 
-    public static bool Init(PersistenceType persistenceType, SerializationType serializationType)
+    public static bool Init(PersistenceType persistenceType, SerializationType serializationType, int updateMilliseconds)
     {
         Debug.Assert(instance == null);
 
@@ -41,7 +41,7 @@ public class Tracker
         instance.ChooseSerializationStrategy(serializationType);
         instance.ChoosePersistenceStrategy(persistenceType);
 
-        instance.persistenceStrategy.Open();
+        instance.persistenceStrategy.Open(updateMilliseconds);
 
         // Decidir el ID de sesión único 
         instance.GenerateUniqueID();
