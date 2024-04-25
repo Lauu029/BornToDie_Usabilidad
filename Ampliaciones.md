@@ -8,3 +8,9 @@ Aunque esta hebra nos permite persistir los elementos cada cierto tiempo sin ten
 
 # Serialización en formato CSV
 Nuestro tracker da soporte a la serialización en formato CSV.
+
+# Tracker configurable por datos
+El tracker se puede configurar por datos a través de Unity. Como el Tracker no es Monobehaviour, usamos un objeto intermedio para aportar los datos al tracker. En nuestro caso utilizamos la clase GameManager, donde se puede configurar el tipo de persistencia, el tipo de serialización, así como la frecuencia de volcado de los datos en milisegundos.
+
+# Anotaciones
+Aunque el tipo de persistencia es ampliable y configurable con más estrategias, la persistencia a servidor en nuestro Tracker está declarada, pero no está implementada.
