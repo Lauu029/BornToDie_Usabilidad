@@ -1,0 +1,2 @@
+Las clases que se han modificado para hacer la instrumentalización del juego son las siguientes:
+- GameManager. Es la encargada de iniciar y cerrar el singleton del tracker. También manda los eventos de cambio de nivel.

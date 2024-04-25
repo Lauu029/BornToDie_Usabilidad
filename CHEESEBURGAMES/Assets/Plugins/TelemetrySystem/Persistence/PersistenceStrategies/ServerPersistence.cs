@@ -18,7 +18,7 @@ public class ServerPersistence : APersistance
         // TO DO
     }
 
-    public override void Open()
+    public override void Open(int updateMilliseconds)
     {
         // TO DO
     }

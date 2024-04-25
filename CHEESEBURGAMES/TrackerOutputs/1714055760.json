@@ -1,0 +1,5 @@
+{
+ "Events": [
+{"Event_ID":"ba314511-4abe-4447-8d56-538f3d7b8566","Event_Type":"SessionStartEvent","Session_ID":"b4a750dd-3f82-4324-9723-2fb7cf218075","Timestamp":1714055760},
+{"Event_ID":"0e683429-c064-4d89-b9e6-c3c5ae5d812a","Event_Type":"SessionEndEvent","Session_ID":"b4a750dd-3f82-4324-9723-2fb7cf218075","Timestamp":1714055762},
+{}]}

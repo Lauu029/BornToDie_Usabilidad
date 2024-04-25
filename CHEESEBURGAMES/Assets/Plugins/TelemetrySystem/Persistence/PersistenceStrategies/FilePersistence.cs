@@ -6,7 +6,7 @@ using System.Threading;
 public class FilePersistence : APersistance
 {
     const string path = "./TrackerOutputs/";
-    const int updateFrequenceInMiliseconds = 3000;
+    int updateFrequenceInMiliseconds = 3000;
 
     private StreamWriter file;
 
@@ -32,8 +32,10 @@ public class FilePersistence : APersistance
         thread.Join();
     }
 
-    public override void Open()
+    public override void Open(int updateMilliseconds)
     {
+        updateFrequenceInMiliseconds = updateMilliseconds;
+
         if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
